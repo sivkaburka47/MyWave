@@ -15,6 +15,10 @@ final class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    deinit {
+        print("AppCoordinator deinitialized")
+    }
+    
     func start() {
         let isLoggedIn = false
         
@@ -41,6 +45,7 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: WelcomeCoordinatorDelegate {
     func didFinishWelcomeFlow() {
+        print("AppCoordinator: didFinishWelcomeFlow called")
         childCoordinators.removeAll()
         showMainFlow()
     }
