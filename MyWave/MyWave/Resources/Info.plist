@@ -4,6 +4,13 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>VelaSans-SemiBold.otf</string>
+		<string>VelaSans-Regular.otf</string>
+		<string>VelaSans-Medium.otf</string>
+		<string>VelaSans-Light.otf</string>
+		<string>VelaSans-ExtraLight.otf</string>
+		<string>VelaSans-ExtraBold.otf</string>
+		<string>VelaSans-Bold.otf</string>
 		<string>VelaSans-GX.ttf</string>
 		<string>GwenText-Trial-SemiBold.otf</string>
 		<string>GwenText-Trial-Book.otf</string>

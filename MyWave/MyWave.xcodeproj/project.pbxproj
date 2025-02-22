@@ -65,6 +65,8 @@
 		E6B85EC22D6899AE00B453BA /* VelaSans-SemiBold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA12D6899AE00B453BA /* VelaSans-SemiBold.woff */; };
 		E6B85EC32D6899AE00B453BA /* VelaSans-SemiBold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA22D6899AE00B453BA /* VelaSans-SemiBold.woff2 */; };
 		E6B85EC42D6899AE00B453BA /* VelaSans-GX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */; };
+		E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */; };
+		E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC92D6A044A00B453BA /* MoodCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +129,8 @@
 		E6B85EA12D6899AE00B453BA /* VelaSans-SemiBold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff"; sourceTree = "<group>"; };
 		E6B85EA22D6899AE00B453BA /* VelaSans-SemiBold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff2"; sourceTree = "<group>"; };
 		E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-GX.ttf"; sourceTree = "<group>"; };
+		E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		E6B85EC92D6A044A00B453BA /* MoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,8 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				E6B85E3C2D685B1500B453BA /* Components */,
-				E6B85E302D68577500B453BA /* MainScreen */,
 				E6B85E2F2D68576E00B453BA /* WelcomeScreen */,
+				E6B85E302D68577500B453BA /* MainScreen */,
 				E6B85E232D6854E200B453BA /* Coordinators */,
 			);
 			path = Presentation;
@@ -255,6 +259,8 @@
 			children = (
 				E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */,
 				E6B85E832D68985C00B453BA /* LoginAppleIdButton.swift */,
+				E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */,
+				E6B85EC92D6A044A00B453BA /* MoodCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -527,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */,
+				E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */,
 				E6B85E372D6858DD00B453BA /* WelcomeViewModel.swift in Sources */,
 				E6B85E332D68586700B453BA /* MainCoordinator.swift in Sources */,
 				E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */,
@@ -537,6 +544,7 @@
 				E6B85E392D6858E800B453BA /* MainViewController.swift in Sources */,
 				E6B85E252D68557F00B453BA /* WelcomeCoordinator.swift in Sources */,
 				E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */,
+				E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */,
 				E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

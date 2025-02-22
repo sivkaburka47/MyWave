@@ -10,5 +10,8 @@ import Foundation
 final class MainViewModel {
     weak var coordinator: MainCoordinator?
     
+    func addNote() {
+        print("Нажмав добавить запись")
+    }
 }
 
