@@ -8,32 +8,33 @@
 import UIKit
 
 protocol WelcomeCoordinatorDelegate: AnyObject {
-    func didFinishWelcomeFlow()
+    func didAuthenticate()
 }
 
 final class WelcomeCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    weak var parentCoordinator: Coordinator?
     weak var delegate: WelcomeCoordinatorDelegate?
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        trackDeinit()
     }
-
+    
     deinit {
-        print("WelcomeCoordinator deinitialized")
+        NotificationCenter.default.post(name: .deinitTracker, object: nil)
     }
-
+    
     func start() {
         let viewModel = WelcomeViewModel()
         viewModel.coordinator = self
         let vc = WelcomeViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
-        print("WelcomeCoordinator: start called")
     }
-
-    func navigateToMain() {
-        print("WelcomeCoordinator: navigateToMain called")
-        delegate?.didFinishWelcomeFlow()
+    
+    func completeAuthentication() {
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        delegate?.didAuthenticate()
     }
 }

@@ -70,12 +70,41 @@ final class CircularProgressView: UIView {
         startRotationAnimation()
     }
     
+    private var isAnimating = false
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil && isAnimating {
+            startRotationAnimation()
+        }
+    }
+    
     private func startRotationAnimation() {
+        gradientLayer.removeAnimation(forKey: "rotation")
+        
         let rotation = CABasicAnimation(keyPath: "transform.rotation")
         rotation.fromValue = 0
         rotation.toValue = CGFloat.pi * 2
         rotation.duration = 4
         rotation.repeatCount = .infinity
+        rotation.isRemovedOnCompletion = false
         gradientLayer.add(rotation, forKey: "rotation")
+        
+        isAnimating = true
+    }
+    
+    func pauseAnimation() {
+        let pausedTime = gradientLayer.convertTime(CACurrentMediaTime(), from: nil)
+        gradientLayer.speed = 0.0
+        gradientLayer.timeOffset = pausedTime
+    }
+    
+    func resumeAnimation() {
+        let pausedTime = gradientLayer.timeOffset
+        gradientLayer.speed = 1.0
+        gradientLayer.timeOffset = 0.0
+        gradientLayer.beginTime = 0.0
+        let timeSincePause = gradientLayer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        gradientLayer.beginTime = timeSincePause
     }
 }

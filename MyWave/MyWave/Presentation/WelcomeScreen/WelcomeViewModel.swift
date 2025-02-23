@@ -11,6 +11,6 @@ final class WelcomeViewModel {
     weak var coordinator: WelcomeCoordinator?
     
     func handleLogin() {
-        coordinator?.navigateToMain()
+        coordinator?.completeAuthentication()
     }
 }

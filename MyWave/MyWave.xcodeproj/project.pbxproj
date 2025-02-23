@@ -14,11 +14,11 @@
 		E6B85E252D68557F00B453BA /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */; };
 		E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E272D6855E100B453BA /* BaseCoordinator.swift */; };
 		E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E292D6855FA00B453BA /* AppCoordinator.swift */; };
-		E6B85E332D68586700B453BA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E322D68586700B453BA /* MainCoordinator.swift */; };
+		E6B85E332D68586700B453BA /* JournalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E322D68586700B453BA /* JournalCoordinator.swift */; };
 		E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E342D6858D100B453BA /* WelcomeViewController.swift */; };
 		E6B85E372D6858DD00B453BA /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E362D6858DD00B453BA /* WelcomeViewModel.swift */; };
-		E6B85E392D6858E800B453BA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E382D6858E800B453BA /* MainViewController.swift */; };
-		E6B85E3B2D6858F300B453BA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E3A2D6858F300B453BA /* MainViewModel.swift */; };
+		E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E382D6858E800B453BA /* JournalViewController.swift */; };
+		E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */; };
 		E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */; };
 		E6B85E662D6862A300B453BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E6B85E652D6862A300B453BA /* SnapKit */; };
 		E6B85E752D68641B00B453BA /* GwenText-Trial-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E672D68641A00B453BA /* GwenText-Trial-Book.otf */; };
@@ -67,6 +67,19 @@
 		E6B85EC42D6899AE00B453BA /* VelaSans-GX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */; };
 		E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */; };
 		E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC92D6A044A00B453BA /* MoodCardView.swift */; };
+		E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED02D6A327400B453BA /* MainCoordinator.swift */; };
+		E6B85ED32D6A32C000B453BA /* AddNoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */; };
+		E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */; };
+		E6B85ED72D6A32ED00B453BA /* OptionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */; };
+		E6B85ED92D6A330F00B453BA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED82D6A330F00B453BA /* OptionsViewController.swift */; };
+		E6B85EDB2D6A331800B453BA /* OptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */; };
+		E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */; };
+		E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */; };
+		E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */; };
+		E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */; };
+		E6B85EE52D6A337B00B453BA /* EmotionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE42D6A337B00B453BA /* EmotionSelectionViewController.swift */; };
+		E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */; };
+		E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,11 +92,11 @@
 		E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		E6B85E272D6855E100B453BA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		E6B85E292D6855FA00B453BA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		E6B85E322D68586700B453BA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		E6B85E322D68586700B453BA /* JournalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCoordinator.swift; sourceTree = "<group>"; };
 		E6B85E342D6858D100B453BA /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E6B85E362D6858DD00B453BA /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
-		E6B85E382D6858E800B453BA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E6B85E3A2D6858F300B453BA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		E6B85E382D6858E800B453BA /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradientView.swift; sourceTree = "<group>"; };
 		E6B85E672D68641A00B453BA /* GwenText-Trial-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Book.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Book.otf"; sourceTree = "<group>"; };
 		E6B85E682D68641A00B453BA /* Gwen-Trial-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Light.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Light.otf"; sourceTree = "<group>"; };
@@ -131,6 +144,19 @@
 		E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-GX.ttf"; sourceTree = "<group>"; };
 		E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		E6B85EC92D6A044A00B453BA /* MoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCardView.swift; sourceTree = "<group>"; };
+		E6B85ED02D6A327400B453BA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteCoordinator.swift; sourceTree = "<group>"; };
+		E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCoordinator.swift; sourceTree = "<group>"; };
+		E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCoordinator.swift; sourceTree = "<group>"; };
+		E6B85ED82D6A330F00B453BA /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewModel.swift; sourceTree = "<group>"; };
+		E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewModel.swift; sourceTree = "<group>"; };
+		E6B85EE42D6A337B00B453BA /* EmotionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionViewController.swift; sourceTree = "<group>"; };
+		E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionViewModel.swift; sourceTree = "<group>"; };
+		E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,9 +203,14 @@
 			isa = PBXGroup;
 			children = (
 				E6B85E272D6855E100B453BA /* BaseCoordinator.swift */,
-				E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */,
 				E6B85E292D6855FA00B453BA /* AppCoordinator.swift */,
-				E6B85E322D68586700B453BA /* MainCoordinator.swift */,
+				E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */,
+				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
+				E6B85E322D68586700B453BA /* JournalCoordinator.swift */,
+				E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */,
+				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
+				E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */,
+				E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -219,7 +250,9 @@
 			children = (
 				E6B85E3C2D685B1500B453BA /* Components */,
 				E6B85E2F2D68576E00B453BA /* WelcomeScreen */,
-				E6B85E302D68577500B453BA /* MainScreen */,
+				E6B85E302D68577500B453BA /* Main */,
+				E6B85ECE2D6A28DC00B453BA /* StatisticsScreen */,
+				E6B85ECF2D6A28EE00B453BA /* OptionsScreen */,
 				E6B85E232D6854E200B453BA /* Coordinators */,
 			);
 			path = Presentation;
@@ -234,13 +267,14 @@
 			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
-		E6B85E302D68577500B453BA /* MainScreen */ = {
+		E6B85E302D68577500B453BA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E6B85E382D6858E800B453BA /* MainViewController.swift */,
-				E6B85E3A2D6858F300B453BA /* MainViewModel.swift */,
+				E6B85ECB2D6A289400B453BA /* JournalScreen */,
+				E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */,
+				E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */,
 			);
-			path = MainScreen;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		E6B85E312D68579000B453BA /* Resources */ = {
@@ -257,10 +291,10 @@
 		E6B85E3C2D685B1500B453BA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85EC92D6A044A00B453BA /* MoodCardView.swift */,
 				E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */,
 				E6B85E832D68985C00B453BA /* LoginAppleIdButton.swift */,
 				E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */,
-				E6B85EC92D6A044A00B453BA /* MoodCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -413,6 +447,51 @@
 			path = VelaSans;
 			sourceTree = "<group>";
 		};
+		E6B85ECB2D6A289400B453BA /* JournalScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E6B85E382D6858E800B453BA /* JournalViewController.swift */,
+				E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */,
+			);
+			path = JournalScreen;
+			sourceTree = "<group>";
+		};
+		E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E6B85EE42D6A337B00B453BA /* EmotionSelectionViewController.swift */,
+				E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */,
+			);
+			path = EmotionSelectionScreen;
+			sourceTree = "<group>";
+		};
+		E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */,
+				E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */,
+			);
+			path = AddNoteScreen;
+			sourceTree = "<group>";
+		};
+		E6B85ECE2D6A28DC00B453BA /* StatisticsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */,
+				E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */,
+			);
+			path = StatisticsScreen;
+			sourceTree = "<group>";
+		};
+		E6B85ECF2D6A28EE00B453BA /* OptionsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E6B85ED82D6A330F00B453BA /* OptionsViewController.swift */,
+				E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */,
+			);
+			path = OptionsScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,18 +612,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */,
+				E6B85ED72D6A32ED00B453BA /* OptionsCoordinator.swift in Sources */,
 				E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */,
+				E6B85EE52D6A337B00B453BA /* EmotionSelectionViewController.swift in Sources */,
 				E6B85E372D6858DD00B453BA /* WelcomeViewModel.swift in Sources */,
-				E6B85E332D68586700B453BA /* MainCoordinator.swift in Sources */,
+				E6B85E332D68586700B453BA /* JournalCoordinator.swift in Sources */,
 				E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */,
+				E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */,
 				E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */,
+				E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */,
+				E6B85ED32D6A32C000B453BA /* AddNoteCoordinator.swift in Sources */,
 				E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */,
-				E6B85E3B2D6858F300B453BA /* MainViewModel.swift in Sources */,
+				E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */,
+				E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */,
 				E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */,
-				E6B85E392D6858E800B453BA /* MainViewController.swift in Sources */,
+				E6B85ED92D6A330F00B453BA /* OptionsViewController.swift in Sources */,
+				E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */,
+				E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */,
+				E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */,
+				E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */,
 				E6B85E252D68557F00B453BA /* WelcomeCoordinator.swift in Sources */,
+				E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */,
 				E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */,
 				E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */,
+				E6B85EDB2D6A331800B453BA /* OptionsViewModel.swift in Sources */,
+				E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */,
 				E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

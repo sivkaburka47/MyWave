@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  JournalViewController.swift
 //  MyWave
 //
 //  Created by Станислав Дейнекин on 21.02.2025.
@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-final class MainViewController: UIViewController {
+final class JournalViewController: UIViewController {
     
     // MARK: - Properties
-    private let viewModel: MainViewModel
+    private let viewModel: JournalViewModel
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let statsStackView = UIStackView()
@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
     private var progressView: CircularProgressView!
     
     // MARK: - Initialization
-    init(viewModel: MainViewModel) {
+    init(viewModel: JournalViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,6 +44,7 @@ final class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
     
     // MARK: - UI Setup
     private func setupUI() {
@@ -307,12 +308,20 @@ final class MainViewController: UIViewController {
             $0.height.equalTo(158)
         }
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
+            card.addGestureRecognizer(tapGesture)
+            card.isUserInteractionEnabled = true
+        
         return card
     }
     
     // MARK: - Actions
     @objc private func centerButtonTapped() {
-        viewModel.addNote()
+        viewModel.startAddNoteFlow()
+    }
+    
+    @objc private func cardTapped(_ gesture: UITapGestureRecognizer) {
+        viewModel.editNote()
     }
 }
 
