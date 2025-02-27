@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
+		E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E65E28CC2D70A1540043E296 /* Localizable.xcstrings */; };
+		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
+		E65E28D22D70A4DA0043E296 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28D12D70A4DA0043E296 /* String+Extensions.swift */; };
+		E65E28D42D70B4100043E296 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28D32D70B4100043E296 /* ReminderView.swift */; };
 		E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E0F2D68518E00B453BA /* AppDelegate.swift */; };
 		E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E112D68518E00B453BA /* SceneDelegate.swift */; };
 		E6B85E192D68518F00B453BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E182D68518F00B453BA /* Assets.xcassets */; };
@@ -90,6 +94,10 @@
 
 /* Begin PBXFileReference section */
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		E65E28CC2D70A1540043E296 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		E65E28D12D70A4DA0043E296 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E65E28D32D70B4100043E296 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		E6B85E0C2D68518E00B453BA /* MyWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B85E0F2D68518E00B453BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6B85E112D68518E00B453BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +191,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E65E28D02D70A4BF0043E296 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E65E28D12D70A4DA0043E296 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E6B85E032D68518D00B453BA = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 		E6B85E0E2D68518E00B453BA /* MyWave */ = {
 			isa = PBXGroup;
 			children = (
+				E65E28D02D70A4BF0043E296 /* Extensions */,
 				E6B85E2B2D68573C00B453BA /* App */,
 				E6B85E2D2D68575800B453BA /* Data */,
 				E6B85E2C2D68575200B453BA /* Domain */,
@@ -296,6 +313,8 @@
 				E6B85E182D68518F00B453BA /* Assets.xcassets */,
 				E6B85E1D2D68518F00B453BA /* Info.plist */,
 				E6B85E1A2D68518F00B453BA /* LaunchScreen.storyboard */,
+				E65E28CC2D70A1540043E296 /* Localizable.xcstrings */,
+				E65E28CE2D70A3850043E296 /* LocalizedString.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -313,6 +332,7 @@
 				E6B85F3F2D6E290900B453BA /* AddTagCell.swift */,
 				E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */,
 				E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */,
+				E65E28D32D70B4100043E296 /* ReminderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -590,6 +610,7 @@
 				E6B85EC22D6899AE00B453BA /* VelaSans-SemiBold.woff in Resources */,
 				E6B85EC42D6899AE00B453BA /* VelaSans-GX.ttf in Resources */,
 				E6B85EB52D6899AE00B453BA /* VelaSans-SemiBold.ttf in Resources */,
+				E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */,
 				E6B85EB22D6899AE00B453BA /* VelaSans-Light.ttf in Resources */,
 				E6B85E822D68641B00B453BA /* Gwen-Trial-Regular.otf in Resources */,
 				E6B85EB92D6899AE00B453BA /* VelaSans-ExtraBold.woff2 in Resources */,
@@ -643,8 +664,11 @@
 				E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */,
 				E6B85ED32D6A32C000B453BA /* AddNoteCoordinator.swift in Sources */,
 				E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */,
+				E65E28D42D70B4100043E296 /* ReminderView.swift in Sources */,
 				E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */,
+				E65E28D22D70A4DA0043E296 /* String+Extensions.swift in Sources */,
 				E6B85EEB2D6C460400B453BA /* EmotionSelectionView.swift in Sources */,
+				E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */,
 				E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */,
 				E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */,
 				E6B85F3A2D6D944300B453BA /* CustomLargeButton.swift in Sources */,
