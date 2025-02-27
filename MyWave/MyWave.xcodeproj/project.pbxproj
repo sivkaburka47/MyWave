@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
 		E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E0F2D68518E00B453BA /* AppDelegate.swift */; };
 		E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E112D68518E00B453BA /* SceneDelegate.swift */; };
 		E6B85E192D68518F00B453BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E182D68518F00B453BA /* Assets.xcassets */; };
@@ -81,9 +82,14 @@
 		E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */; };
 		E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */; };
 		E6B85EEB2D6C460400B453BA /* EmotionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EEA2D6C460400B453BA /* EmotionSelectionView.swift */; };
+		E6B85F3A2D6D944300B453BA /* CustomLargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F392D6D944300B453BA /* CustomLargeButton.swift */; };
+		E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3D2D6E28D700B453BA /* TagCell.swift */; };
+		E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3F2D6E290900B453BA /* AddTagCell.swift */; };
+		E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E6B85E0C2D68518E00B453BA /* MyWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B85E0F2D68518E00B453BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6B85E112D68518E00B453BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +165,10 @@
 		E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionViewModel.swift; sourceTree = "<group>"; };
 		E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionCoordinator.swift; sourceTree = "<group>"; };
 		E6B85EEA2D6C460400B453BA /* EmotionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionSelectionView.swift; sourceTree = "<group>"; };
+		E6B85F392D6D944300B453BA /* CustomLargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLargeButton.swift; sourceTree = "<group>"; };
+		E6B85F3D2D6E28D700B453BA /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		E6B85F3F2D6E290900B453BA /* AddTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagCell.swift; sourceTree = "<group>"; };
+		E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +308,11 @@
 				E6B85E832D68985C00B453BA /* LoginAppleIdButton.swift */,
 				E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */,
 				E6B85EEA2D6C460400B453BA /* EmotionSelectionView.swift */,
+				E6B85F392D6D944300B453BA /* CustomLargeButton.swift */,
+				E6B85F3D2D6E28D700B453BA /* TagCell.swift */,
+				E6B85F3F2D6E290900B453BA /* AddTagCell.swift */,
+				E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */,
+				E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -614,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */,
 				E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */,
 				E6B85ED72D6A32ED00B453BA /* OptionsCoordinator.swift in Sources */,
 				E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */,
@@ -624,14 +640,18 @@
 				E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */,
 				E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */,
 				E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */,
+				E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */,
 				E6B85ED32D6A32C000B453BA /* AddNoteCoordinator.swift in Sources */,
 				E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */,
 				E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */,
 				E6B85EEB2D6C460400B453BA /* EmotionSelectionView.swift in Sources */,
+				E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */,
 				E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */,
+				E6B85F3A2D6D944300B453BA /* CustomLargeButton.swift in Sources */,
 				E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */,
 				E6B85ED92D6A330F00B453BA /* OptionsViewController.swift in Sources */,
 				E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */,
+				E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */,
 				E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */,
 				E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */,
 				E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */,

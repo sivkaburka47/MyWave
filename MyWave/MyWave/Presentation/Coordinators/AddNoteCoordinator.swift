@@ -30,14 +30,16 @@ final class AddNoteCoordinator: Coordinator {
         let viewModel = AddNoteViewModel()
         viewModel.coordinator = self
         let vc = AddNoteViewController(viewModel: viewModel)
-        configureScreen(vc, title: "Новая запись", showBackButton: true)
+        configureScreen(vc, title: "Запись", showBackButton: true)
         navigationController.pushViewController(vc, animated: true)
     }
     
     private func configureScreen(_ vc: UIViewController, title: String, showBackButton: Bool) {
+        
         vc.navigationController?.navigationBar.prefersLargeTitles = true
         vc.navigationController?.navigationBar.tintColor = .label
         vc.hidesBottomBarWhenPushed = true
+        
         
         if showBackButton {
             let backButton = UIButton(type: .system)
@@ -69,8 +71,8 @@ final class AddNoteCoordinator: Coordinator {
         } else {
             vc.navigationItem.backButtonTitle = title
         }
-        
         vc.navigationController?.navigationBar.isHidden = false
+    
     }
     
     @objc private func popViewController() {

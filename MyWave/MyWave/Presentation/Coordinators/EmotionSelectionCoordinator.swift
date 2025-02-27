@@ -30,7 +30,7 @@ final class EmotionSelectionCoordinator: Coordinator {
         let viewModel = EmotionSelectionViewModel()
         viewModel.coordinator = self
         let vc = EmotionSelectionViewController(viewModel: viewModel)
-        configureScreen(vc, title: "Выбор эмоции", showBackButton: true)
+        configureScreen(vc, title: "", showBackButton: true)
         navigationController.pushViewController(vc, animated: true)
     }
     
