@@ -23,6 +23,13 @@ final class StatisticsViewModel {
             Note(title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-07 15:00")!),
             Note(title: "Усталость", type: .yellow, icon: "yellowCardImage", dateAdded: dateFromString("2025-03-08 18:30")!),
             Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
+            Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
             
             Note(title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-10 11:30")!),
             Note(title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-11 14:45")!),
@@ -152,5 +159,40 @@ final class StatisticsViewModel {
         }
         
         return weeks
+    }
+    
+    func getTopEmotions(for week: WeekStatistics) -> [EmotionFrequency] {
+        var frequencyDict: [EmotionKey: (count: Int, icon: String)] = [:]
+        
+        for note in week.notesByDate {
+            let key = EmotionKey(title: note.title, emotion: note.type)
+            
+            if let existing = frequencyDict[key] {
+                frequencyDict[key] = (existing.count + 1, existing.icon)
+            } else {
+                frequencyDict[key] = (1, note.icon)
+            }
+        }
+        
+        let frequencies = frequencyDict.map { key, value in
+            EmotionFrequency(
+                title: key.title,
+                emotion: key.emotion,
+                icon: value.icon,
+                count: value.count
+            )
+        }
+        
+        let sortedByCount = frequencies.sorted { $0.count > $1.count }
+        
+        let top7 = Array(sortedByCount.prefix(7))
+        
+        let emotionOrder: [EmotionType] = [.red, .blue, .yellow, .green]
+        
+        return top7.sorted {
+            let index1 = emotionOrder.firstIndex(of: $0.emotion) ?? Int.max
+            let index2 = emotionOrder.firstIndex(of: $1.emotion) ?? Int.max
+            return index1 == index2 ? $0.count > $1.count : index1 < index2
+        }
     }
 }

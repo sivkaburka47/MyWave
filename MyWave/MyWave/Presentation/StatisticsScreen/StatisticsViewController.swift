@@ -179,17 +179,18 @@ final class StatisticsViewController: UIViewController {
     
     private func updatePagesForSelectedWeek() {
         let selectedWeek = weeks[selectedIndex]
-        
+        print(selectedWeek)
         let weekStatistics = viewModel.getStatistics(for: selectedWeek)
         
         let allNotes = weekStatistics.notesByDate
+        let topEmotions = viewModel.getTopEmotions(for: weekStatistics)
         for page in pages {
             if let generalView = page as? GeneralView {
                 generalView.update(with: allNotes)
             } else if let byDayView = page as? ByDayView {
                 byDayView.update(with: (week: selectedWeek, notes: allNotes))
             } else if let frequentView = page as? FrequentView {
-                frequentView.updateWeekLabel(with: selectedWeek)
+                frequentView.update(with: topEmotions)
             } else if let moodInDayView = page as? MoodInDayView {
                 moodInDayView.updateWeekLabel(with: selectedWeek)
             }
