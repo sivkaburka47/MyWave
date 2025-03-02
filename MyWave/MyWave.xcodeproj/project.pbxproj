@@ -12,6 +12,12 @@
 		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
 		E65E28D22D70A4DA0043E296 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28D12D70A4DA0043E296 /* String+Extensions.swift */; };
 		E65E28D42D70B4100043E296 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28D32D70B4100043E296 /* ReminderView.swift */; };
+		E65E28ED2D71C6970043E296 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28EC2D71C6970043E296 /* WeekCell.swift */; };
+		E65E28EF2D71C9250043E296 /* VerticalPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28EE2D71C9250043E296 /* VerticalPageControl.swift */; };
+		E65E28F12D736D250043E296 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F02D736D250043E296 /* GeneralView.swift */; };
+		E65E28F32D736D420043E296 /* ByDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F22D736D420043E296 /* ByDayView.swift */; };
+		E65E28F52D736D610043E296 /* FrequentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F42D736D610043E296 /* FrequentView.swift */; };
+		E65E28F72D736D720043E296 /* MoodInDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F62D736D720043E296 /* MoodInDayView.swift */; };
 		E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E0F2D68518E00B453BA /* AppDelegate.swift */; };
 		E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E112D68518E00B453BA /* SceneDelegate.swift */; };
 		E6B85E192D68518F00B453BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E182D68518F00B453BA /* Assets.xcassets */; };
@@ -90,6 +96,9 @@
 		E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3D2D6E28D700B453BA /* TagCell.swift */; };
 		E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3F2D6E290900B453BA /* AddTagCell.swift */; };
 		E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */; };
+		E6EC26F52D74A2FD00D9900F /* WeekStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */; };
+		E6EC26F72D74A32300D9900F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F62D74A32300D9900F /* Note.swift */; };
+		E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +107,12 @@
 		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		E65E28D12D70A4DA0043E296 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E65E28D32D70B4100043E296 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		E65E28EC2D71C6970043E296 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
+		E65E28EE2D71C9250043E296 /* VerticalPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPageControl.swift; sourceTree = "<group>"; };
+		E65E28F02D736D250043E296 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		E65E28F22D736D420043E296 /* ByDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDayView.swift; sourceTree = "<group>"; };
+		E65E28F42D736D610043E296 /* FrequentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentView.swift; sourceTree = "<group>"; };
+		E65E28F62D736D720043E296 /* MoodInDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInDayView.swift; sourceTree = "<group>"; };
 		E6B85E0C2D68518E00B453BA /* MyWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B85E0F2D68518E00B453BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6B85E112D68518E00B453BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +192,9 @@
 		E6B85F3D2D6E28D700B453BA /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		E6B85F3F2D6E290900B453BA /* AddTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagCell.swift; sourceTree = "<group>"; };
 		E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedFlowLayout.swift; sourceTree = "<group>"; };
+		E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStatistics.swift; sourceTree = "<group>"; };
+		E6EC26F62D74A32300D9900F /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCirclesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +215,17 @@
 				E65E28D12D70A4DA0043E296 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E65E28D52D718F2D0043E296 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				E6EC26F82D74A76400D9900F /* GeneralSection */,
+				E6EC26FB2D74A79200D9900F /* ByDaySection */,
+				E6EC26FC2D74A79F00D9900F /* FrequentSection */,
+				E6EC26FD2D74A7A700D9900F /* MoodInDaySection */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		E6B85E032D68518D00B453BA = {
@@ -333,6 +362,8 @@
 				E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */,
 				E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */,
 				E65E28D32D70B4100043E296 /* ReminderView.swift */,
+				E65E28EC2D71C6970043E296 /* WeekCell.swift */,
+				E65E28EE2D71C9250043E296 /* VerticalPageControl.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -340,6 +371,8 @@
 		E6B85E3D2D685E5200B453BA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */,
+				E6EC26F62D74A32300D9900F /* Note.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -517,6 +550,7 @@
 			children = (
 				E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */,
 				E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */,
+				E65E28D52D718F2D0043E296 /* Sections */,
 			);
 			path = StatisticsScreen;
 			sourceTree = "<group>";
@@ -528,6 +562,39 @@
 				E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */,
 			);
 			path = OptionsScreen;
+			sourceTree = "<group>";
+		};
+		E6EC26F82D74A76400D9900F /* GeneralSection */ = {
+			isa = PBXGroup;
+			children = (
+				E65E28F02D736D250043E296 /* GeneralView.swift */,
+				E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */,
+			);
+			path = GeneralSection;
+			sourceTree = "<group>";
+		};
+		E6EC26FB2D74A79200D9900F /* ByDaySection */ = {
+			isa = PBXGroup;
+			children = (
+				E65E28F22D736D420043E296 /* ByDayView.swift */,
+			);
+			path = ByDaySection;
+			sourceTree = "<group>";
+		};
+		E6EC26FC2D74A79F00D9900F /* FrequentSection */ = {
+			isa = PBXGroup;
+			children = (
+				E65E28F42D736D610043E296 /* FrequentView.swift */,
+			);
+			path = FrequentSection;
+			sourceTree = "<group>";
+		};
+		E6EC26FD2D74A7A700D9900F /* MoodInDaySection */ = {
+			isa = PBXGroup;
+			children = (
+				E65E28F62D736D720043E296 /* MoodInDayView.swift */,
+			);
+			path = MoodInDaySection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,17 +724,22 @@
 				E6B85EE52D6A337B00B453BA /* EmotionSelectionViewController.swift in Sources */,
 				E6B85E372D6858DD00B453BA /* WelcomeViewModel.swift in Sources */,
 				E6B85E332D68586700B453BA /* JournalCoordinator.swift in Sources */,
+				E6EC26F72D74A32300D9900F /* Note.swift in Sources */,
 				E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */,
 				E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */,
 				E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */,
 				E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */,
 				E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */,
+				E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */,
 				E6B85ED32D6A32C000B453BA /* AddNoteCoordinator.swift in Sources */,
 				E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */,
+				E65E28F32D736D420043E296 /* ByDayView.swift in Sources */,
 				E65E28D42D70B4100043E296 /* ReminderView.swift in Sources */,
 				E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */,
+				E6EC26F52D74A2FD00D9900F /* WeekStatistics.swift in Sources */,
 				E65E28D22D70A4DA0043E296 /* String+Extensions.swift in Sources */,
 				E6B85EEB2D6C460400B453BA /* EmotionSelectionView.swift in Sources */,
+				E65E28F12D736D250043E296 /* GeneralView.swift in Sources */,
 				E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */,
 				E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */,
 				E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */,
@@ -675,10 +747,14 @@
 				E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */,
 				E6B85ED92D6A330F00B453BA /* OptionsViewController.swift in Sources */,
 				E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */,
+				E65E28F72D736D720043E296 /* MoodInDayView.swift in Sources */,
 				E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */,
 				E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */,
+				E65E28ED2D71C6970043E296 /* WeekCell.swift in Sources */,
 				E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */,
 				E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */,
+				E65E28EF2D71C9250043E296 /* VerticalPageControl.swift in Sources */,
+				E65E28F52D736D610043E296 /* FrequentView.swift in Sources */,
 				E6B85E252D68557F00B453BA /* WelcomeCoordinator.swift in Sources */,
 				E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */,
 				E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */,

@@ -19,6 +19,10 @@ extension String {
     static var dash: String {
         return SC.dash
     }
+    
+    func removingDot() -> String {
+        return self.replacingOccurrences(of: ".", with: "")
+    }
 }
 
 typealias SC = StringConstants
