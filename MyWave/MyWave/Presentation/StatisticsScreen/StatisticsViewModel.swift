@@ -195,11 +195,7 @@ final class StatisticsViewModel {
         
         let emotionOrder: [EmotionType] = [.red, .blue, .yellow, .green]
         
-        return top7.sorted {
-            let index1 = emotionOrder.firstIndex(of: $0.emotion) ?? Int.max
-            let index2 = emotionOrder.firstIndex(of: $1.emotion) ?? Int.max
-            return index1 == index2 ? $0.count > $1.count : index1 < index2
-        }
+        return top7
     }
     
     func getMoodEntries(for week: WeekStatistics) -> [MoodEntry] {

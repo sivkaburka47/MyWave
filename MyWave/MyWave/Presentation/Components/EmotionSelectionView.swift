@@ -75,12 +75,12 @@ class EmotionSelectionView: UIView {
         arrowButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    func configure(state: EmotionSelectionState, emotion: String?, advice: String?) {
+    func configure(state: EmotionSelectionState, emotion: String?, advice: String?, color: UIColor? = nil) {
         switch state {
         case .inactive:
             configureInactiveState()
         case .active:
-            configureActiveState(emotion: emotion, advice: advice)
+            configureActiveState(emotion: emotion, advice: advice, color: color)
         }
     }
     
@@ -105,8 +105,8 @@ class EmotionSelectionView: UIView {
         arrowButton.isUserInteractionEnabled = false
     }
     
-    private func configureActiveState(emotion: String?, advice: String?) {
-        guard let emotion = emotion, let advice = advice else { return }
+    private func configureActiveState(emotion: String?, advice: String?, color: UIColor?) {
+        guard let emotion = emotion, let advice = advice, let color = color else { return }
         
         let attributedText = NSMutableAttributedString()
         
@@ -114,7 +114,7 @@ class EmotionSelectionView: UIView {
             string: "\(emotion)\n",
             attributes: [
                 .font: UIFont(name: "VelaSans-Bold", size: 12)!,
-                .foregroundColor: UIColor(named: "cusBlue") ?? .systemBlue
+                .foregroundColor: color
             ]
         ))
         

@@ -17,24 +17,24 @@ final class JournalViewModel: JournalViewModelProtocol {
     
     let demoEntries: [[String: Any]] = [
         [
-            "date": Date().addingTimeInterval(-4000),
+            "date": Date().addingTimeInterval(-10000),
             "emotion": "продуктивность",
             "type": CardType.yellow
         ],
         [
-            "date": Date().addingTimeInterval(-4000),
+            "date": Date().addingTimeInterval(-10000),
             "emotion": "продуктивность",
             "type": CardType.yellow
         ],
         [
-            "date": Date().addingTimeInterval(-4000),
+            "date": Date().addingTimeInterval(-10000),
             "emotion": "продуктивность",
             "type": CardType.green
         ],
         [
-            "date": Date(),
+            "date": Date().addingTimeInterval(-10000),
             "emotion": "беспокойство",
-            "type": CardType.red
+            "type": CardType.yellow
         ],
         [
             "date": Date().addingTimeInterval(-400400),

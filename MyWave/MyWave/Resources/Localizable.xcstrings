@@ -51,7 +51,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вход по FaceId"
+            "value" : "Вход по Face ID"
           }
         }
       }

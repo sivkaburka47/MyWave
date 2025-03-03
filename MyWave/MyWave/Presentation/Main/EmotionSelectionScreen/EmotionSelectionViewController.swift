@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 final class EmotionSelectionViewController: UIViewController {
+    private let circleSize: CGFloat = 112
+    private let spacing: CGFloat = 4
+    private let groupSize: CGFloat  = 228
     private let emotions = [
         ("Ярость", UIColor(named: "cusRed")!), ("Напряжение", UIColor(named: "cusRed")!),
         ("Зависть", UIColor(named: "cusRed")!), ("Беспокойство", UIColor(named: "cusRed")!),
@@ -23,12 +26,13 @@ final class EmotionSelectionViewController: UIViewController {
     private var selectedCircle: UIView?
     private var originalFrames = [UIView: CGRect]()
     private var allCircles = [UIView]()
-
     
     private let viewModel: EmotionSelectionViewModel
     
     private var emotionView: EmotionSelectionView!
-    private var isActiveState = false
+    
+    private var currentClosestCircle: UIView?
+    private var isAutoSelecting = false
     
     init(viewModel: EmotionSelectionViewModel) {
         self.viewModel = viewModel
@@ -49,7 +53,6 @@ final class EmotionSelectionViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
     private var container: UIView!
     private var centerXConstraint: Constraint?
     private var centerYConstraint: Constraint?
@@ -65,25 +68,24 @@ final class EmotionSelectionViewController: UIViewController {
         container.snp.makeConstraints {
             self.centerXConstraint = $0.centerX.equalToSuperview().constraint
             self.centerYConstraint = $0.centerY.equalToSuperview().constraint
-            $0.width.equalTo(460)
-            $0.height.equalTo(460)
+            $0.width.equalTo(groupSize * 2 + spacing)
+            $0.height.equalTo(groupSize * 2 + spacing)
         }
-        
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         container.addGestureRecognizer(panGesture)
         
         let redGroup = createColorGroup(with: Array(emotions[0..<4]))
-        redGroup.frame = CGRect(x: 0, y: 0, width: 230, height: 230)
+        redGroup.frame = CGRect(x: 0, y: 0, width: groupSize, height: groupSize)
         
         let yellowGroup = createColorGroup(with: Array(emotions[4..<8]))
-        yellowGroup.frame = CGRect(x: 230, y: 0, width: 230, height: 230)
+        yellowGroup.frame = CGRect(x: groupSize + spacing, y: 0, width: groupSize, height: groupSize)
         
         let blueGroup = createColorGroup(with: Array(emotions[8..<12]))
-        blueGroup.frame = CGRect(x: 0, y: 230, width: 230, height: 230)
+        blueGroup.frame = CGRect(x: 0, y: groupSize + spacing, width: groupSize, height: groupSize)
         
         let greenGroup = createColorGroup(with: Array(emotions[12..<16]))
-        greenGroup.frame = CGRect(x: 230, y: 230, width: 230, height: 230)
+        greenGroup.frame = CGRect(x: groupSize + spacing, y: groupSize + spacing, width: groupSize, height: groupSize)
         
         [redGroup, yellowGroup, blueGroup, greenGroup].forEach {
             container.addSubview($0)
@@ -105,61 +107,32 @@ final class EmotionSelectionViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-24)
             make.left.right.equalToSuperview().inset(24)
         }
+        view.clipsToBounds = true
     }
-
-    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        
-        switch gesture.state {
-        case .began:
-            currentOffset = CGPoint(
-                x: centerXConstraint?.layoutConstraints.first?.constant ?? 0,
-                y: centerYConstraint?.layoutConstraints.first?.constant ?? 0
-            )
-            
-        case .changed:
-            let newX = currentOffset.x + translation.x
-            let newY = currentOffset.y + translation.y
-            
-            centerXConstraint?.update(offset: newX)
-            centerYConstraint?.update(offset: newY)
-            view.layoutIfNeeded()
-            
-        case .ended, .cancelled:
-            currentOffset = CGPoint(
-                x: centerXConstraint?.layoutConstraints.first?.constant ?? 0,
-                y: centerYConstraint?.layoutConstraints.first?.constant ?? 0
-            )
-            
-        default:
-            break
-        }
-    }
-
     
     private func createColorGroup(with emotions: [(String, UIColor)]) -> UIView {
         let container = UIView()
-
+        
         for (index, emotion) in emotions.enumerated() {
             let row = index / 2
             let column = index % 2
-
+            
             let circle = UIView()
             circle.backgroundColor = emotion.1
             circle.layer.cornerRadius = 56
             circle.isUserInteractionEnabled = true
             circle.tag = row * 10 + column
             container.addSubview(circle)
-
+            
             let tap = UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:)))
             circle.addGestureRecognizer(tap)
-
+            
             circle.snp.makeConstraints {
-                $0.width.height.equalTo(112)
-                $0.leading.equalToSuperview().offset(column * (112 + 4))
-                $0.top.equalToSuperview().offset(row * (112 + 4))
+                $0.size.equalTo(circleSize)
+                $0.leading.equalToSuperview().offset(CGFloat(column) * (circleSize + spacing))
+                $0.top.equalToSuperview().offset(CGFloat(row) * (circleSize + spacing))
             }
-
+            
             let label = UILabel()
             label.text = emotion.0
             label.font = UIFont(name: "Gwen-Trial-Black", size: 10)!
@@ -167,7 +140,7 @@ final class EmotionSelectionViewController: UIViewController {
             label.textAlignment = .center
             label.numberOfLines = 0
             circle.addSubview(label)
-
+            
             label.snp.makeConstraints {
                 $0.center.equalToSuperview()
                 $0.leading.trailing.equalToSuperview().inset(8)
@@ -175,36 +148,19 @@ final class EmotionSelectionViewController: UIViewController {
         }
         return container
     }
-
-    @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
-        guard let circle = sender.view else { return }
-        
-        if selectedCircle == circle {
-            resetSelection()
-            emotionView.configure(state: .inactive, emotion: nil, advice: nil)
-            return
-        }
-
-        
-        animateSelection(for: circle)
-        
-        if let label = circle.subviews.first(where: { $0 is UILabel }) as? UILabel {
-            emotionView.configure(state: .active, emotion: label.text, advice: "ощущение, что необходимо отдохнуть")
-        }
-    }
-
+    
     private func animateSelection(for circle: UIView) {
+        view.layoutIfNeeded()
         resetSelection(animated: false)
         
         selectedCircle = circle
-        
         allCircles.forEach { originalFrames[$0] = $0.frame }
         
-        UIView.animate(withDuration: 0.4,
+        UIView.animate(withDuration: 0.3,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.5,
-                       options: [.curveEaseInOut]) {
+                       options: [.curveEaseInOut, .beginFromCurrentState]) {
             circle.snp.updateConstraints {
                 $0.width.height.equalTo(152)
                 $0.leading.equalToSuperview().offset(circle.frame.origin.x - 20)
@@ -212,12 +168,25 @@ final class EmotionSelectionViewController: UIViewController {
             }
             
             self.shiftNeighbors(for: circle)
-            
             circle.superview?.layoutIfNeeded()
             circle.layer.cornerRadius = 76
+            
+            if let label = circle.subviews.first(where: { $0 is UILabel }) as? UILabel {
+                label.font = UIFont(name: "Gwen-Trial-Black", size: 16)
+            }
+        }
+        
+        if let label = circle.subviews.first(where: { $0 is UILabel }) as? UILabel,
+           let color = circle.backgroundColor {
+            emotionView.configure(
+                state: .active,
+                emotion: label.text,
+                advice: "ощущение, что необходимо отдохнуть",
+                color: color
+            )
         }
     }
-
+    
     private func shiftNeighbors(for circle: UIView) {
         guard let container = circle.superview?.superview else { return }
         
@@ -252,7 +221,7 @@ final class EmotionSelectionViewController: UIViewController {
             }
         }
     }
-
+    
     private func resetSelection(animated: Bool = true) {
         guard selectedCircle != nil else { return }
         
@@ -265,6 +234,10 @@ final class EmotionSelectionViewController: UIViewController {
                         $0.top.equalToSuperview().offset(original.origin.y)
                     }
                     circle.layer.cornerRadius = 56
+                    
+                    if let label = circle.subviews.first(where: { $0 is UILabel }) as? UILabel {
+                        label.font = UIFont(name: "Gwen-Trial-Black", size: 10)
+                    }
                 }
             }
             self.view.layoutIfNeeded()
@@ -275,7 +248,7 @@ final class EmotionSelectionViewController: UIViewController {
                            delay: 0,
                            usingSpringWithDamping: 0.8,
                            initialSpringVelocity: 0.5,
-                           options: [.curveEaseOut]) {
+                           options: [.curveEaseOut, .beginFromCurrentState]) {
                 resetBlock()
             }
         } else {
@@ -284,30 +257,87 @@ final class EmotionSelectionViewController: UIViewController {
         
         selectedCircle = nil
         originalFrames.removeAll()
+        currentClosestCircle = nil
     }
     
+    private func updateClosestSelection() {
+        guard !isAutoSelecting else { return }
+        isAutoSelecting = true
+        
+        let center = view.center
+        var closestCircle: UIView?
+        var minDistance = CGFloat.greatestFiniteMagnitude
+        
+        for circle in allCircles {
+            let circleFrame = circle.convert(circle.bounds, to: view)
+            let circleCenter = CGPoint(x: circleFrame.midX, y: circleFrame.midY)
+            let distance = hypot(center.x - circleCenter.x, center.y - circleCenter.y)
+            
+            if distance < minDistance {
+                minDistance = distance
+                closestCircle = circle
+            }
+        }
+        
+        if closestCircle != currentClosestCircle {
+            if let current = currentClosestCircle {
+                resetSelection(animated: false)
+            }
+            
+            if let closest = closestCircle {
+                animateSelection(for: closest)
+                currentClosestCircle = closest
+            }
+        }
+        
+        isAutoSelecting = false
+    }
+    
+    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        
+        switch gesture.state {
+        case .began:
+            currentOffset = CGPoint(
+                x: centerXConstraint?.layoutConstraints.first?.constant ?? 0,
+                y: centerYConstraint?.layoutConstraints.first?.constant ?? 0
+            )
+            resetSelection()
+            currentClosestCircle = nil
+            
+        case .changed:
+            let newX = currentOffset.x + translation.x
+            let newY = currentOffset.y + translation.y
+            
+            centerXConstraint?.update(offset: newX)
+            centerYConstraint?.update(offset: newY)
+            
+            updateClosestSelection()
+            
+        case .ended, .cancelled:
+            currentOffset = CGPoint(
+                x: centerXConstraint?.layoutConstraints.first?.constant ?? 0,
+                y: centerYConstraint?.layoutConstraints.first?.constant ?? 0
+            )
+            
+        default:
+            break
+        }
+    }
+    
+    @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
+        guard let circle = sender.view else { return }
+        
+        if selectedCircle == circle {
+            resetSelection()
+            emotionView.configure(state: .inactive, emotion: nil, advice: nil)
+            return
+        }
+        
+        animateSelection(for: circle)
+    }
     
     @objc private func nextTapped() {
         viewModel.navigateToAddNote()
     }
-    
-    @objc private func toggleState() {
-        isActiveState.toggle()
-        
-        if isActiveState {
-            emotionView.configure(
-                state: .active,
-                emotion: "Усталость",
-                advice: "ощущение, что необходимо отдохнуть"
-            )
-        } else {
-            emotionView.configure(
-                state: .inactive,
-                emotion: nil,
-                advice: nil
-            )
-        }
-    }
 }
-
-

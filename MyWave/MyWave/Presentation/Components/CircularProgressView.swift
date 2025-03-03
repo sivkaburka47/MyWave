@@ -31,6 +31,7 @@ final class CircularProgressView: UIView {
         gradientLayer.removeFromSuperlayer()
         progressLayer.removeFromSuperlayer()
         
+        
         if entries.isEmpty {
             backgroundLayer.isHidden = false
             layer.addSublayer(gradientLayer)
@@ -42,39 +43,46 @@ final class CircularProgressView: UIView {
             
             let groupedEntries = Dictionary(grouping: entries) { $0.strokeGradient }
             let total = CGFloat(entries.count)
-            
             var currentStart: CGFloat = 0
             
-            for (_, group) in groupedEntries {
-                let proportion = CGFloat(group.count) / total
-                let strokeEnd = currentStart + proportion
-                
+            if entries.count == 1 {
+                let entry = entries[0]
                 let gradientLayer = createGradientLayer(
-                    for: group[0],
+                    for: entry,
                     path: path,
-                    strokeStart: currentStart,
-                    strokeEnd: strokeEnd
+                    strokeStart: 0.0,
+                    strokeEnd: 0.5,
+                    round: true
                 )
-                
                 layer.addSublayer(gradientLayer)
                 segmentLayers.append(gradientLayer)
                 
-                currentStart = strokeEnd
+            } else if entries.allSatisfy({ $0.strokeGradient == entries[0].strokeGradient }) {
+                let gradientLayer = createFullCircleGradientLayer(
+                    for: entries[0],
+                    path: path
+                )
+                layer.addSublayer(gradientLayer)
+                segmentLayers.append(gradientLayer)
+            } else {
+                for (_, group) in groupedEntries {
+                    let proportion = CGFloat(group.count) / total
+                    let strokeEnd = currentStart + proportion
+                    
+                    let gradientLayer = createGradientLayer(
+                        for: group[0],
+                        path: path,
+                        strokeStart: currentStart,
+                        strokeEnd: strokeEnd,
+                        round: false
+                    )
+                    
+                    layer.addSublayer(gradientLayer)
+                    segmentLayers.append(gradientLayer)
+                    currentStart = strokeEnd
+                }
             }
         }
-    }
-
-    
-    private func createPath() -> UIBezierPath {
-        let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        let radius = min(bounds.width, bounds.height)/2 - backgroundLayer.lineWidth/2
-        return UIBezierPath(
-            arcCenter: center,
-            radius: radius,
-            startAngle: -.pi/2,
-            endAngle: 3 * .pi/2,
-            clockwise: true
-        )
     }
     
     private func createGradientLayer(for entry: CardType, path: UIBezierPath, strokeStart: CGFloat, strokeEnd: CGFloat, round: Bool = false) -> CALayer {
@@ -94,9 +102,42 @@ final class CircularProgressView: UIView {
         maskLayer.strokeEnd = strokeEnd
         gradientLayer.mask = maskLayer
         
-        updateGradientPoints(gradientLayer, strokeStart: strokeStart, strokeEnd: strokeEnd)
+        updateGradientPoints(gradientLayer,strokeStart: strokeStart,strokeEnd: strokeEnd)
         
         return gradientLayer
+    }
+    
+    private func createFullCircleGradientLayer(for entry: CardType, path: UIBezierPath) -> CALayer {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = entry.strokeGradient.map { $0.cgColor }
+        gradientLayer.frame = bounds
+        gradientLayer.type = .conic
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        maskLayer.strokeColor = UIColor.white.cgColor
+        maskLayer.fillColor = UIColor.clear.cgColor
+        maskLayer.lineWidth = 24
+        maskLayer.lineCap = .round
+        maskLayer.strokeStart = 0.0
+        maskLayer.strokeEnd = 1.0
+        gradientLayer.mask = maskLayer
+        
+        return gradientLayer
+    }
+    
+    private func createPath() -> UIBezierPath {
+        let center = CGPoint(x: bounds.midX, y: bounds.midY)
+        let radius = min(bounds.width, bounds.height)/2 - backgroundLayer.lineWidth/2
+        return UIBezierPath(
+            arcCenter: center,
+            radius: radius,
+            startAngle: -.pi/2,
+            endAngle: 3 * .pi/2,
+            clockwise: true
+        )
     }
     
     private func updateGradientPoints(_ gradientLayer: CAGradientLayer, strokeStart: CGFloat, strokeEnd: CGFloat) {
