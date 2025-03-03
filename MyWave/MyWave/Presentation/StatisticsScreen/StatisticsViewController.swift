@@ -178,10 +178,13 @@ final class StatisticsViewController: UIViewController {
     }
     
     private func updatePagesForSelectedWeek() {
+        scrollView.setContentOffset(.zero, animated: true)
+        pageControl.currentPage = 0
+        
         let selectedWeek = weeks[selectedIndex]
         print(selectedWeek)
         let weekStatistics = viewModel.getStatistics(for: selectedWeek)
-        
+        let moodEntries = viewModel.getMoodEntries(for: weekStatistics)
         let allNotes = weekStatistics.notesByDate
         let topEmotions = viewModel.getTopEmotions(for: weekStatistics)
         for page in pages {
@@ -192,11 +195,9 @@ final class StatisticsViewController: UIViewController {
             } else if let frequentView = page as? FrequentView {
                 frequentView.update(with: topEmotions)
             } else if let moodInDayView = page as? MoodInDayView {
-                moodInDayView.updateWeekLabel(with: selectedWeek)
+                moodInDayView.update(with: moodEntries)
             }
         }
-        scrollView.setContentOffset(.zero, animated: true)
-        pageControl.currentPage = 0
     }
 }
 
@@ -294,4 +295,3 @@ extension StatisticsViewController: UICollectionViewDelegate, UICollectionViewDa
         return CGSize(width: max(textWidth, minWidth), height: 48)
     }
 }
-

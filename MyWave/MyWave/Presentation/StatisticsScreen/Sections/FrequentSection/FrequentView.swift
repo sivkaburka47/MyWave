@@ -108,7 +108,7 @@ final class FrequentView: UIView {
         cell.addSubview(progressContainer)
         
         progressContainer.snp.makeConstraints {
-            $0.leading.equalTo(titleLabel.snp.trailing).offset(8)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(16)
             $0.trailing.equalToSuperview()
             $0.centerY.equalTo(iconView)
             $0.height.equalTo(32)

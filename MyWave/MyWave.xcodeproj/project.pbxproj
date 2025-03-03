@@ -100,6 +100,7 @@
 		E6EC26F72D74A32300D9900F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F62D74A32300D9900F /* Note.swift */; };
 		E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */; };
 		E6EC26FF2D74BCF500D9900F /* EmotionFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */; };
+		E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27002D757E4500D9900F /* MoodEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +198,7 @@
 		E6EC26F62D74A32300D9900F /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCirclesView.swift; sourceTree = "<group>"; };
 		E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionFrequency.swift; sourceTree = "<group>"; };
+		E6EC27002D757E4500D9900F /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 				E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */,
 				E6EC26F62D74A32300D9900F /* Note.swift */,
 				E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */,
+				E6EC27002D757E4500D9900F /* MoodEntry.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */,
 				E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */,
 				E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */,
+				E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */,
 				E6B85EDB2D6A331800B453BA /* OptionsViewModel.swift in Sources */,
 				E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */,
 				E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */,

@@ -18,9 +18,15 @@ final class StatisticsViewModel {
     
     private func generateFixedData() {
         let fullNotes = [
+            Note(title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 6:10")!),
             Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-05 10:20")!),
             Note(title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
+            Note(title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
+            Note(title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
+            Note(title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
             Note(title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-07 15:00")!),
+            Note(title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-07 15:00")!),
+            Note(title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 18:10")!),
             Note(title: "Усталость", type: .yellow, icon: "yellowCardImage", dateAdded: dateFromString("2025-03-08 18:30")!),
             Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
             Note(title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
@@ -193,6 +199,63 @@ final class StatisticsViewModel {
             let index1 = emotionOrder.firstIndex(of: $0.emotion) ?? Int.max
             let index2 = emotionOrder.firstIndex(of: $1.emotion) ?? Int.max
             return index1 == index2 ? $0.count > $1.count : index1 < index2
+        }
+    }
+    
+    func getMoodEntries(for week: WeekStatistics) -> [MoodEntry] {
+        var moodCounts: [PartOfDay: [EmotionType: Int]] = [
+            .earlyMorning: [:],
+            .morning: [:],
+            .day: [:],
+            .evening: [:],
+            .lateEvening: [:]
+        ]
+        
+        for part in moodCounts.keys {
+            moodCounts[part] = [
+                .red: 0,
+                .blue: 0,
+                .yellow: 0,
+                .green: 0
+            ]
+        }
+        
+        for note in week.notesByDate {
+            let part = determinePartOfDay(for: note.dateAdded)
+            moodCounts[part]?[note.type]! += 1
+        }
+        
+        let orderedParts: [PartOfDay] = [
+            .earlyMorning,
+            .morning,
+            .day,
+            .evening,
+            .lateEvening
+        ]
+        
+        return orderedParts.map { part in
+            guard let counts = moodCounts[part] else {
+                return MoodEntry(partOfDay: part, emotions: [])
+            }
+            
+            let emotions = counts
+                .filter { $0.value > 0 }
+                .sorted { $0.key.rawValue < $1.key.rawValue }
+                .map { (type: $0.key, count: $0.value) }
+            
+            return MoodEntry(partOfDay: part, emotions: emotions)
+        }
+    }
+    
+
+    private func determinePartOfDay(for date: Date) -> PartOfDay {
+        let hour = Calendar.current.component(.hour, from: date)
+        switch hour {
+        case 5..<8: return .earlyMorning
+        case 8..<12: return .morning
+        case 12..<17: return .day
+        case 17..<21: return .evening
+        default: return .lateEvening
         }
     }
 }
