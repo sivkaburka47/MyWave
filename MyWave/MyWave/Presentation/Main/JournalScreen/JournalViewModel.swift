@@ -22,6 +22,16 @@ final class JournalViewModel: JournalViewModelProtocol {
             "type": CardType.yellow
         ],
         [
+            "date": Date().addingTimeInterval(-4000),
+            "emotion": "продуктивность",
+            "type": CardType.yellow
+        ],
+        [
+            "date": Date().addingTimeInterval(-4000),
+            "emotion": "продуктивность",
+            "type": CardType.green
+        ],
+        [
             "date": Date(),
             "emotion": "беспокойство",
             "type": CardType.red
@@ -59,6 +69,16 @@ final class JournalViewModel: JournalViewModelProtocol {
             return "\(entriesCount) записей"
         }
     }
+    
+    func getTodayEntries() -> [CardType] {
+        let todayEntries = demoEntries.filter { entry in
+            guard let date = entry["date"] as? Date else { return false }
+            return Calendar.current.isDateInToday(date)
+        }
+        return todayEntries.compactMap { $0["type"] as? CardType }
+    }
+    
+    
     
     func startAddNoteFlow() {
         coordinator?.navigateToEmotionSelection()

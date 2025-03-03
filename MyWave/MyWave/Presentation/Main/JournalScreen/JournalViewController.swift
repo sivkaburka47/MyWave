@@ -38,6 +38,9 @@ final class JournalViewController: UIViewController {
         setupUI()
         setupConstraints()
         addDemoCards()
+        
+        let todayEntries = viewModel.getTodayEntries()
+        progressView.update(with: todayEntries)
     }
     
     override func viewWillAppear(_ animated: Bool) {

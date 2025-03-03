@@ -121,4 +121,18 @@ enum CardType {
             return UIColor(named: "cusRed") ?? .systemRed
         }
     }
+    
+    var strokeGradient: [UIColor] {
+        switch self {
+        case .blue:
+            return [UIColor(named: "gradBlueStart")!, UIColor(named: "gradBlueEnd")!]
+        case .green:
+            return [UIColor(named: "gradGreenStart")!, UIColor(named: "gradGreenEnd")!]
+        case .yellow:
+            return [UIColor(named: "gradYellowStart")!, UIColor(named: "gradYellowEnd")!]
+        case .red:
+            return [UIColor(named: "gradRedStart")!, UIColor(named: "gradRedEnd")!]
+        }
+    }
+    
 }
