@@ -63,7 +63,6 @@ final class ByDayView: UIView {
         stackView.snp.makeConstraints {
             $0.top.equalTo(titleScreen.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalToSuperview()
         }
     }
     

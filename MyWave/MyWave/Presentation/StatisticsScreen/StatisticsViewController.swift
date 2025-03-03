@@ -23,7 +23,7 @@ final class StatisticsViewController: UIViewController {
         let baseHeight = scrollView.bounds.height * 0.862
         return [
             baseHeight,
-            byDayViewContentHeight,
+            max(byDayViewContentHeight, baseHeight),
             baseHeight,
             scrollView.bounds.height
         ]

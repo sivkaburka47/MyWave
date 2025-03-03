@@ -66,6 +66,8 @@ final class FrequentView: UIView {
             )
             stackView.addArrangedSubview(cell)
         }
+        
+        self.layoutIfNeeded()
     }
     
     private func calculateMaxTitleWidth(emotions: [EmotionFrequency]) -> CGFloat {
