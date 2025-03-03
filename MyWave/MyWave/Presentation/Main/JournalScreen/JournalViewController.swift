@@ -124,7 +124,7 @@ final class JournalViewController: UIViewController {
     
     private func addStatItems() {
         let statsItems = [
-            StatItem(title: nil, value: "4 записи"),
+            StatItem(title: nil, value: viewModel.entriesCountString()),
             StatItem(title: "в день:", value: "2 записей"),
             StatItem(title: "серия:", value: "500 дней")
         ]
@@ -142,13 +142,13 @@ final class JournalViewController: UIViewController {
         }
         
         statsStackView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).inset(20)
+            make.top.equalTo(contentView.snp.top).inset(16)
             make.centerX.equalToSuperview()
             make.height.equalTo(32)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(statsStackView.snp.bottom).offset(64)
+            make.top.equalTo(statsStackView.snp.bottom).offset(32)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
@@ -161,7 +161,7 @@ final class JournalViewController: UIViewController {
         mainVerticalStack.snp.makeConstraints { make in
             make.top.equalTo(progressView.snp.bottom).offset(32)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(contentView).offset(-32)
+            make.bottom.equalTo(contentView).offset(-24)
         }
         
         centerStack.snp.makeConstraints { make in
@@ -202,28 +202,7 @@ final class JournalViewController: UIViewController {
     
     // MARK: - Demo Cards
     private func addDemoCards() {
-        let demoEntries: [[String: Any]] = [
-            [
-                "date": Date().addingTimeInterval(-436400),
-                "emotion": "выгорание",
-                "type": CardType.blue
-            ],
-            [
-                "date": Date().addingTimeInterval(-400400),
-                "emotion": "спокойствие",
-                "type": CardType.green
-            ],
-            [
-                "date": Date().addingTimeInterval(-4000),
-                "emotion": "продуктивность",
-                "type": CardType.yellow
-            ],
-            [
-                "date": Date(),
-                "emotion": "беспокойство",
-                "type": CardType.red
-            ]
-        ]
+        let demoEntries = viewModel.demoEntries
         
         let verticalStack = UIStackView()
         verticalStack.axis = .vertical
