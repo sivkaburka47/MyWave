@@ -56,6 +56,7 @@ extension WelcomeViewController {
     }
     
     private func configureWelcomeLabel() {
+        welcomeLabel.accessibilityIdentifier = "welcomeLabel"
         welcomeLabel.text = Metrics.Strings.welcomeText
         welcomeLabel.font = Metrics.Fonts.titleFont
         welcomeLabel.textColor = Metrics.Colors.text
@@ -65,6 +66,7 @@ extension WelcomeViewController {
     }
     
     private func configureLoginButton() {
+        loginButton.accessibilityIdentifier = "loginButton"
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         view.addSubview(loginButton)
     }

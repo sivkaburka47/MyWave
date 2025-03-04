@@ -102,7 +102,20 @@
 		E6EC26FF2D74BCF500D9900F /* EmotionFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */; };
 		E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27002D757E4500D9900F /* MoodEntry.swift */; };
 		E6EC27192D770FC100D9900F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27182D770FC100D9900F /* Section.swift */; };
+		E6EC27542D77A07B00D9900F /* MyWaveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27532D77A07B00D9900F /* MyWaveUITests.swift */; };
+		E6EC27562D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27552D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift */; };
+		E6EC275D2D77A0A400D9900F /* WelcomeScreenUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC275C2D77A0A400D9900F /* WelcomeScreenUITest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E6EC27572D77A07B00D9900F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6B85E042D68518D00B453BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6B85E0B2D68518E00B453BA;
+			remoteInfo = MyWave;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -201,6 +214,10 @@
 		E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionFrequency.swift; sourceTree = "<group>"; };
 		E6EC27002D757E4500D9900F /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
 		E6EC27182D770FC100D9900F /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		E6EC27512D77A07B00D9900F /* MyWaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6EC27532D77A07B00D9900F /* MyWaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWaveUITests.swift; sourceTree = "<group>"; };
+		E6EC27552D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWaveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6EC275C2D77A0A400D9900F /* WelcomeScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B85E662D6862A300B453BA /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EC274E2D77A07B00D9900F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				E6B85E0E2D68518E00B453BA /* MyWave */,
+				E6EC27522D77A07B00D9900F /* MyWaveUITests */,
 				E6B85E0D2D68518E00B453BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -246,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				E6B85E0C2D68518E00B453BA /* MyWave.app */,
+				E6EC27512D77A07B00D9900F /* MyWaveUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -606,6 +632,16 @@
 			path = MoodInDaySection;
 			sourceTree = "<group>";
 		};
+		E6EC27522D77A07B00D9900F /* MyWaveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E6EC27532D77A07B00D9900F /* MyWaveUITests.swift */,
+				E6EC27552D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift */,
+				E6EC275C2D77A0A400D9900F /* WelcomeScreenUITest.swift */,
+			);
+			path = MyWaveUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -629,6 +665,24 @@
 			productReference = E6B85E0C2D68518E00B453BA /* MyWave.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E6EC27502D77A07B00D9900F /* MyWaveUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6EC275B2D77A07B00D9900F /* Build configuration list for PBXNativeTarget "MyWaveUITests" */;
+			buildPhases = (
+				E6EC274D2D77A07B00D9900F /* Sources */,
+				E6EC274E2D77A07B00D9900F /* Frameworks */,
+				E6EC274F2D77A07B00D9900F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6EC27582D77A07B00D9900F /* PBXTargetDependency */,
+			);
+			name = MyWaveUITests;
+			productName = MyWaveUITests;
+			productReference = E6EC27512D77A07B00D9900F /* MyWaveUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -641,6 +695,10 @@
 				TargetAttributes = {
 					E6B85E0B2D68518E00B453BA = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					E6EC27502D77A07B00D9900F = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = E6B85E0B2D68518E00B453BA;
 					};
 				};
 			};
@@ -661,6 +719,7 @@
 			projectRoot = "";
 			targets = (
 				E6B85E0B2D68518E00B453BA /* MyWave */,
+				E6EC27502D77A07B00D9900F /* MyWaveUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -716,6 +775,13 @@
 				E6B85EC02D6899AE00B453BA /* VelaSans-Regular.woff in Resources */,
 				E6B85EAB2D6899AE00B453BA /* VelaSans-Light.otf in Resources */,
 				E6B85EAD2D6899AE00B453BA /* VelaSans-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EC274F2D77A07B00D9900F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,7 +843,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6EC274D2D77A07B00D9900F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6EC27542D77A07B00D9900F /* MyWaveUITests.swift in Sources */,
+				E6EC275D2D77A0A400D9900F /* WelcomeScreenUITest.swift in Sources */,
+				E6EC27562D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E6EC27582D77A07B00D9900F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6B85E0B2D68518E00B453BA /* MyWave */;
+			targetProxy = E6EC27572D77A07B00D9900F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E6B85E1A2D68518F00B453BA /* LaunchScreen.storyboard */ = {
@@ -964,6 +1048,40 @@
 			};
 			name = Release;
 		};
+		E6EC27592D77A07B00D9900F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T77L9FD3JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.icodelessons.MyWaveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyWave;
+			};
+			name = Debug;
+		};
+		E6EC275A2D77A07B00D9900F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T77L9FD3JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.icodelessons.MyWaveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyWave;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -981,6 +1099,15 @@
 			buildConfigurations = (
 				E6B85E212D68518F00B453BA /* Debug */,
 				E6B85E222D68518F00B453BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6EC275B2D77A07B00D9900F /* Build configuration list for PBXNativeTarget "MyWaveUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6EC27592D77A07B00D9900F /* Debug */,
+				E6EC275A2D77A07B00D9900F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

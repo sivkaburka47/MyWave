@@ -41,6 +41,7 @@ final class JournalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.accessibilityIdentifier = "JournalScreen"
         setupUI()
         setupConstraints()
     }
