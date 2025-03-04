@@ -12,6 +12,17 @@
         }
       }
     },
+    "add_note_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить запись"
+          }
+        }
+      }
+    },
     "add_notify_button_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -56,6 +67,39 @@
         }
       }
     },
+    "feel_advice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ощущение, что необходимо отдохнуть"
+          }
+        }
+      }
+    },
+    "feel_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я чувствую"
+          }
+        }
+      }
+    },
+    "journal_title_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что вы сейчас чувствуете?"
+          }
+        }
+      }
+    },
     "options_reminder_Text" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -74,6 +118,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "per_day_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "в день:"
+          }
+        }
+      }
+    },
+    "profile_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иван Иванов"
+          }
+        }
+      }
+    },
+    "save_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "series_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "серия:"
+          }
+        }
+      }
+    },
+    "welcome_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать"
           }
         }
       }

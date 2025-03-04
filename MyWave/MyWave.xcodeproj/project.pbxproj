@@ -101,6 +101,7 @@
 		E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */; };
 		E6EC26FF2D74BCF500D9900F /* EmotionFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */; };
 		E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27002D757E4500D9900F /* MoodEntry.swift */; };
+		E6EC27192D770FC100D9900F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC27182D770FC100D9900F /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +200,7 @@
 		E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCirclesView.swift; sourceTree = "<group>"; };
 		E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionFrequency.swift; sourceTree = "<group>"; };
 		E6EC27002D757E4500D9900F /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
+		E6EC27182D770FC100D9900F /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,7 @@
 				E6EC26F62D74A32300D9900F /* Note.swift */,
 				E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */,
 				E6EC27002D757E4500D9900F /* MoodEntry.swift */,
+				E6EC27182D770FC100D9900F /* Section.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */,
 				E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */,
 				E6B85EDB2D6A331800B453BA /* OptionsViewModel.swift in Sources */,
+				E6EC27192D770FC100D9900F /* Section.swift in Sources */,
 				E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */,
 				E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */,
 			);

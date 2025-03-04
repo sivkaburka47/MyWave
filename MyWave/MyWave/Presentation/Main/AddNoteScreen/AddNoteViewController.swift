@@ -10,46 +10,21 @@ import SnapKit
 
 final class AddNoteViewController: UIViewController {
     
-    // MARK: - Constants
-    private enum Constants {
-        static let cardHeight: CGFloat = 158
-        static let tagCellHeight: CGFloat = 36
-        static let tagCellPadding: CGFloat = 36
-        static let tagTextFieldMaxWidth: CGFloat = 200
-        static let tagTextFieldMaxLength: Int = 30
-        static let sectionHeaderHeight: CGFloat = 40
-        static let defaultInset: CGFloat = 24
-        static let smallInset: CGFloat = 16
-        static let animationDuration: TimeInterval = 0.3
-    }
-    
-    private struct Section {
-        let title: String
-        var items: [String]
-    }
-    
     // MARK: - Properties
+    
     private let viewModel: AddNoteViewModel
-    private var sections: [Section] = [
-        Section(title: "Чем вы занимались", items: ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]),
-        Section(title: "С кем вы были?", items: ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]),
-        Section(title: "Где вы были?", items: ["Дом", "Работа", "Школа", "Транспорт", "Улица"])
-    ]
     
-    private var selectedTags = Set<String>()
-    private var isAddingTag = false
-    private var currentEditingSection: Int?
-    private var newTagText = ""
-    
-    private var card = UIView()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let saveNoteButton = CustomLargeButton(style: .white)
+    private var card = UIView()
     private var collectionView: UICollectionView!
     private let newTagTextField = UITextField()
+    private let saveNoteButton = CustomLargeButton(style: .white)
+    
     private var collectionViewHeightConstraint: Constraint?
     
     // MARK: - Initialization
+    
     init(viewModel: AddNoteViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -60,9 +35,12 @@ final class AddNoteViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupConstraints()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,53 +51,48 @@ final class AddNoteViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+}
+
+// MARK: - UI Setup
+
+extension AddNoteViewController {
     
-    // MARK: - UI Setup
     private func setupUI() {
-        view.backgroundColor = .black
-        setupScrollView()
-        setupCard()
-        setupSaveButton()
-        setupCollectionView()
-        setupTextField()
-        updateCollectionViewHeight()
+        view.backgroundColor = Metrics.Colors.background
+        configureScrollView()
+        configureCard()
+        configureCollectionView()
+        configureTextField()
+        configureSaveButton()
         setupKeyboardObservers()
+        updateCollectionViewHeight()
     }
     
-    private func setupScrollView() {
-        view.addSubview(scrollView)
+    private func configureScrollView() {
         scrollView.addSubview(contentView)
-        
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalTo(view.safeAreaLayoutGuide)
-            $0.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide).priority(.required)
-        }
+        view.addSubview(scrollView)
     }
     
-    private func setupCard() {
+    private func configureCard() {
+        card.removeFromSuperview()
         card = createCardView(
             date: viewModel.selectedDate,
             emotion: viewModel.selectedEmotion,
             type: viewModel.selectedCardType
         )
         contentView.addSubview(card)
-        
-        card.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(Constants.defaultInset)
-            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
-        }
     }
     
-    private func setupCollectionView() {
+    private func configureCollectionView() {
         let layout = LeftAlignedFlowLayout()
-        layout.minimumLineSpacing = 4
-        layout.minimumInteritemSpacing = 4
-        layout.sectionInset = UIEdgeInsets(top: 0, left: Constants.defaultInset, bottom: Constants.smallInset, right: Constants.defaultInset)
+        layout.minimumLineSpacing = Constants.smallSpacing / 2
+        layout.minimumInteritemSpacing = Constants.smallSpacing / 2
+        layout.sectionInset = UIEdgeInsets(
+            top: 0,
+            left: Constants.contentInsets,
+            bottom: Constants.smallSpacing,
+            right: Constants.contentInsets
+        )
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: Constants.sectionHeaderHeight)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -136,25 +109,77 @@ final class AddNoteViewController: UIViewController {
         )
         
         contentView.addSubview(collectionView)
+    }
+    
+    private func configureTextField() {
+        newTagTextField.delegate = self
+        newTagTextField.backgroundColor = Metrics.Colors.tagBackground
+        newTagTextField.textColor = Metrics.Colors.text
+        newTagTextField.tintColor = Metrics.Colors.text
+        newTagTextField.layer.cornerRadius = Constants.tagCellHeight / 2
+        newTagTextField.font = Metrics.Fonts.tagFont
+        newTagTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.smallSpacing, height: 0))
+        newTagTextField.leftViewMode = .always
+        newTagTextField.returnKeyType = .done
+        newTagTextField.isHidden = true
+        view.addSubview(newTagTextField)
+    }
+    
+    private func configureSaveButton() {
+        saveNoteButton.setTitle(Metrics.Strings.saveButtonTitle, for: .normal)
+        saveNoteButton.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
+        view.addSubview(saveNoteButton)
+    }
+    
+    private func setupConstraints() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(view.safeAreaLayoutGuide)
+            $0.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide).priority(.required)
+        }
+        
+        card.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(Constants.contentInsets)
+            $0.leading.trailing.equalToSuperview().inset(Constants.contentInsets)
+            $0.height.equalTo(Constants.cardHeight)
+        }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(card.snp.bottom).offset(Constants.defaultInset)
+            $0.top.equalTo(card.snp.bottom).offset(Constants.contentInsets)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(saveNoteButton.snp.top).offset(-Constants.defaultInset).priority(.high)
+            $0.bottom.equalToSuperview().offset(-Constants.contentInsets).priority(.high)
             collectionViewHeightConstraint = $0.height.equalTo(0).priority(.medium).constraint
+        }
+        
+        saveNoteButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Constants.contentInsets)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Constants.contentInsets)
+        }
+        
+        DispatchQueue.main.async {
+            self.updateBottomSpacing()
         }
     }
     
-    private func setupSaveButton() {
-        saveNoteButton.setTitle("Сохранить", for: .normal)
-        saveNoteButton.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
-        contentView.addSubview(saveNoteButton)
-        
-        saveNoteButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
-            $0.bottom.equalToSuperview().offset(-Constants.defaultInset)
+    private func updateBottomSpacing() {
+        let saveButtonTop = saveNoteButton.frame.maxY
+        let bottomSpacing = UIScreen.main.bounds.height - saveButtonTop + Constants.contentInsets
+        print(bottomSpacing)
+        contentView.snp.updateConstraints {
+            $0.bottom.equalToSuperview().inset(bottomSpacing)
         }
     }
+
+    
+}
+
+// MARK: - Card Creation
+
+extension AddNoteViewController {
     
     private func createCardView(date: Date, emotion: String, type: CardType) -> UIView {
         let card = MoodCardView()
@@ -173,56 +198,94 @@ final class AddNoteViewController: UIViewController {
         
         let dateLabel = UILabel()
         dateLabel.text = "\(dateString), \(timeString)"
-        dateLabel.textColor = .white
-        dateLabel.font = UIFont(name: "VelaSans-Regular", size: 14)!
+        dateLabel.textColor = Metrics.Colors.text
+        dateLabel.font = Metrics.Fonts.cardDateFont
+        
+        let emotionText = NSMutableAttributedString(
+            string: "\(Metrics.Strings.feelText)\n",
+            attributes: [
+                .foregroundColor: Metrics.Colors.text,
+                .font: Metrics.Fonts.cardEmotionFont
+            ]
+        )
+        emotionText.append(NSAttributedString(
+            string: emotion,
+            attributes: [
+                .foregroundColor: type.emotionTextColor,
+                .font: Metrics.Fonts.cardEmotionHighlightFont
+            ]
+        ))
         
         let emotionLabel = UILabel()
         emotionLabel.numberOfLines = 2
-        emotionLabel.textColor = .white
-        
-        let emotionText = NSMutableAttributedString(string: "Я чувствую\n", attributes: [
-            .foregroundColor: UIColor.white,
-            .font: UIFont(name: "VelaSans-Regular", size: 20)!
-        ])
-        emotionText.append(NSAttributedString(string: emotion, attributes: [
-            .foregroundColor: type.emotionTextColor,
-            .font: UIFont(name: "Gwen-Trial-Bold", size: 28)!
-        ]))
         emotionLabel.attributedText = emotionText
         
         card.addSubview(dateLabel)
         card.addSubview(emotionLabel)
         
         dateLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(Constants.smallInset)
-            $0.trailing.lessThanOrEqualTo(card.imageView.snp.leading).offset(-Constants.smallInset)
+            $0.top.leading.equalToSuperview().inset(Constants.smallSpacing)
+            $0.trailing.lessThanOrEqualTo(card.imageView.snp.leading).offset(-Constants.smallSpacing)
         }
         
         emotionLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(Constants.smallInset)
-            $0.bottom.lessThanOrEqualToSuperview().inset(Constants.smallInset)
+            $0.leading.equalToSuperview().inset(Constants.smallSpacing)
+            $0.bottom.lessThanOrEqualToSuperview().inset(Constants.smallSpacing)
         }
         
-        card.snp.makeConstraints {
-            $0.height.equalTo(Constants.cardHeight)
-        }
-
         return card
     }
+}
+
+// MARK: - Collection View Management
+
+extension AddNoteViewController {
     
-    private func setupTextField() {
-        newTagTextField.delegate = self
-        newTagTextField.backgroundColor = .darkGray
-        newTagTextField.textColor = .white
-        newTagTextField.tintColor = .white
-        newTagTextField.layer.cornerRadius = Constants.tagCellHeight / 2
-        newTagTextField.font = UIFont(name: "VelaSans-Regular", size: 14)
-        newTagTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.smallInset, height: 0))
-        newTagTextField.leftViewMode = .always
-        newTagTextField.returnKeyType = .done
-        newTagTextField.isHidden = true
-        view.addSubview(newTagTextField)
+    private func updateCollectionViewHeight() {
+        collectionView.layoutIfNeeded()
+        let height = collectionView.collectionViewLayout.collectionViewContentSize.height
+        collectionViewHeightConstraint?.update(offset: height)
+        view.layoutIfNeeded()
     }
+    
+    private func showTextField(at indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AddTagCell else { return }
+        
+        collectionView.addSubview(newTagTextField)
+        newTagTextField.isHidden = false
+        newTagTextField.text = ""
+        newTagTextField.frame = cell.frame
+        
+        UIView.animate(withDuration: Constants.animationDuration) {
+            self.newTagTextField.transform = .identity
+            self.newTagTextField.frame = CGRect(
+                x: cell.frame.origin.x,
+                y: cell.frame.origin.y,
+                width: min(Constants.tagTextFieldMaxWidth, self.collectionView.frame.width - cell.frame.origin.x - Constants.contentInsets),
+                height: Constants.tagCellHeight
+            )
+        }
+        
+        newTagTextField.becomeFirstResponder()
+    }
+    
+    private func hideTextField() {
+        newTagTextField.resignFirstResponder()
+        newTagTextField.isHidden = true
+        viewModel.setAddingTag(false)
+    }
+    
+    private func reloadAddButton(for section: Int) {
+        let addButtonIndex = IndexPath(item: viewModel.sections[section].items.count, section: section)
+        UIView.performWithoutAnimation {
+            collectionView.reloadItems(at: [addButtonIndex])
+        }
+    }
+}
+
+// MARK: - Keyboard Handling
+
+extension AddNoteViewController {
     
     private func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(
@@ -240,26 +303,14 @@ final class AddNoteViewController: UIViewController {
         )
     }
     
-    private func updateCollectionViewHeight() {
-        collectionView.layoutIfNeeded()
-        let height = collectionView.collectionViewLayout.collectionViewContentSize.height
-        collectionViewHeightConstraint?.update(offset: height)
-        
-        self.view.layoutIfNeeded()
-    }
-    
-    @objc private func doneTapped() {
-        viewModel.completeFlow()
-    }
-    
     @objc private func keyboardWillShow(notification: NSNotification) {
-        guard
-            let userInfo = notification.userInfo,
-            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
-        else { return }
+        updateCollectionViewHeight()
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
+        let adjustedOffset = keyboardFrame.height
         scrollView.snp.updateConstraints {
-            $0.bottom.equalTo(view).offset(-keyboardFrame.height)
+            $0.bottom.equalToSuperview().offset(-adjustedOffset)
         }
         
         UIView.animate(withDuration: Constants.animationDuration) {
@@ -269,7 +320,7 @@ final class AddNoteViewController: UIViewController {
     
     @objc private func keyboardWillHide() {
         scrollView.snp.updateConstraints {
-            $0.bottom.equalTo(view)
+            $0.bottom.equalToSuperview()
         }
         
         UIView.animate(withDuration: Constants.animationDuration) {
@@ -278,29 +329,40 @@ final class AddNoteViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
+
+extension AddNoteViewController {
+    
+    @objc private func doneTapped() {
+        viewModel.completeFlow()
+    }
+}
+
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
+
 extension AddNoteViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        return viewModel.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count + 1
+        return viewModel.sections[section].items.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = indexPath.section
         let item = indexPath.item
         
-        if item == sections[section].items.count {
+        if item == viewModel.sections[section].items.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddTagCell.identifier, for: indexPath) as! AddTagCell
             cell.configure()
             return cell
         }
         
-        let tag = sections[section].items[item]
+        let tag = viewModel.sections[section].items[item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as! TagCell
-        cell.configure(with: tag, isSelected: selectedTags.contains(tag))
+        cell.configure(with: tag, isSelected: viewModel.selectedTags.contains(tag))
         return cell
     }
     
@@ -315,7 +377,7 @@ extension AddNoteViewController: UICollectionViewDelegateFlowLayout, UICollectio
             for: indexPath
         ) as! SectionHeaderView
         
-        header.configure(title: sections[indexPath.section].title)
+        header.configure(title: viewModel.sections[indexPath.section].title)
         return header
     }
     
@@ -323,11 +385,11 @@ extension AddNoteViewController: UICollectionViewDelegateFlowLayout, UICollectio
         let section = indexPath.section
         let item = indexPath.item
         
-        if item == sections[section].items.count {
-            currentEditingSection = section
-            isAddingTag.toggle()
+        if item == viewModel.sections[section].items.count {
+            viewModel.setEditingSection(section)
+            viewModel.toggleAddingTag()
             
-            if isAddingTag {
+            if viewModel.isAddingTag {
                 showTextField(at: indexPath)
             } else {
                 hideTextField()
@@ -339,10 +401,8 @@ extension AddNoteViewController: UICollectionViewDelegateFlowLayout, UICollectio
             return
         }
         
-        let tag = sections[section].items[item]
-        selectedTags = selectedTags.contains(tag)
-            ? selectedTags.filter { $0 != tag }
-            : selectedTags.union([tag])
+        let tag = viewModel.sections[section].items[item]
+        viewModel.toggleTagSelection(tag)
         
         UIView.performWithoutAnimation {
             collectionView.reloadItems(at: [indexPath])
@@ -353,61 +413,32 @@ extension AddNoteViewController: UICollectionViewDelegateFlowLayout, UICollectio
         let section = indexPath.section
         let item = indexPath.item
         
-        if item == sections[section].items.count {
+        if item == viewModel.sections[section].items.count {
             return CGSize(width: Constants.tagCellHeight, height: Constants.tagCellHeight)
         }
         
-        let text = sections[section].items[item]
-        let width = text.size(withAttributes: [.font: UIFont(name: "VelaSans-Regular", size: 14)!]).width + Constants.tagCellPadding
+        let text = viewModel.sections[section].items[item]
+        let width = text.size(withAttributes: [.font: Metrics.Fonts.tagFont]).width + Constants.tagCellPadding
         return CGSize(width: width, height: Constants.tagCellHeight)
-    }
-    
-    private func showTextField(at indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? AddTagCell else { return }
-        
-        collectionView.addSubview(newTagTextField)
-        newTagTextField.isHidden = false
-        newTagTextField.text = ""
-        newTagTextField.frame = cell.frame
-        
-        UIView.animate(withDuration: Constants.animationDuration) {
-            self.newTagTextField.transform = .identity
-            self.newTagTextField.frame = CGRect(
-                x: cell.frame.origin.x,
-                y: cell.frame.origin.y,
-                width: min(Constants.tagTextFieldMaxWidth, self.collectionView.frame.width - cell.frame.origin.x - Constants.defaultInset),
-                height: Constants.tagCellHeight
-            )
-        }
-        
-        newTagTextField.becomeFirstResponder()
-    }
-    
-    private func hideTextField() {
-        newTagTextField.resignFirstResponder()
-        newTagTextField.isHidden = true
-        currentEditingSection = nil
-        isAddingTag.toggle()
     }
 }
 
 // MARK: - UITextFieldDelegate
+
 extension AddNoteViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard
-            let text = textField.text?.trimmingCharacters(in: .whitespaces),
-            !text.isEmpty,
-            let section = currentEditingSection
-        else {
+        guard let text = textField.text?.trimmingCharacters(in: .whitespaces),
+              !text.isEmpty,
+              let section = viewModel.currentEditingSection else {
             hideTextField()
             return false
         }
         
-        sections[section].items.append(text)
-        selectedTags.insert(text)
+        viewModel.addTag(text, to: section)
         
         collectionView.performBatchUpdates({
-            let newIndex = IndexPath(item: sections[section].items.count - 1, section: section)
+            let newIndex = IndexPath(item: viewModel.sections[section].items.count - 1, section: section)
             collectionView.insertItems(at: [newIndex])
         }) { [weak self] _ in
             self?.updateCollectionViewHeight()
@@ -418,17 +449,46 @@ extension AddNoteViewController: UITextFieldDelegate {
         return true
     }
     
-    private func reloadAddButton(for section: Int) {
-        let addButtonIndex = IndexPath(item: sections[section].items.count, section: section)
-        UIView.performWithoutAnimation {
-            collectionView.reloadItems(at: [addButtonIndex])
-        }
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        
         return newText.count <= Constants.tagTextFieldMaxLength
+    }
+}
+
+// MARK: - Constants & Metrics
+
+extension AddNoteViewController {
+    
+    enum Constants {
+        static let cardHeight: CGFloat = 158
+        static let tagCellHeight: CGFloat = 36
+        static let tagCellPadding: CGFloat = 36
+        static let tagTextFieldMaxWidth: CGFloat = 200
+        static let tagTextFieldMaxLength: Int = 30
+        static let sectionHeaderHeight: CGFloat = 40
+        static let contentInsets: CGFloat = 24
+        static let smallSpacing: CGFloat = 16
+        static let animationDuration: TimeInterval = 0.3
+    }
+    
+    enum Metrics {
+        enum Colors {
+            static let background = UIColor.black
+            static let text = UIColor.white
+            static let tagBackground = UIColor.darkGray
+        }
+        
+        enum Fonts {
+            static let cardDateFont = UIFont(name: "VelaSans-Regular", size: 14)!
+            static let cardEmotionFont = UIFont(name: "VelaSans-Regular", size: 20)!
+            static let cardEmotionHighlightFont = UIFont(name: "Gwen-Trial-Bold", size: 28)!
+            static let tagFont = UIFont(name: "VelaSans-Regular", size: 14)!
+        }
+        
+        enum Strings {
+            static let feelText = LocalizedString.AddNote.feelText
+            static let saveButtonTitle = LocalizedString.AddNote.saveText
+        }
     }
 }

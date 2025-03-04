@@ -12,32 +12,65 @@ protocol AddNoteViewModelProtocol {
 }
 
 final class AddNoteViewModel: AddNoteViewModelProtocol {
+    
+    // MARK: - Properties
+    
     weak var coordinator: AddNoteCoordinator?
     
-    var selectedDate: Date
-    var selectedEmotion: String
-    var selectedCardType: CardType
-
-    var activities: [String]
-    var companions: [String]
-    var places: [String]
+    var sections: [Section] = [
+        Section(title: "Чем вы занимались", items: ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]),
+        Section(title: "С кем вы были?", items: ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]),
+        Section(title: "Где вы были?", items: ["Дом", "Работа", "Школа", "Транспорт", "Улица"])
+    ]
     
+    var selectedTags = Set<String>()
+    var isAddingTag = false
+    var currentEditingSection: Int?
     
+    let selectedDate: Date
+    let selectedEmotion: String
+    let selectedCardType: CardType
+    
+    // MARK: - Initialization
     
     init(
         selectedDate: Date = Date(),
         selectedEmotion: String = "усталость",
-        selectedCardType: CardType = .blue,
-        activities: [String] = ["Приём пищи", "Тренировка", "Отдых"],
-        companions: [String] = ["Один", "Друзья", "Семья"],
-        places: [String] = ["Дом", "Работа", "Улица"]
+        selectedCardType: CardType = .blue
     ) {
         self.selectedDate = selectedDate
         self.selectedEmotion = selectedEmotion
         self.selectedCardType = selectedCardType
-        self.activities = activities
-        self.companions = companions
-        self.places = places
+    }
+}
+
+// MARK: - Public Methods
+
+extension AddNoteViewModel {
+    
+    func setEditingSection(_ section: Int?) {
+        currentEditingSection = section
+    }
+    
+    func toggleAddingTag() {
+        isAddingTag.toggle()
+    }
+    
+    func setAddingTag(_ value: Bool) {
+        isAddingTag = value
+    }
+    
+    func toggleTagSelection(_ tag: String) {
+        if selectedTags.contains(tag) {
+            selectedTags.remove(tag)
+        } else {
+            selectedTags.insert(tag)
+        }
+    }
+    
+    func addTag(_ tag: String, to section: Int) {
+        sections[section].items.append(tag)
+        selectedTags.insert(tag)
     }
     
     func completeFlow() {

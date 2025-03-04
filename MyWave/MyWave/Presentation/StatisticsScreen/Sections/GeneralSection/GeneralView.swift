@@ -77,6 +77,3 @@ final class GeneralView: UIView {
         return countDict.map { (Float($0.value) / total * 100, $0.key) }
     }
 }
-
-
-

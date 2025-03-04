@@ -223,7 +223,6 @@ extension OptionsViewController {
 // MARK: - Actions
 
 extension OptionsViewController {
-    
     @objc private func addReminder() {
         let alert = UIAlertController(title: "\n\n\n\n\n\n\n\n\n",
                                   message: nil,
@@ -326,7 +325,7 @@ extension OptionsViewController {
         
         enum Strings {
             static let settingsTitle = LocalizedString.Options.settingsTitle
-            static let profileName = "Иван Иванов"
+            static let profileName = LocalizedString.Options.profileName
             static let reminderText = LocalizedString.Options.reminderText
             static let addReminderButtonTitle = LocalizedString.Options.addReminderButtonTitle
             static let faceIdText = LocalizedString.Options.faceIdText
