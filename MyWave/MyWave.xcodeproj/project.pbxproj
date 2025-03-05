@@ -18,6 +18,49 @@
 		E65E28F32D736D420043E296 /* ByDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F22D736D420043E296 /* ByDayView.swift */; };
 		E65E28F52D736D610043E296 /* FrequentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F42D736D610043E296 /* FrequentView.swift */; };
 		E65E28F72D736D720043E296 /* MoodInDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28F62D736D720043E296 /* MoodInDayView.swift */; };
+		E6B7A12A2D78155B00575CB3 /* VelaSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0F82D78155B00575CB3 /* VelaSans-Bold.otf */; };
+		E6B7A12B2D78155B00575CB3 /* VelaSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0F92D78155B00575CB3 /* VelaSans-ExtraBold.otf */; };
+		E6B7A12C2D78155B00575CB3 /* VelaSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0FA2D78155B00575CB3 /* VelaSans-ExtraLight.otf */; };
+		E6B7A12D2D78155B00575CB3 /* VelaSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0FB2D78155B00575CB3 /* VelaSans-Light.otf */; };
+		E6B7A12E2D78155B00575CB3 /* VelaSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0FC2D78155B00575CB3 /* VelaSans-Medium.otf */; };
+		E6B7A12F2D78155B00575CB3 /* VelaSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0FD2D78155B00575CB3 /* VelaSans-Regular.otf */; };
+		E6B7A1302D78155B00575CB3 /* VelaSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A0FE2D78155B00575CB3 /* VelaSans-SemiBold.otf */; };
+		E6B7A1312D78155B00575CB3 /* VelaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1002D78155B00575CB3 /* VelaSans-Bold.ttf */; };
+		E6B7A1322D78155B00575CB3 /* VelaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1012D78155B00575CB3 /* VelaSans-ExtraBold.ttf */; };
+		E6B7A1332D78155B00575CB3 /* VelaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1022D78155B00575CB3 /* VelaSans-ExtraLight.ttf */; };
+		E6B7A1342D78155B00575CB3 /* VelaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1032D78155B00575CB3 /* VelaSans-Light.ttf */; };
+		E6B7A1352D78155B00575CB3 /* VelaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1042D78155B00575CB3 /* VelaSans-Medium.ttf */; };
+		E6B7A1362D78155B00575CB3 /* VelaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1052D78155B00575CB3 /* VelaSans-Regular.ttf */; };
+		E6B7A1372D78155B00575CB3 /* VelaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1062D78155B00575CB3 /* VelaSans-SemiBold.ttf */; };
+		E6B7A1382D78155B00575CB3 /* VelaSans-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1082D78155B00575CB3 /* VelaSans-Bold.woff */; };
+		E6B7A1392D78155B00575CB3 /* VelaSans-Bold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1092D78155B00575CB3 /* VelaSans-Bold.woff2 */; };
+		E6B7A13A2D78155B00575CB3 /* VelaSans-ExtraBold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10A2D78155B00575CB3 /* VelaSans-ExtraBold.woff */; };
+		E6B7A13B2D78155B00575CB3 /* VelaSans-ExtraBold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10B2D78155B00575CB3 /* VelaSans-ExtraBold.woff2 */; };
+		E6B7A13C2D78155B00575CB3 /* VelaSans-ExtraLight.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10C2D78155B00575CB3 /* VelaSans-ExtraLight.woff */; };
+		E6B7A13D2D78155B00575CB3 /* VelaSans-ExtraLight.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10D2D78155B00575CB3 /* VelaSans-ExtraLight.woff2 */; };
+		E6B7A13E2D78155B00575CB3 /* VelaSans-Light.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10E2D78155B00575CB3 /* VelaSans-Light.woff */; };
+		E6B7A13F2D78155B00575CB3 /* VelaSans-Light.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A10F2D78155B00575CB3 /* VelaSans-Light.woff2 */; };
+		E6B7A1402D78155B00575CB3 /* VelaSans-Medium.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1102D78155B00575CB3 /* VelaSans-Medium.woff */; };
+		E6B7A1412D78155B00575CB3 /* VelaSans-Medium.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1112D78155B00575CB3 /* VelaSans-Medium.woff2 */; };
+		E6B7A1422D78155B00575CB3 /* VelaSans-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1122D78155B00575CB3 /* VelaSans-Regular.woff */; };
+		E6B7A1432D78155B00575CB3 /* VelaSans-Regular.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1132D78155B00575CB3 /* VelaSans-Regular.woff2 */; };
+		E6B7A1442D78155B00575CB3 /* VelaSans-SemiBold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1142D78155B00575CB3 /* VelaSans-SemiBold.woff */; };
+		E6B7A1452D78155B00575CB3 /* VelaSans-SemiBold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1152D78155B00575CB3 /* VelaSans-SemiBold.woff2 */; };
+		E6B7A1462D78155B00575CB3 /* VelaSans-GX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1182D78155B00575CB3 /* VelaSans-GX.ttf */; };
+		E6B7A1472D78155B00575CB3 /* Gwen-Trial-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A11B2D78155B00575CB3 /* Gwen-Trial-Black.otf */; };
+		E6B7A1482D78155B00575CB3 /* Gwen-Trial-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A11C2D78155B00575CB3 /* Gwen-Trial-Bold.otf */; };
+		E6B7A1492D78155B00575CB3 /* Gwen-Trial-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A11D2D78155B00575CB3 /* Gwen-Trial-Book.otf */; };
+		E6B7A14A2D78155B00575CB3 /* Gwen-Trial-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A11E2D78155B00575CB3 /* Gwen-Trial-ExtraBold.otf */; };
+		E6B7A14B2D78155B00575CB3 /* Gwen-Trial-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A11F2D78155B00575CB3 /* Gwen-Trial-Light.otf */; };
+		E6B7A14C2D78155B00575CB3 /* Gwen-Trial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1202D78155B00575CB3 /* Gwen-Trial-Regular.otf */; };
+		E6B7A14D2D78155B00575CB3 /* Gwen-Trial-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1212D78155B00575CB3 /* Gwen-Trial-SemiBold.otf */; };
+		E6B7A14E2D78155B00575CB3 /* GwenText-Trial-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1222D78155B00575CB3 /* GwenText-Trial-Black.otf */; };
+		E6B7A14F2D78155B00575CB3 /* GwenText-Trial-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1232D78155B00575CB3 /* GwenText-Trial-Bold.otf */; };
+		E6B7A1502D78155B00575CB3 /* GwenText-Trial-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1242D78155B00575CB3 /* GwenText-Trial-Book.otf */; };
+		E6B7A1512D78155B00575CB3 /* GwenText-Trial-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1252D78155B00575CB3 /* GwenText-Trial-ExtraBold.otf */; };
+		E6B7A1522D78155B00575CB3 /* GwenText-Trial-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1262D78155B00575CB3 /* GwenText-Trial-Light.otf */; };
+		E6B7A1532D78155B00575CB3 /* GwenText-Trial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1272D78155B00575CB3 /* GwenText-Trial-Regular.otf */; };
+		E6B7A1542D78155B00575CB3 /* GwenText-Trial-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B7A1282D78155B00575CB3 /* GwenText-Trial-SemiBold.otf */; };
 		E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E0F2D68518E00B453BA /* AppDelegate.swift */; };
 		E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E112D68518E00B453BA /* SceneDelegate.swift */; };
 		E6B85E192D68518F00B453BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E182D68518F00B453BA /* Assets.xcassets */; };
@@ -32,50 +75,7 @@
 		E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */; };
 		E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */; };
 		E6B85E662D6862A300B453BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E6B85E652D6862A300B453BA /* SnapKit */; };
-		E6B85E752D68641B00B453BA /* GwenText-Trial-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E672D68641A00B453BA /* GwenText-Trial-Book.otf */; };
-		E6B85E762D68641B00B453BA /* Gwen-Trial-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E682D68641A00B453BA /* Gwen-Trial-Light.otf */; };
-		E6B85E772D68641B00B453BA /* GwenText-Trial-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E692D68641A00B453BA /* GwenText-Trial-Black.otf */; };
-		E6B85E782D68641B00B453BA /* Gwen-Trial-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6A2D68641A00B453BA /* Gwen-Trial-Black.otf */; };
-		E6B85E792D68641B00B453BA /* Gwen-Trial-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6B2D68641B00B453BA /* Gwen-Trial-Bold.otf */; };
-		E6B85E7A2D68641B00B453BA /* GwenText-Trial-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6C2D68641B00B453BA /* GwenText-Trial-Light.otf */; };
-		E6B85E7B2D68641B00B453BA /* Gwen-Trial-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6D2D68641B00B453BA /* Gwen-Trial-ExtraBold.otf */; };
-		E6B85E7C2D68641B00B453BA /* GwenText-Trial-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6E2D68641B00B453BA /* GwenText-Trial-SemiBold.otf */; };
-		E6B85E7D2D68641B00B453BA /* Gwen-Trial-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E6F2D68641B00B453BA /* Gwen-Trial-SemiBold.otf */; };
-		E6B85E7E2D68641B00B453BA /* GwenText-Trial-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E702D68641B00B453BA /* GwenText-Trial-ExtraBold.otf */; };
-		E6B85E7F2D68641B00B453BA /* Gwen-Trial-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E712D68641B00B453BA /* Gwen-Trial-Book.otf */; };
-		E6B85E802D68641B00B453BA /* GwenText-Trial-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E722D68641B00B453BA /* GwenText-Trial-Bold.otf */; };
-		E6B85E812D68641B00B453BA /* GwenText-Trial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E732D68641B00B453BA /* GwenText-Trial-Regular.otf */; };
-		E6B85E822D68641B00B453BA /* Gwen-Trial-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E742D68641B00B453BA /* Gwen-Trial-Regular.otf */; };
 		E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85E832D68985C00B453BA /* LoginAppleIdButton.swift */; };
-		E6B85EA82D6899AE00B453BA /* VelaSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E852D6899AE00B453BA /* VelaSans-Bold.otf */; };
-		E6B85EA92D6899AE00B453BA /* VelaSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E862D6899AE00B453BA /* VelaSans-ExtraBold.otf */; };
-		E6B85EAA2D6899AE00B453BA /* VelaSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E872D6899AE00B453BA /* VelaSans-ExtraLight.otf */; };
-		E6B85EAB2D6899AE00B453BA /* VelaSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E882D6899AE00B453BA /* VelaSans-Light.otf */; };
-		E6B85EAC2D6899AE00B453BA /* VelaSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E892D6899AE00B453BA /* VelaSans-Medium.otf */; };
-		E6B85EAD2D6899AE00B453BA /* VelaSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E8A2D6899AE00B453BA /* VelaSans-Regular.otf */; };
-		E6B85EAE2D6899AE00B453BA /* VelaSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E8B2D6899AE00B453BA /* VelaSans-SemiBold.otf */; };
-		E6B85EAF2D6899AE00B453BA /* VelaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E8D2D6899AE00B453BA /* VelaSans-Bold.ttf */; };
-		E6B85EB02D6899AE00B453BA /* VelaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E8E2D6899AE00B453BA /* VelaSans-ExtraBold.ttf */; };
-		E6B85EB12D6899AE00B453BA /* VelaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E8F2D6899AE00B453BA /* VelaSans-ExtraLight.ttf */; };
-		E6B85EB22D6899AE00B453BA /* VelaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E902D6899AE00B453BA /* VelaSans-Light.ttf */; };
-		E6B85EB32D6899AE00B453BA /* VelaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E912D6899AE00B453BA /* VelaSans-Medium.ttf */; };
-		E6B85EB42D6899AE00B453BA /* VelaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E922D6899AE00B453BA /* VelaSans-Regular.ttf */; };
-		E6B85EB52D6899AE00B453BA /* VelaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E932D6899AE00B453BA /* VelaSans-SemiBold.ttf */; };
-		E6B85EB62D6899AE00B453BA /* VelaSans-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E952D6899AE00B453BA /* VelaSans-Bold.woff */; };
-		E6B85EB72D6899AE00B453BA /* VelaSans-Bold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E962D6899AE00B453BA /* VelaSans-Bold.woff2 */; };
-		E6B85EB82D6899AE00B453BA /* VelaSans-ExtraBold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E972D6899AE00B453BA /* VelaSans-ExtraBold.woff */; };
-		E6B85EB92D6899AE00B453BA /* VelaSans-ExtraBold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E982D6899AE00B453BA /* VelaSans-ExtraBold.woff2 */; };
-		E6B85EBA2D6899AE00B453BA /* VelaSans-ExtraLight.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E992D6899AE00B453BA /* VelaSans-ExtraLight.woff */; };
-		E6B85EBB2D6899AE00B453BA /* VelaSans-ExtraLight.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9A2D6899AE00B453BA /* VelaSans-ExtraLight.woff2 */; };
-		E6B85EBC2D6899AE00B453BA /* VelaSans-Light.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9B2D6899AE00B453BA /* VelaSans-Light.woff */; };
-		E6B85EBD2D6899AE00B453BA /* VelaSans-Light.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9C2D6899AE00B453BA /* VelaSans-Light.woff2 */; };
-		E6B85EBE2D6899AE00B453BA /* VelaSans-Medium.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9D2D6899AE00B453BA /* VelaSans-Medium.woff */; };
-		E6B85EBF2D6899AE00B453BA /* VelaSans-Medium.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9E2D6899AE00B453BA /* VelaSans-Medium.woff2 */; };
-		E6B85EC02D6899AE00B453BA /* VelaSans-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85E9F2D6899AE00B453BA /* VelaSans-Regular.woff */; };
-		E6B85EC12D6899AE00B453BA /* VelaSans-Regular.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA02D6899AE00B453BA /* VelaSans-Regular.woff2 */; };
-		E6B85EC22D6899AE00B453BA /* VelaSans-SemiBold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA12D6899AE00B453BA /* VelaSans-SemiBold.woff */; };
-		E6B85EC32D6899AE00B453BA /* VelaSans-SemiBold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA22D6899AE00B453BA /* VelaSans-SemiBold.woff2 */; };
-		E6B85EC42D6899AE00B453BA /* VelaSans-GX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */; };
 		E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */; };
 		E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85EC92D6A044A00B453BA /* MoodCardView.swift */; };
 		E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85ED02D6A327400B453BA /* MainCoordinator.swift */; };
@@ -129,6 +129,49 @@
 		E65E28F22D736D420043E296 /* ByDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDayView.swift; sourceTree = "<group>"; };
 		E65E28F42D736D610043E296 /* FrequentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentView.swift; sourceTree = "<group>"; };
 		E65E28F62D736D720043E296 /* MoodInDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInDayView.swift; sourceTree = "<group>"; };
+		E6B7A0F82D78155B00575CB3 /* VelaSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.otf"; sourceTree = "<group>"; };
+		E6B7A0F92D78155B00575CB3 /* VelaSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.otf"; sourceTree = "<group>"; };
+		E6B7A0FA2D78155B00575CB3 /* VelaSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.otf"; sourceTree = "<group>"; };
+		E6B7A0FB2D78155B00575CB3 /* VelaSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.otf"; sourceTree = "<group>"; };
+		E6B7A0FC2D78155B00575CB3 /* VelaSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.otf"; sourceTree = "<group>"; };
+		E6B7A0FD2D78155B00575CB3 /* VelaSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.otf"; sourceTree = "<group>"; };
+		E6B7A0FE2D78155B00575CB3 /* VelaSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.otf"; sourceTree = "<group>"; };
+		E6B7A1002D78155B00575CB3 /* VelaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.ttf"; sourceTree = "<group>"; };
+		E6B7A1012D78155B00575CB3 /* VelaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E6B7A1022D78155B00575CB3 /* VelaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E6B7A1032D78155B00575CB3 /* VelaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.ttf"; sourceTree = "<group>"; };
+		E6B7A1042D78155B00575CB3 /* VelaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.ttf"; sourceTree = "<group>"; };
+		E6B7A1052D78155B00575CB3 /* VelaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.ttf"; sourceTree = "<group>"; };
+		E6B7A1062D78155B00575CB3 /* VelaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		E6B7A1082D78155B00575CB3 /* VelaSans-Bold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.woff"; sourceTree = "<group>"; };
+		E6B7A1092D78155B00575CB3 /* VelaSans-Bold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.woff2"; sourceTree = "<group>"; };
+		E6B7A10A2D78155B00575CB3 /* VelaSans-ExtraBold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.woff"; sourceTree = "<group>"; };
+		E6B7A10B2D78155B00575CB3 /* VelaSans-ExtraBold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.woff2"; sourceTree = "<group>"; };
+		E6B7A10C2D78155B00575CB3 /* VelaSans-ExtraLight.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.woff"; sourceTree = "<group>"; };
+		E6B7A10D2D78155B00575CB3 /* VelaSans-ExtraLight.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.woff2"; sourceTree = "<group>"; };
+		E6B7A10E2D78155B00575CB3 /* VelaSans-Light.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.woff"; sourceTree = "<group>"; };
+		E6B7A10F2D78155B00575CB3 /* VelaSans-Light.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.woff2"; sourceTree = "<group>"; };
+		E6B7A1102D78155B00575CB3 /* VelaSans-Medium.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.woff"; sourceTree = "<group>"; };
+		E6B7A1112D78155B00575CB3 /* VelaSans-Medium.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.woff2"; sourceTree = "<group>"; };
+		E6B7A1122D78155B00575CB3 /* VelaSans-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.woff"; sourceTree = "<group>"; };
+		E6B7A1132D78155B00575CB3 /* VelaSans-Regular.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.woff2"; sourceTree = "<group>"; };
+		E6B7A1142D78155B00575CB3 /* VelaSans-SemiBold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff"; sourceTree = "<group>"; };
+		E6B7A1152D78155B00575CB3 /* VelaSans-SemiBold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff2"; sourceTree = "<group>"; };
+		E6B7A1182D78155B00575CB3 /* VelaSans-GX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-GX.ttf"; sourceTree = "<group>"; };
+		E6B7A11B2D78155B00575CB3 /* Gwen-Trial-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-Black.otf"; sourceTree = "<group>"; };
+		E6B7A11C2D78155B00575CB3 /* Gwen-Trial-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-Bold.otf"; sourceTree = "<group>"; };
+		E6B7A11D2D78155B00575CB3 /* Gwen-Trial-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-Book.otf"; sourceTree = "<group>"; };
+		E6B7A11E2D78155B00575CB3 /* Gwen-Trial-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-ExtraBold.otf"; sourceTree = "<group>"; };
+		E6B7A11F2D78155B00575CB3 /* Gwen-Trial-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-Light.otf"; sourceTree = "<group>"; };
+		E6B7A1202D78155B00575CB3 /* Gwen-Trial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-Regular.otf"; sourceTree = "<group>"; };
+		E6B7A1212D78155B00575CB3 /* Gwen-Trial-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gwen-Trial-SemiBold.otf"; sourceTree = "<group>"; };
+		E6B7A1222D78155B00575CB3 /* GwenText-Trial-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-Black.otf"; sourceTree = "<group>"; };
+		E6B7A1232D78155B00575CB3 /* GwenText-Trial-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-Bold.otf"; sourceTree = "<group>"; };
+		E6B7A1242D78155B00575CB3 /* GwenText-Trial-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-Book.otf"; sourceTree = "<group>"; };
+		E6B7A1252D78155B00575CB3 /* GwenText-Trial-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-ExtraBold.otf"; sourceTree = "<group>"; };
+		E6B7A1262D78155B00575CB3 /* GwenText-Trial-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-Light.otf"; sourceTree = "<group>"; };
+		E6B7A1272D78155B00575CB3 /* GwenText-Trial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-Regular.otf"; sourceTree = "<group>"; };
+		E6B7A1282D78155B00575CB3 /* GwenText-Trial-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GwenText-Trial-SemiBold.otf"; sourceTree = "<group>"; };
 		E6B85E0C2D68518E00B453BA /* MyWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B85E0F2D68518E00B453BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6B85E112D68518E00B453BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,50 +187,7 @@
 		E6B85E382D6858E800B453BA /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		E6B85E442D685F6E00B453BA /* AnimatedGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradientView.swift; sourceTree = "<group>"; };
-		E6B85E672D68641A00B453BA /* GwenText-Trial-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Book.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Book.otf"; sourceTree = "<group>"; };
-		E6B85E682D68641A00B453BA /* Gwen-Trial-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Light.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Light.otf"; sourceTree = "<group>"; };
-		E6B85E692D68641A00B453BA /* GwenText-Trial-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Black.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Black.otf"; sourceTree = "<group>"; };
-		E6B85E6A2D68641A00B453BA /* Gwen-Trial-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Black.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Black.otf"; sourceTree = "<group>"; };
-		E6B85E6B2D68641B00B453BA /* Gwen-Trial-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Bold.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Bold.otf"; sourceTree = "<group>"; };
-		E6B85E6C2D68641B00B453BA /* GwenText-Trial-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Light.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Light.otf"; sourceTree = "<group>"; };
-		E6B85E6D2D68641B00B453BA /* Gwen-Trial-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-ExtraBold.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-ExtraBold.otf"; sourceTree = "<group>"; };
-		E6B85E6E2D68641B00B453BA /* GwenText-Trial-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-SemiBold.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-SemiBold.otf"; sourceTree = "<group>"; };
-		E6B85E6F2D68641B00B453BA /* Gwen-Trial-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-SemiBold.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-SemiBold.otf"; sourceTree = "<group>"; };
-		E6B85E702D68641B00B453BA /* GwenText-Trial-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-ExtraBold.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-ExtraBold.otf"; sourceTree = "<group>"; };
-		E6B85E712D68641B00B453BA /* Gwen-Trial-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Book.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Book.otf"; sourceTree = "<group>"; };
-		E6B85E722D68641B00B453BA /* GwenText-Trial-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Bold.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Bold.otf"; sourceTree = "<group>"; };
-		E6B85E732D68641B00B453BA /* GwenText-Trial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GwenText-Trial-Regular.otf"; path = "../../../../../Downloads/gwen-trial/GwenText-Trial-Regular.otf"; sourceTree = "<group>"; };
-		E6B85E742D68641B00B453BA /* Gwen-Trial-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gwen-Trial-Regular.otf"; path = "../../../../../Downloads/gwen-trial/Gwen-Trial-Regular.otf"; sourceTree = "<group>"; };
 		E6B85E832D68985C00B453BA /* LoginAppleIdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppleIdButton.swift; sourceTree = "<group>"; };
-		E6B85E852D6899AE00B453BA /* VelaSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.otf"; sourceTree = "<group>"; };
-		E6B85E862D6899AE00B453BA /* VelaSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.otf"; sourceTree = "<group>"; };
-		E6B85E872D6899AE00B453BA /* VelaSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.otf"; sourceTree = "<group>"; };
-		E6B85E882D6899AE00B453BA /* VelaSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.otf"; sourceTree = "<group>"; };
-		E6B85E892D6899AE00B453BA /* VelaSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.otf"; sourceTree = "<group>"; };
-		E6B85E8A2D6899AE00B453BA /* VelaSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.otf"; sourceTree = "<group>"; };
-		E6B85E8B2D6899AE00B453BA /* VelaSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.otf"; sourceTree = "<group>"; };
-		E6B85E8D2D6899AE00B453BA /* VelaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.ttf"; sourceTree = "<group>"; };
-		E6B85E8E2D6899AE00B453BA /* VelaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		E6B85E8F2D6899AE00B453BA /* VelaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
-		E6B85E902D6899AE00B453BA /* VelaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.ttf"; sourceTree = "<group>"; };
-		E6B85E912D6899AE00B453BA /* VelaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.ttf"; sourceTree = "<group>"; };
-		E6B85E922D6899AE00B453BA /* VelaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.ttf"; sourceTree = "<group>"; };
-		E6B85E932D6899AE00B453BA /* VelaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		E6B85E952D6899AE00B453BA /* VelaSans-Bold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.woff"; sourceTree = "<group>"; };
-		E6B85E962D6899AE00B453BA /* VelaSans-Bold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.woff2"; sourceTree = "<group>"; };
-		E6B85E972D6899AE00B453BA /* VelaSans-ExtraBold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.woff"; sourceTree = "<group>"; };
-		E6B85E982D6899AE00B453BA /* VelaSans-ExtraBold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.woff2"; sourceTree = "<group>"; };
-		E6B85E992D6899AE00B453BA /* VelaSans-ExtraLight.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.woff"; sourceTree = "<group>"; };
-		E6B85E9A2D6899AE00B453BA /* VelaSans-ExtraLight.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.woff2"; sourceTree = "<group>"; };
-		E6B85E9B2D6899AE00B453BA /* VelaSans-Light.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.woff"; sourceTree = "<group>"; };
-		E6B85E9C2D6899AE00B453BA /* VelaSans-Light.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Light.woff2"; sourceTree = "<group>"; };
-		E6B85E9D2D6899AE00B453BA /* VelaSans-Medium.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.woff"; sourceTree = "<group>"; };
-		E6B85E9E2D6899AE00B453BA /* VelaSans-Medium.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Medium.woff2"; sourceTree = "<group>"; };
-		E6B85E9F2D6899AE00B453BA /* VelaSans-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.woff"; sourceTree = "<group>"; };
-		E6B85EA02D6899AE00B453BA /* VelaSans-Regular.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Regular.woff2"; sourceTree = "<group>"; };
-		E6B85EA12D6899AE00B453BA /* VelaSans-SemiBold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff"; sourceTree = "<group>"; };
-		E6B85EA22D6899AE00B453BA /* VelaSans-SemiBold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-SemiBold.woff2"; sourceTree = "<group>"; };
-		E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-GX.ttf"; sourceTree = "<group>"; };
 		E6B85EC72D68FA1A00B453BA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		E6B85EC92D6A044A00B453BA /* MoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCardView.swift; sourceTree = "<group>"; };
 		E6B85ED02D6A327400B453BA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -256,6 +256,112 @@
 				E6EC26FD2D74A7A700D9900F /* MoodInDaySection */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		E6B7A0FF2D78155B00575CB3 /* OTF */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A0F82D78155B00575CB3 /* VelaSans-Bold.otf */,
+				E6B7A0F92D78155B00575CB3 /* VelaSans-ExtraBold.otf */,
+				E6B7A0FA2D78155B00575CB3 /* VelaSans-ExtraLight.otf */,
+				E6B7A0FB2D78155B00575CB3 /* VelaSans-Light.otf */,
+				E6B7A0FC2D78155B00575CB3 /* VelaSans-Medium.otf */,
+				E6B7A0FD2D78155B00575CB3 /* VelaSans-Regular.otf */,
+				E6B7A0FE2D78155B00575CB3 /* VelaSans-SemiBold.otf */,
+			);
+			path = OTF;
+			sourceTree = "<group>";
+		};
+		E6B7A1072D78155B00575CB3 /* TTF */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A1002D78155B00575CB3 /* VelaSans-Bold.ttf */,
+				E6B7A1012D78155B00575CB3 /* VelaSans-ExtraBold.ttf */,
+				E6B7A1022D78155B00575CB3 /* VelaSans-ExtraLight.ttf */,
+				E6B7A1032D78155B00575CB3 /* VelaSans-Light.ttf */,
+				E6B7A1042D78155B00575CB3 /* VelaSans-Medium.ttf */,
+				E6B7A1052D78155B00575CB3 /* VelaSans-Regular.ttf */,
+				E6B7A1062D78155B00575CB3 /* VelaSans-SemiBold.ttf */,
+			);
+			path = TTF;
+			sourceTree = "<group>";
+		};
+		E6B7A1162D78155B00575CB3 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A1082D78155B00575CB3 /* VelaSans-Bold.woff */,
+				E6B7A1092D78155B00575CB3 /* VelaSans-Bold.woff2 */,
+				E6B7A10A2D78155B00575CB3 /* VelaSans-ExtraBold.woff */,
+				E6B7A10B2D78155B00575CB3 /* VelaSans-ExtraBold.woff2 */,
+				E6B7A10C2D78155B00575CB3 /* VelaSans-ExtraLight.woff */,
+				E6B7A10D2D78155B00575CB3 /* VelaSans-ExtraLight.woff2 */,
+				E6B7A10E2D78155B00575CB3 /* VelaSans-Light.woff */,
+				E6B7A10F2D78155B00575CB3 /* VelaSans-Light.woff2 */,
+				E6B7A1102D78155B00575CB3 /* VelaSans-Medium.woff */,
+				E6B7A1112D78155B00575CB3 /* VelaSans-Medium.woff2 */,
+				E6B7A1122D78155B00575CB3 /* VelaSans-Regular.woff */,
+				E6B7A1132D78155B00575CB3 /* VelaSans-Regular.woff2 */,
+				E6B7A1142D78155B00575CB3 /* VelaSans-SemiBold.woff */,
+				E6B7A1152D78155B00575CB3 /* VelaSans-SemiBold.woff2 */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		E6B7A1172D78155B00575CB3 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A0FF2D78155B00575CB3 /* OTF */,
+				E6B7A1072D78155B00575CB3 /* TTF */,
+				E6B7A1162D78155B00575CB3 /* Web */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		E6B7A1192D78155B00575CB3 /* Variable */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A1182D78155B00575CB3 /* VelaSans-GX.ttf */,
+			);
+			path = Variable;
+			sourceTree = "<group>";
+		};
+		E6B7A11A2D78155B00575CB3 /* VelaSans */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A1172D78155B00575CB3 /* Static */,
+				E6B7A1192D78155B00575CB3 /* Variable */,
+			);
+			path = VelaSans;
+			sourceTree = "<group>";
+		};
+		E6B7A1292D78155B00575CB3 /* gwen-trial */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A11B2D78155B00575CB3 /* Gwen-Trial-Black.otf */,
+				E6B7A11C2D78155B00575CB3 /* Gwen-Trial-Bold.otf */,
+				E6B7A11D2D78155B00575CB3 /* Gwen-Trial-Book.otf */,
+				E6B7A11E2D78155B00575CB3 /* Gwen-Trial-ExtraBold.otf */,
+				E6B7A11F2D78155B00575CB3 /* Gwen-Trial-Light.otf */,
+				E6B7A1202D78155B00575CB3 /* Gwen-Trial-Regular.otf */,
+				E6B7A1212D78155B00575CB3 /* Gwen-Trial-SemiBold.otf */,
+				E6B7A1222D78155B00575CB3 /* GwenText-Trial-Black.otf */,
+				E6B7A1232D78155B00575CB3 /* GwenText-Trial-Bold.otf */,
+				E6B7A1242D78155B00575CB3 /* GwenText-Trial-Book.otf */,
+				E6B7A1252D78155B00575CB3 /* GwenText-Trial-ExtraBold.otf */,
+				E6B7A1262D78155B00575CB3 /* GwenText-Trial-Light.otf */,
+				E6B7A1272D78155B00575CB3 /* GwenText-Trial-Regular.otf */,
+				E6B7A1282D78155B00575CB3 /* GwenText-Trial-SemiBold.otf */,
+			);
+			path = "gwen-trial";
+			sourceTree = "<group>";
+		};
+		E6B7A1552D78157200575CB3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E6B7A11A2D78155B00575CB3 /* VelaSans */,
+				E6B7A1292D78155B00575CB3 /* gwen-trial */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		E6B85E032D68518D00B453BA = {
@@ -370,7 +476,7 @@
 		E6B85E312D68579000B453BA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E6B85E632D68620600B453BA /* Fonts */,
+				E6B7A1552D78157200575CB3 /* Fonts */,
 				E6B85E182D68518F00B453BA /* Assets.xcassets */,
 				E6B85E1D2D68518F00B453BA /* Info.plist */,
 				E6B85E1A2D68518F00B453BA /* LaunchScreen.storyboard */,
@@ -452,105 +558,6 @@
 			children = (
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		E6B85E632D68620600B453BA /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85EA72D6899AE00B453BA /* VelaSans */,
-				E6B85E6A2D68641A00B453BA /* Gwen-Trial-Black.otf */,
-				E6B85E6B2D68641B00B453BA /* Gwen-Trial-Bold.otf */,
-				E6B85E712D68641B00B453BA /* Gwen-Trial-Book.otf */,
-				E6B85E6D2D68641B00B453BA /* Gwen-Trial-ExtraBold.otf */,
-				E6B85E682D68641A00B453BA /* Gwen-Trial-Light.otf */,
-				E6B85E742D68641B00B453BA /* Gwen-Trial-Regular.otf */,
-				E6B85E6F2D68641B00B453BA /* Gwen-Trial-SemiBold.otf */,
-				E6B85E692D68641A00B453BA /* GwenText-Trial-Black.otf */,
-				E6B85E722D68641B00B453BA /* GwenText-Trial-Bold.otf */,
-				E6B85E672D68641A00B453BA /* GwenText-Trial-Book.otf */,
-				E6B85E702D68641B00B453BA /* GwenText-Trial-ExtraBold.otf */,
-				E6B85E6C2D68641B00B453BA /* GwenText-Trial-Light.otf */,
-				E6B85E732D68641B00B453BA /* GwenText-Trial-Regular.otf */,
-				E6B85E6E2D68641B00B453BA /* GwenText-Trial-SemiBold.otf */,
-			);
-			name = Fonts;
-			path = "../../../../../../Desktop/Shift_Pizza-develop/Shift_Pizza/Resources/Fonts";
-			sourceTree = "<group>";
-		};
-		E6B85E8C2D6899AE00B453BA /* OTF */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85E852D6899AE00B453BA /* VelaSans-Bold.otf */,
-				E6B85E862D6899AE00B453BA /* VelaSans-ExtraBold.otf */,
-				E6B85E872D6899AE00B453BA /* VelaSans-ExtraLight.otf */,
-				E6B85E882D6899AE00B453BA /* VelaSans-Light.otf */,
-				E6B85E892D6899AE00B453BA /* VelaSans-Medium.otf */,
-				E6B85E8A2D6899AE00B453BA /* VelaSans-Regular.otf */,
-				E6B85E8B2D6899AE00B453BA /* VelaSans-SemiBold.otf */,
-			);
-			path = OTF;
-			sourceTree = "<group>";
-		};
-		E6B85E942D6899AE00B453BA /* TTF */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85E8D2D6899AE00B453BA /* VelaSans-Bold.ttf */,
-				E6B85E8E2D6899AE00B453BA /* VelaSans-ExtraBold.ttf */,
-				E6B85E8F2D6899AE00B453BA /* VelaSans-ExtraLight.ttf */,
-				E6B85E902D6899AE00B453BA /* VelaSans-Light.ttf */,
-				E6B85E912D6899AE00B453BA /* VelaSans-Medium.ttf */,
-				E6B85E922D6899AE00B453BA /* VelaSans-Regular.ttf */,
-				E6B85E932D6899AE00B453BA /* VelaSans-SemiBold.ttf */,
-			);
-			path = TTF;
-			sourceTree = "<group>";
-		};
-		E6B85EA32D6899AE00B453BA /* Web */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85E952D6899AE00B453BA /* VelaSans-Bold.woff */,
-				E6B85E962D6899AE00B453BA /* VelaSans-Bold.woff2 */,
-				E6B85E972D6899AE00B453BA /* VelaSans-ExtraBold.woff */,
-				E6B85E982D6899AE00B453BA /* VelaSans-ExtraBold.woff2 */,
-				E6B85E992D6899AE00B453BA /* VelaSans-ExtraLight.woff */,
-				E6B85E9A2D6899AE00B453BA /* VelaSans-ExtraLight.woff2 */,
-				E6B85E9B2D6899AE00B453BA /* VelaSans-Light.woff */,
-				E6B85E9C2D6899AE00B453BA /* VelaSans-Light.woff2 */,
-				E6B85E9D2D6899AE00B453BA /* VelaSans-Medium.woff */,
-				E6B85E9E2D6899AE00B453BA /* VelaSans-Medium.woff2 */,
-				E6B85E9F2D6899AE00B453BA /* VelaSans-Regular.woff */,
-				E6B85EA02D6899AE00B453BA /* VelaSans-Regular.woff2 */,
-				E6B85EA12D6899AE00B453BA /* VelaSans-SemiBold.woff */,
-				E6B85EA22D6899AE00B453BA /* VelaSans-SemiBold.woff2 */,
-			);
-			path = Web;
-			sourceTree = "<group>";
-		};
-		E6B85EA42D6899AE00B453BA /* Static */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85E8C2D6899AE00B453BA /* OTF */,
-				E6B85E942D6899AE00B453BA /* TTF */,
-				E6B85EA32D6899AE00B453BA /* Web */,
-			);
-			path = Static;
-			sourceTree = "<group>";
-		};
-		E6B85EA62D6899AE00B453BA /* Variable */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85EA52D6899AE00B453BA /* VelaSans-GX.ttf */,
-			);
-			path = Variable;
-			sourceTree = "<group>";
-		};
-		E6B85EA72D6899AE00B453BA /* VelaSans */ = {
-			isa = PBXGroup;
-			children = (
-				E6B85EA42D6899AE00B453BA /* Static */,
-				E6B85EA62D6899AE00B453BA /* Variable */,
-			);
-			path = VelaSans;
 			sourceTree = "<group>";
 		};
 		E6B85ECB2D6A289400B453BA /* JournalScreen */ = {
@@ -729,52 +736,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6B85EA92D6899AE00B453BA /* VelaSans-ExtraBold.otf in Resources */,
-				E6B85E7B2D68641B00B453BA /* Gwen-Trial-ExtraBold.otf in Resources */,
-				E6B85EBF2D6899AE00B453BA /* VelaSans-Medium.woff2 in Resources */,
+				E6B7A13F2D78155B00575CB3 /* VelaSans-Light.woff2 in Resources */,
+				E6B7A1452D78155B00575CB3 /* VelaSans-SemiBold.woff2 in Resources */,
+				E6B7A1482D78155B00575CB3 /* Gwen-Trial-Bold.otf in Resources */,
+				E6B7A1392D78155B00575CB3 /* VelaSans-Bold.woff2 in Resources */,
+				E6B7A12C2D78155B00575CB3 /* VelaSans-ExtraLight.otf in Resources */,
+				E6B7A1472D78155B00575CB3 /* Gwen-Trial-Black.otf in Resources */,
+				E6B7A1352D78155B00575CB3 /* VelaSans-Medium.ttf in Resources */,
+				E6B7A1542D78155B00575CB3 /* GwenText-Trial-SemiBold.otf in Resources */,
+				E6B7A1322D78155B00575CB3 /* VelaSans-ExtraBold.ttf in Resources */,
+				E6B7A1422D78155B00575CB3 /* VelaSans-Regular.woff in Resources */,
 				E6B85E192D68518F00B453BA /* Assets.xcassets in Resources */,
-				E6B85E812D68641B00B453BA /* GwenText-Trial-Regular.otf in Resources */,
-				E6B85EBA2D6899AE00B453BA /* VelaSans-ExtraLight.woff in Resources */,
-				E6B85EAC2D6899AE00B453BA /* VelaSans-Medium.otf in Resources */,
-				E6B85E782D68641B00B453BA /* Gwen-Trial-Black.otf in Resources */,
-				E6B85E7D2D68641B00B453BA /* Gwen-Trial-SemiBold.otf in Resources */,
-				E6B85EB42D6899AE00B453BA /* VelaSans-Regular.ttf in Resources */,
-				E6B85EBB2D6899AE00B453BA /* VelaSans-ExtraLight.woff2 in Resources */,
-				E6B85EB12D6899AE00B453BA /* VelaSans-ExtraLight.ttf in Resources */,
-				E6B85E772D68641B00B453BA /* GwenText-Trial-Black.otf in Resources */,
-				E6B85EC22D6899AE00B453BA /* VelaSans-SemiBold.woff in Resources */,
-				E6B85EC42D6899AE00B453BA /* VelaSans-GX.ttf in Resources */,
-				E6B85EB52D6899AE00B453BA /* VelaSans-SemiBold.ttf in Resources */,
+				E6B7A12B2D78155B00575CB3 /* VelaSans-ExtraBold.otf in Resources */,
+				E6B7A1402D78155B00575CB3 /* VelaSans-Medium.woff in Resources */,
+				E6B7A14F2D78155B00575CB3 /* GwenText-Trial-Bold.otf in Resources */,
 				E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */,
-				E6B85EB22D6899AE00B453BA /* VelaSans-Light.ttf in Resources */,
-				E6B85E822D68641B00B453BA /* Gwen-Trial-Regular.otf in Resources */,
-				E6B85EB92D6899AE00B453BA /* VelaSans-ExtraBold.woff2 in Resources */,
-				E6B85EAE2D6899AE00B453BA /* VelaSans-SemiBold.otf in Resources */,
-				E6B85E7A2D68641B00B453BA /* GwenText-Trial-Light.otf in Resources */,
-				E6B85EBD2D6899AE00B453BA /* VelaSans-Light.woff2 in Resources */,
+				E6B7A1312D78155B00575CB3 /* VelaSans-Bold.ttf in Resources */,
+				E6B7A14D2D78155B00575CB3 /* Gwen-Trial-SemiBold.otf in Resources */,
+				E6B7A1442D78155B00575CB3 /* VelaSans-SemiBold.woff in Resources */,
+				E6B7A1532D78155B00575CB3 /* GwenText-Trial-Regular.otf in Resources */,
+				E6B7A1502D78155B00575CB3 /* GwenText-Trial-Book.otf in Resources */,
+				E6B7A14E2D78155B00575CB3 /* GwenText-Trial-Black.otf in Resources */,
+				E6B7A13B2D78155B00575CB3 /* VelaSans-ExtraBold.woff2 in Resources */,
 				E6B85E1C2D68518F00B453BA /* Base in Resources */,
-				E6B85EBE2D6899AE00B453BA /* VelaSans-Medium.woff in Resources */,
-				E6B85EB72D6899AE00B453BA /* VelaSans-Bold.woff2 in Resources */,
-				E6B85E762D68641B00B453BA /* Gwen-Trial-Light.otf in Resources */,
-				E6B85E7E2D68641B00B453BA /* GwenText-Trial-ExtraBold.otf in Resources */,
-				E6B85EC32D6899AE00B453BA /* VelaSans-SemiBold.woff2 in Resources */,
-				E6B85E792D68641B00B453BA /* Gwen-Trial-Bold.otf in Resources */,
-				E6B85EC12D6899AE00B453BA /* VelaSans-Regular.woff2 in Resources */,
-				E6B85EBC2D6899AE00B453BA /* VelaSans-Light.woff in Resources */,
-				E6B85EB82D6899AE00B453BA /* VelaSans-ExtraBold.woff in Resources */,
-				E6B85E7F2D68641B00B453BA /* Gwen-Trial-Book.otf in Resources */,
-				E6B85EB02D6899AE00B453BA /* VelaSans-ExtraBold.ttf in Resources */,
-				E6B85EAF2D6899AE00B453BA /* VelaSans-Bold.ttf in Resources */,
-				E6B85EAA2D6899AE00B453BA /* VelaSans-ExtraLight.otf in Resources */,
-				E6B85E802D68641B00B453BA /* GwenText-Trial-Bold.otf in Resources */,
-				E6B85EB32D6899AE00B453BA /* VelaSans-Medium.ttf in Resources */,
-				E6B85EB62D6899AE00B453BA /* VelaSans-Bold.woff in Resources */,
-				E6B85E752D68641B00B453BA /* GwenText-Trial-Book.otf in Resources */,
-				E6B85E7C2D68641B00B453BA /* GwenText-Trial-SemiBold.otf in Resources */,
-				E6B85EA82D6899AE00B453BA /* VelaSans-Bold.otf in Resources */,
-				E6B85EC02D6899AE00B453BA /* VelaSans-Regular.woff in Resources */,
-				E6B85EAB2D6899AE00B453BA /* VelaSans-Light.otf in Resources */,
-				E6B85EAD2D6899AE00B453BA /* VelaSans-Regular.otf in Resources */,
+				E6B7A13C2D78155B00575CB3 /* VelaSans-ExtraLight.woff in Resources */,
+				E6B7A1492D78155B00575CB3 /* Gwen-Trial-Book.otf in Resources */,
+				E6B7A1412D78155B00575CB3 /* VelaSans-Medium.woff2 in Resources */,
+				E6B7A1332D78155B00575CB3 /* VelaSans-ExtraLight.ttf in Resources */,
+				E6B7A13A2D78155B00575CB3 /* VelaSans-ExtraBold.woff in Resources */,
+				E6B7A13D2D78155B00575CB3 /* VelaSans-ExtraLight.woff2 in Resources */,
+				E6B7A1462D78155B00575CB3 /* VelaSans-GX.ttf in Resources */,
+				E6B7A1512D78155B00575CB3 /* GwenText-Trial-ExtraBold.otf in Resources */,
+				E6B7A1302D78155B00575CB3 /* VelaSans-SemiBold.otf in Resources */,
+				E6B7A14B2D78155B00575CB3 /* Gwen-Trial-Light.otf in Resources */,
+				E6B7A1372D78155B00575CB3 /* VelaSans-SemiBold.ttf in Resources */,
+				E6B7A1432D78155B00575CB3 /* VelaSans-Regular.woff2 in Resources */,
+				E6B7A14A2D78155B00575CB3 /* Gwen-Trial-ExtraBold.otf in Resources */,
+				E6B7A12F2D78155B00575CB3 /* VelaSans-Regular.otf in Resources */,
+				E6B7A1522D78155B00575CB3 /* GwenText-Trial-Light.otf in Resources */,
+				E6B7A1342D78155B00575CB3 /* VelaSans-Light.ttf in Resources */,
+				E6B7A1362D78155B00575CB3 /* VelaSans-Regular.ttf in Resources */,
+				E6B7A12E2D78155B00575CB3 /* VelaSans-Medium.otf in Resources */,
+				E6B7A1382D78155B00575CB3 /* VelaSans-Bold.woff in Resources */,
+				E6B7A14C2D78155B00575CB3 /* Gwen-Trial-Regular.otf in Resources */,
+				E6B7A13E2D78155B00575CB3 /* VelaSans-Light.woff in Resources */,
+				E6B7A12D2D78155B00575CB3 /* VelaSans-Light.otf in Resources */,
+				E6B7A12A2D78155B00575CB3 /* VelaSans-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
