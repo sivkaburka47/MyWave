@@ -8,9 +8,17 @@
 import Foundation
 
 final class WelcomeViewModel {
+    
+    // MARK: - Properties
+    
     weak var coordinator: WelcomeCoordinator?
+}
+
+// MARK: - Public Methods
+
+extension WelcomeViewModel {
     
     func handleLogin() {
-        coordinator?.navigateToMain()
+        coordinator?.completeAuthentication()
     }
 }

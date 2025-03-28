@@ -8,16 +8,22 @@
 import UIKit
 
 protocol WelcomeCoordinatorDelegate: AnyObject {
-    func didFinishWelcomeFlow()
+    func didAuthenticate()
 }
 
 final class WelcomeCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    weak var parentCoordinator: Coordinator?
     weak var delegate: WelcomeCoordinatorDelegate?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        trackDeinit()
+    }
+    
+    deinit {
+        NotificationCenter.default.post(name: .deinitTracker, object: nil)
     }
     
     func start() {
@@ -27,7 +33,8 @@ final class WelcomeCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func navigateToMain() {
-        delegate?.didFinishWelcomeFlow()
+    func completeAuthentication() {
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        delegate?.didAuthenticate()
     }
 }

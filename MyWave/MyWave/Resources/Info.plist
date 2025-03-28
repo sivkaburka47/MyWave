@@ -2,6 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>VelaSans-SemiBold.otf</string>
+		<string>VelaSans-Regular.otf</string>
+		<string>VelaSans-Medium.otf</string>
+		<string>VelaSans-Light.otf</string>
+		<string>VelaSans-ExtraLight.otf</string>
+		<string>VelaSans-ExtraBold.otf</string>
+		<string>VelaSans-Bold.otf</string>
+		<string>VelaSans-GX.ttf</string>
+		<string>GwenText-Trial-SemiBold.otf</string>
+		<string>GwenText-Trial-Book.otf</string>
+		<string>GwenText-Trial-ExtraBold.otf</string>
+		<string>GwenText-Trial-Light.otf</string>
+		<string>GwenText-Trial-Regular.otf</string>
+		<string>Gwen-Trial-Black.otf</string>
+		<string>Gwen-Trial-Bold.otf</string>
+		<string>Gwen-Trial-Book.otf</string>
+		<string>Gwen-Trial-ExtraBold.otf</string>
+		<string>Gwen-Trial-Light.otf</string>
+		<string>Gwen-Trial-Regular.otf</string>
+		<string>Gwen-Trial-SemiBold.otf</string>
+		<string>GwenText-Trial-Black.otf</string>
+		<string>GwenText-Trial-Bold.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
