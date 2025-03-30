@@ -400,13 +400,6 @@
 			children = (
 				E6B85E272D6855E100B453BA /* BaseCoordinator.swift */,
 				E6B85E292D6855FA00B453BA /* AppCoordinator.swift */,
-				E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */,
-				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
-				E6B85E322D68586700B453BA /* JournalCoordinator.swift */,
-				E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */,
-				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
-				E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */,
-				E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -459,6 +452,7 @@
 			children = (
 				E6B85E342D6858D100B453BA /* WelcomeViewController.swift */,
 				E6B85E362D6858DD00B453BA /* WelcomeViewModel.swift */,
+				E6B85E242D68557F00B453BA /* WelcomeCoordinator.swift */,
 			);
 			path = WelcomeScreen;
 			sourceTree = "<group>";
@@ -466,6 +460,7 @@
 		E6B85E302D68577500B453BA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
 				E6B85ECB2D6A289400B453BA /* JournalScreen */,
 				E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */,
 				E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */,
@@ -500,6 +495,7 @@
 				E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */,
 				E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */,
 				E65E28D32D70B4100043E296 /* ReminderView.swift */,
+				E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */,
 				E65E28EC2D71C6970043E296 /* WeekCell.swift */,
 				E65E28EE2D71C9250043E296 /* VerticalPageControl.swift */,
 			);
@@ -563,6 +559,7 @@
 		E6B85ECB2D6A289400B453BA /* JournalScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85E322D68586700B453BA /* JournalCoordinator.swift */,
 				E6B85E382D6858E800B453BA /* JournalViewController.swift */,
 				E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */,
 			);
@@ -572,6 +569,7 @@
 		E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */,
 				E6B85EE42D6A337B00B453BA /* EmotionSelectionViewController.swift */,
 				E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */,
 			);
@@ -581,6 +579,7 @@
 		E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
 				E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */,
 				E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */,
 			);
@@ -590,6 +589,7 @@
 		E6B85ECE2D6A28DC00B453BA /* StatisticsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */,
 				E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */,
 				E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */,
 				E65E28D52D718F2D0043E296 /* Sections */,
@@ -600,6 +600,7 @@
 		E6B85ECF2D6A28EE00B453BA /* OptionsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */,
 				E6B85ED82D6A330F00B453BA /* OptionsViewController.swift */,
 				E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */,
 			);
@@ -610,7 +611,6 @@
 			isa = PBXGroup;
 			children = (
 				E65E28F02D736D250043E296 /* GeneralView.swift */,
-				E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */,
 			);
 			path = GeneralSection;
 			sourceTree = "<group>";
