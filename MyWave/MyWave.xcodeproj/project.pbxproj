@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E633F09D2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */; };
+		E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */; };
 		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
 		E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E65E28CC2D70A1540043E296 /* Localizable.xcstrings */; };
 		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
@@ -118,6 +120,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E65E28CC2D70A1540043E296 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -219,6 +223,11 @@
 		E6EC27552D77A07B00D9900F /* MyWaveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWaveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E6EC275C2D77A0A400D9900F /* WelcomeScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E633F0902DDC6B9300C7EB13 /* CoreData */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreData; sourceTree = "<group>"; };
+		E633F09E2DDC765E00C7EB13 /* DataSources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataSources; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E6B85E092D68518E00B453BA /* Frameworks */ = {
@@ -433,10 +442,10 @@
 		E6B85E2D2D68575800B453BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E633F09E2DDC765E00C7EB13 /* DataSources */,
+				E633F0902DDC6B9300C7EB13 /* CoreData */,
 				E6B85E432D685E9200B453BA /* Repositories */,
 				E6B85E422D685E8E00B453BA /* Models */,
-				E6B85E412D685E8600B453BA /* Network */,
-				E6B85E402D685E7A00B453BA /* Endpoints */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 		E6B85E3D2D685E5200B453BA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */,
 				E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */,
 				E6EC26F62D74A32300D9900F /* Note.swift */,
 				E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */,
@@ -532,23 +542,10 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		E6B85E402D685E7A00B453BA /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		E6B85E412D685E8600B453BA /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		E6B85E422D685E8E00B453BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -663,6 +660,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E633F0902DDC6B9300C7EB13 /* CoreData */,
+				E633F09E2DDC765E00C7EB13 /* DataSources */,
 			);
 			name = MyWave;
 			packageProductDependencies = (
@@ -832,9 +833,11 @@
 				E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */,
 				E65E28F72D736D720043E296 /* MoodInDayView.swift in Sources */,
 				E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */,
+				E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */,
 				E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */,
 				E65E28ED2D71C6970043E296 /* WeekCell.swift in Sources */,
 				E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */,
+				E633F09D2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift in Sources */,
 				E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */,
 				E65E28EF2D71C9250043E296 /* VerticalPageControl.swift in Sources */,
 				E65E28F52D736D610043E296 /* FrequentView.swift in Sources */,

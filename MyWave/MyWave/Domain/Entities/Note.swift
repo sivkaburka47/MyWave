@@ -7,18 +7,19 @@
 
 import Foundation
 
-struct Note {
+struct Note: Identifiable {
+    let id: String
     let title: String
     let type: EmotionType
     let icon: String
     let dateAdded: Date
 }
 
-enum EmotionType:  String, CaseIterable, Hashable  {
-    case green
-    case yellow
-    case blue
-    case red
+enum EmotionType: String, CaseIterable, Hashable  {
+    case green = "green"
+    case yellow = "yellow"
+    case blue = "blue"
+    case red = "red"
 }
 
 extension EmotionType {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24F74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="NoteObject" representedClassName="NoteObject" syncable="YES">
+        <attribute name="activities" attributeType="Transformable"/>
+        <attribute name="companions" attributeType="Transformable"/>
+        <attribute name="dateAdded" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="emotionType" attributeType="String"/>
+        <attribute name="icon" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="locations" optional="YES" attributeType="Transformable"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+</model>

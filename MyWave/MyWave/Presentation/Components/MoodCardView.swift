@@ -11,6 +11,11 @@ final class MoodCardView: UIView {
     var type: CardType = .blue {
         didSet {
             updateGradient()
+        }
+    }
+
+    var icon: String = "" {
+        didSet {
             updateImage()
         }
     }
@@ -60,7 +65,7 @@ final class MoodCardView: UIView {
     }
 
     private func updateImage() {
-        imageView.image = UIImage(named: type.imageName)
+        imageView.image = UIImage(named: icon)
     }
 }
 
@@ -95,19 +100,6 @@ enum CardType {
             ]
         }
     }
-
-    var imageName: String {
-        switch self {
-        case .blue:
-            return "blueCardImage"
-        case .green:
-            return "greenCardImage"
-        case .yellow:
-            return "yellowCardImage"
-        case .red:
-            return "redCardImage"
-        }
-    }
     
     var emotionTextColor: UIColor {
         switch self {
@@ -135,4 +127,19 @@ enum CardType {
         }
     }
     
+}
+
+extension CardType {
+    init(emotionType: EmotionType) {
+        switch emotionType {
+        case .blue:
+            self = .blue
+        case .green:
+            self = .green
+        case .yellow:
+            self = .yellow
+        case .red:
+            self = .red
+        }
+    }
 }

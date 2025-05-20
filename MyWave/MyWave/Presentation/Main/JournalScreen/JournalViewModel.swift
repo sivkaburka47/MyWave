@@ -17,22 +17,45 @@ final class JournalViewModel: JournalViewModelProtocol {
     // MARK: - Properties
     
     weak var coordinator: JournalCoordinator?
-    
-    let demoEntries: [[String: Any]] = [
-        ["date": Date().addingTimeInterval(-500000), "emotion": "продуктивность", "type": CardType.yellow],
-        ["date": Date().addingTimeInterval(-500000), "emotion": "продуктивность", "type": CardType.yellow],
-        ["date": Date().addingTimeInterval(-500000), "emotion": "продуктивность", "type": CardType.green],
-        ["date": Date().addingTimeInterval(-10000), "emotion": "беспокойство", "type": CardType.yellow],
-        ["date": Date().addingTimeInterval(-400400), "emotion": "спокойствие", "type": CardType.green],
-        ["date": Date().addingTimeInterval(-436400), "emotion": "выгорание", "type": CardType.blue],
-        ["date": Date().addingTimeInterval(-600400), "emotion": "напряжение", "type": CardType.red]
-    ]
-    
+    private let localDataSource = LocalDataSource.shared
+
+    var allNotes = [Note]()
+
+    var onDidLoadAllNotes: (([Note]) -> Void)?
+
     let minEntriesCount = 2
-    let seriesDuration = 3
-    
-    var entriesCount: Int {
-        demoEntries.count
+    var seriesDuration = 0
+    var entriesCount = 0
+
+    init() {
+//        localDataSource.clearCoreData()
+//        addSampleNote()
+    }
+
+    func onDidLoad() {
+        allNotes = localDataSource.getAllNotes()
+        entriesCount = allNotes.count
+        seriesDuration = calculateSeriesDuration()
+        onDidLoadAllNotes?(allNotes)
+    }
+
+    private func addSampleNote() {
+        let note = Note(
+            id: UUID().uuidString,
+            title: "New запись",
+            type: .blue,
+            icon: "blueCardImage",
+            dateAdded: Date()
+        )
+
+        let noteDetails = NoteDetails(
+            note: note,
+            activities: ["Чтение", "Прогулка"],
+            companions: ["Один"],
+            locations: ["Парк"]
+        )
+
+        localDataSource.saveNoteDetails(noteDetails)
     }
 }
 
@@ -53,12 +76,9 @@ extension JournalViewModel {
     }
     
     func getTodayEntries() -> [CardType] {
-        demoEntries
-            .filter { entry in
-                guard let date = entry["date"] as? Date else { return false }
-                return Calendar.current.isDateInToday(date)
-            }
-            .compactMap { $0["type"] as? CardType }
+        allNotes
+            .filter { Calendar.current.isDateInToday($0.dateAdded) }
+            .map { CardType(emotionType: $0.type) }
     }
     
     func startAddNoteFlow() {
@@ -86,4 +106,29 @@ extension JournalViewModel {
             return "\(count) \(many)"
         }
     }
+
+    private func calculateSeriesDuration() -> Int {
+        let calendar = Calendar.current
+
+        let uniqueDates = Set(allNotes.map { calendar.startOfDay(for: $0.dateAdded) })
+
+        guard !uniqueDates.isEmpty else { return 0 }
+
+        let sortedDates = uniqueDates.sorted(by: >)
+
+        var streak = 0
+        var currentDate = calendar.startOfDay(for: Date())
+
+        for date in sortedDates {
+            if date == currentDate {
+                streak += 1
+                currentDate = calendar.date(byAdding: .day, value: -1, to: currentDate)!
+            } else {
+                break
+            }
+        }
+
+        return streak
+    }
+
 }
