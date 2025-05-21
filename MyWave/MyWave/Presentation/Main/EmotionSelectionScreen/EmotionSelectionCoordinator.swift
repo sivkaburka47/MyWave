@@ -1,17 +1,17 @@
 //
-//  AddNoteCoordinator.swift
+//  EmotionSelectionCoordinator.swift
 //  MyWave
 //
-//  Created by Станислав Дейнекин on 22.02.2025.
+//  Created by Станислав Дейнекин on 23.02.2025.
 //
 
 import UIKit
 
-protocol AddNoteCoordinatorDelegate: AnyObject {
+protocol EmotionSelectionCoordinatorDelegate: AnyObject {
     func flowDidFinish()
 }
 
-final class AddNoteCoordinator: Coordinator {
+final class EmotionSelectionCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parentCoordinator: Coordinator?
@@ -27,19 +27,17 @@ final class AddNoteCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = AddNoteViewModel()
+        let viewModel = EmotionSelectionViewModel()
         viewModel.coordinator = self
-        let vc = AddNoteViewController(viewModel: viewModel)
-        configureScreen(vc, title: "Запись", showBackButton: true)
+        let vc = EmotionSelectionViewController(viewModel: viewModel)
+        configureScreen(vc, title: "", showBackButton: true)
         navigationController.pushViewController(vc, animated: true)
     }
     
     private func configureScreen(_ vc: UIViewController, title: String, showBackButton: Bool) {
-        
         vc.navigationController?.navigationBar.prefersLargeTitles = true
         vc.navigationController?.navigationBar.tintColor = .label
         vc.hidesBottomBarWhenPushed = true
-        
         
         if showBackButton {
             let backButton = UIButton(type: .system)
@@ -71,24 +69,32 @@ final class AddNoteCoordinator: Coordinator {
         } else {
             vc.navigationItem.backButtonTitle = title
         }
+        
         vc.navigationController?.navigationBar.isHidden = false
+    }
     
+    func navigateToAddNote(emotionType: EmotionType, iconName: String, emotionTitle: String) {
+        let coordinator = AddNoteCoordinator(
+            navigationController: navigationController,
+            selectedEmotionType: emotionType,
+            selectedEmotionIcon: iconName,
+            selectedEmotionTitle: emotionTitle
+        )
+        coordinator.parentCoordinator = self
+        coordinator.mainCoordinator = mainCoordinator
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
     
     @objc private func popViewController() {
         navigationController.popViewController(animated: true)
         parentCoordinator?.childCoordinators.removeAll { $0 === self }
     }
-    
-    func completeFlow() {
-        mainCoordinator?.returnToRoot()
-        parentCoordinator?.childCoordinators.removeAll { $0 === self }
-    }
 }
 
-
-
-
-
-
-
+extension EmotionSelectionCoordinator: AddNoteCoordinatorDelegate {
+    func flowDidFinish() {
+        childCoordinators.removeLast()
+        mainCoordinator?.returnToRoot()
+    }
+}

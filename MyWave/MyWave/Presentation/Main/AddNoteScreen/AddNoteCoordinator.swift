@@ -1,24 +1,34 @@
 //
-//  EmotionSelectionCoordinator.swift
+//  AddNoteCoordinator.swift
 //  MyWave
 //
-//  Created by Станислав Дейнекин on 23.02.2025.
+//  Created by Станислав Дейнекин on 22.02.2025.
 //
 
 import UIKit
 
-protocol EmotionSelectionCoordinatorDelegate: AnyObject {
+protocol AddNoteCoordinatorDelegate: AnyObject {
     func flowDidFinish()
 }
 
-final class EmotionSelectionCoordinator: Coordinator {
+final class AddNoteCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parentCoordinator: Coordinator?
     weak var mainCoordinator: MainCoordinator?
-    
-    init(navigationController: UINavigationController) {
+
+    let selectedEmotionType: EmotionType
+    let selectedEmotionIcon: String
+    let selectedEmotionTitle: String
+
+    init(navigationController: UINavigationController,
+         selectedEmotionType: EmotionType,
+         selectedEmotionIcon: String,
+         selectedEmotionTitle: String) {
         self.navigationController = navigationController
+        self.selectedEmotionType = selectedEmotionType
+        self.selectedEmotionIcon = selectedEmotionIcon
+        self.selectedEmotionTitle = selectedEmotionTitle
         trackDeinit()
     }
     
@@ -27,17 +37,23 @@ final class EmotionSelectionCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = EmotionSelectionViewModel()
+        let viewModel = AddNoteViewModel(
+            emotionTitle: selectedEmotionTitle,
+            emotionType: selectedEmotionType,
+            iconName: selectedEmotionIcon
+        )
         viewModel.coordinator = self
-        let vc = EmotionSelectionViewController(viewModel: viewModel)
-        configureScreen(vc, title: "", showBackButton: true)
+        let vc = AddNoteViewController(viewModel: viewModel)
+        configureScreen(vc, title: "Запись", showBackButton: true)
         navigationController.pushViewController(vc, animated: true)
     }
     
     private func configureScreen(_ vc: UIViewController, title: String, showBackButton: Bool) {
+        
         vc.navigationController?.navigationBar.prefersLargeTitles = true
         vc.navigationController?.navigationBar.tintColor = .label
         vc.hidesBottomBarWhenPushed = true
+        
         
         if showBackButton {
             let backButton = UIButton(type: .system)
@@ -69,27 +85,24 @@ final class EmotionSelectionCoordinator: Coordinator {
         } else {
             vc.navigationItem.backButtonTitle = title
         }
-        
         vc.navigationController?.navigationBar.isHidden = false
-    }
     
-    func navigateToAddNote() {
-        let coordinator = AddNoteCoordinator(navigationController: navigationController)
-        coordinator.parentCoordinator = self
-        coordinator.mainCoordinator = mainCoordinator
-        childCoordinators.append(coordinator)
-        coordinator.start()
     }
     
     @objc private func popViewController() {
         navigationController.popViewController(animated: true)
         parentCoordinator?.childCoordinators.removeAll { $0 === self }
     }
-}
-
-extension EmotionSelectionCoordinator: AddNoteCoordinatorDelegate {
-    func flowDidFinish() {
-        childCoordinators.removeLast()
+    
+    func completeFlow() {
         mainCoordinator?.returnToRoot()
+        parentCoordinator?.childCoordinators.removeAll { $0 === self }
     }
 }
+
+
+
+
+
+
+

@@ -77,7 +77,7 @@ extension AddNoteViewController {
         card.removeFromSuperview()
         card = createCardView(
             date: viewModel.selectedDate,
-            emotion: viewModel.selectedEmotion,
+            emotion: viewModel.emotionTitle,
             type: viewModel.selectedCardType
         )
         contentView.addSubview(card)
@@ -334,7 +334,7 @@ extension AddNoteViewController {
 extension AddNoteViewController {
     
     @objc private func doneTapped() {
-        viewModel.completeFlow()
+        viewModel.doneButtonTapped()
     }
 }
 

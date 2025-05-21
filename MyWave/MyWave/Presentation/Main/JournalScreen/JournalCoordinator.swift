@@ -41,9 +41,15 @@ final class JournalCoordinator: Coordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
-    
+
+    // ИЗМЕНИТЬ
     func navigateToAddNote() {
-        let coordinator = AddNoteCoordinator(navigationController: navigationController)
+        let coordinator = AddNoteCoordinator(
+            navigationController: navigationController,
+            selectedEmotionType: EmotionType.green,
+            selectedEmotionIcon: "",
+            selectedEmotionTitle: "TITLE"
+        )
         coordinator.parentCoordinator = self
         coordinator.mainCoordinator = mainCoordinator
         childCoordinators.append(coordinator)

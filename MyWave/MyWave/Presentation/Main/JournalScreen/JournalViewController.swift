@@ -45,13 +45,18 @@ final class JournalViewController: UIViewController {
         bindToViewModel()
         setupUI()
         setupConstraints()
-        viewModel.onDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+
+        mainVerticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        statsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        viewModel.onDidLoad()
     }
+
 }
 
 // MARK: - UI Setup
@@ -268,6 +273,7 @@ extension JournalViewController {
         let card = MoodCardView()
         card.type = type
         card.icon = icon
+        print(card.icon)
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
@@ -327,6 +333,10 @@ extension JournalViewController {
         
         return card
     }
+
+    private func clearCards() {
+        mainVerticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
 }
 
 // MARK: - Actions
@@ -347,6 +357,7 @@ extension JournalViewController {
     private func bindToViewModel() {
         viewModel.onDidLoadAllNotes = { [weak self] allNotes in
             DispatchQueue.main.async {
+                self?.clearCards()
                 self?.addCards(from: allNotes)
                 self?.addEntries()
                 self?.updateStatItems()

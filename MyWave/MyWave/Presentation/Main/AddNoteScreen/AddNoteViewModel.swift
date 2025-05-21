@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddNoteViewModelProtocol {
-    func completeFlow()
+    func doneButtonTapped()
 }
 
 final class AddNoteViewModel: AddNoteViewModelProtocol {
@@ -16,7 +16,8 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
     // MARK: - Properties
     
     weak var coordinator: AddNoteCoordinator?
-    
+    private let localDataSource = LocalDataSource.shared
+
     var sections: [Section] = [
         Section(title: "Чем вы занимались", items: ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]),
         Section(title: "С кем вы были?", items: ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]),
@@ -26,21 +27,28 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
     var selectedTags = Set<String>()
     var isAddingTag = false
     var currentEditingSection: Int?
-    
+
+    let emotionTitle: String
     let selectedDate: Date
-    let selectedEmotion: String
+    let emotionType: EmotionType
+    let iconName: String
+
+
     let selectedCardType: CardType
-    
+
     // MARK: - Initialization
     
     init(
         selectedDate: Date = Date(),
-        selectedEmotion: String = "усталость",
-        selectedCardType: CardType = .blue
+        emotionTitle: String,
+        emotionType: EmotionType,
+        iconName: String
     ) {
         self.selectedDate = selectedDate
-        self.selectedEmotion = selectedEmotion
-        self.selectedCardType = selectedCardType
+        self.emotionTitle = emotionTitle
+        self.selectedCardType = CardType(emotionType: emotionType)
+        self.iconName = iconName
+        self.emotionType = emotionType
     }
 }
 
@@ -72,8 +80,40 @@ extension AddNoteViewModel {
         sections[section].items.append(tag)
         selectedTags.insert(tag)
     }
-    
-    func completeFlow() {
+
+    func doneButtonTapped() {
+        completeFlow()
+    }
+}
+
+// MARK: - Private Methods
+extension AddNoteViewModel {
+
+    private func completeFlow() {
+        saveNote()
         coordinator?.completeFlow()
+    }
+
+    private func saveNote() {
+        let note = Note(
+            id: UUID().uuidString,
+            title: emotionTitle,
+            type: emotionType,
+            icon: iconName,
+            dateAdded: selectedDate
+        )
+
+        let activities = sections[0].items.filter { selectedTags.contains($0) }
+        let companions = sections[1].items.filter { selectedTags.contains($0) }
+        let locations = sections[2].items.filter { selectedTags.contains($0) }
+
+        let noteDetails = NoteDetails(
+            note: note,
+            activities: activities,
+            companions: companions,
+            locations: locations
+        )
+
+        localDataSource.saveNoteDetails(noteDetails)
     }
 }

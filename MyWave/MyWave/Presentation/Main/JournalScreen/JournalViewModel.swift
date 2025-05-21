@@ -28,8 +28,6 @@ final class JournalViewModel: JournalViewModelProtocol {
     var entriesCount = 0
 
     init() {
-//        localDataSource.clearCoreData()
-//        addSampleNote()
     }
 
     func onDidLoad() {
