@@ -19,7 +19,6 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
     weak var coordinator: AddNoteCoordinator?
     private let localDataSource = LocalDataSource.shared
 
-
     var sections: [Section] = []
     var selectedTags = Set<String>()
     var isAddingTag = false
@@ -126,11 +125,25 @@ extension AddNoteViewModel {
 extension AddNoteViewModel {
 
     private func completeFlow() {
-        saveNote()
+        if noteId != nil {
+            updateNote()
+        } else {
+            saveNote()
+        }
         coordinator?.completeFlow()
     }
 
     private func saveNote() {
+        let obj = createNoteDetails()
+        localDataSource.saveNoteDetails(obj)
+    }
+
+    private func updateNote() {
+        let obj = createNoteDetails()
+        localDataSource.updateNoteDetails(obj)
+    }
+
+    private func createNoteDetails() -> NoteDetails {
         let note = Note(
             id: noteId ?? UUID().uuidString,
             title: emotionTitle,
@@ -149,7 +162,6 @@ extension AddNoteViewModel {
             companions: companions,
             locations: locations
         )
-
-        localDataSource.saveNoteDetails(noteDetails)
+        return noteDetails
     }
 }

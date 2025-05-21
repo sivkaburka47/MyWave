@@ -38,6 +38,31 @@ extension LocalDataSource {
         saveContext()
     }
 
+    public func updateNoteDetails(_ noteDetails: NoteDetails) {
+        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", noteDetails.note.id)
+        fetchRequest.fetchLimit = 1
+
+        do {
+            if let noteObject = try context.fetch(fetchRequest).first {
+                noteObject.title = noteDetails.note.title
+                noteObject.emotionType = noteDetails.note.type.rawValue
+                noteObject.icon = noteDetails.note.icon
+                noteObject.dateAdded = noteDetails.note.dateAdded
+                noteObject.activities = noteDetails.activities
+                noteObject.companions = noteDetails.companions
+                noteObject.locations = noteDetails.locations
+
+                saveContext()
+            } else {
+                print("Note with id \(noteDetails.note.id) not found.")
+            }
+        } catch {
+            print("Failed to update note: \(error)")
+        }
+    }
+
+
     public func getNoteDetails(by id: String) -> NoteDetails? {
         let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
