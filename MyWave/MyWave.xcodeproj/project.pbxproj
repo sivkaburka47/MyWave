@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E633F09D2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */; };
 		E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */; };
+		E633F0AE2DDE391700C7EB13 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */; };
 		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
 		E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E65E28CC2D70A1540043E296 /* Localizable.xcstrings */; };
 		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
@@ -122,6 +123,7 @@
 /* Begin PBXFileReference section */
 		E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
+		E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E65E28CC2D70A1540043E296 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */,
 				E6EC27002D757E4500D9900F /* MoodEntry.swift */,
 				E6EC27182D770FC100D9900F /* Section.swift */,
+				E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */,
 				E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */,
 				E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */,
+				E633F0AE2DDE391700C7EB13 /* ColoredCircle.swift in Sources */,
 				E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */,
 				E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */,
 				E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */,

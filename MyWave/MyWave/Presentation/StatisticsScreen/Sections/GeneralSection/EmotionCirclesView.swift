@@ -27,7 +27,7 @@ class EmotionCirclesView: UIView {
         ]
     }()
     
-    var percentages: [(value: Float, type: EmotionType)] = [] {
+    var coloredCircles: [ColoredCircle] = [] {
         didSet { setNeedsDisplay() }
     }
     
@@ -37,14 +37,14 @@ class EmotionCirclesView: UIView {
         UIColor.clear.set()
         UIRectFill(rect)
         
-        guard !percentages.isEmpty else { return }
+        guard !coloredCircles.isEmpty else { return }
         
-        if percentages.count == 1 {
+        if coloredCircles.count == 1 {
             drawSingleCircle()
         } else {
-            let sorted = percentages.enumerated()
-                .sorted { $0.element.value > $1.element.value }
-            
+            let sorted = coloredCircles.enumerated()
+                .sorted { $0.element.percent > $1.element.percent }
+
             if let (minDiffIndex, _) = findMinDiffIndices(in: sorted) {
                 let arranged = arrangeElements(sorted: sorted, minDiffIndex: minDiffIndex)
                 drawCircles(arranged: arranged)
@@ -55,8 +55,8 @@ class EmotionCirclesView: UIView {
     }
     
     private func drawSingleCircle() {
-        guard let element = percentages.first else { return }
-        let percent = element.value
+        guard let element = coloredCircles.first else { return }
+        let percent = element.percent
         guard percent > 0 else { return }
         
         let radius = min(bounds.width, bounds.height) * 0.8 / 2
@@ -76,42 +76,41 @@ class EmotionCirclesView: UIView {
             )
         }
     }
-    
-    
-    private func findMinDiffIndices(in sorted: [EnumeratedSequence<[(value: Float, type: EmotionType)]>.Element]) -> (Int, Int)? {
-        guard sorted.count >= 1 else { return nil }
-        return sorted.count == 1 ? (0, 0) : {
-            var minDiff = Float.greatestFiniteMagnitude
-            var minIndex = 0
-            for i in 0..<sorted.count-1 {
-                let diff = abs(sorted[i].element.value - sorted[i+1].element.value)
-                if diff < minDiff {
-                    minDiff = diff
-                    minIndex = i
-                }
+
+    private func findMinDiffIndices(in sorted: [EnumeratedSequence<[ColoredCircle]>.Element]) -> (Int, Int)? {
+        guard sorted.count >= 2 else { return nil }
+
+        var minDiff = Float.greatestFiniteMagnitude
+        var minIndex = 0
+        for i in 0..<sorted.count - 1 {
+            let diff = abs(sorted[i].element.percent - sorted[i + 1].element.percent)
+            if diff < minDiff {
+                minDiff = diff
+                minIndex = i
             }
-            return (minIndex, minIndex + 1)
-        }()
+        }
+        return (minIndex, minIndex + 1)
     }
-    
+
     private func arrangeElements(
-        sorted: [EnumeratedSequence<[(value: Float, type: EmotionType)]>.Element],
+        sorted: [EnumeratedSequence<[ColoredCircle]>.Element],
         minDiffIndex: Int
-    ) -> [EnumeratedSequence<[(value: Float, type: EmotionType)]>.Element] {
-        var arranged = [EnumeratedSequence<[(value: Float, type: EmotionType)]>.Element]()
-        
+    ) -> [EnumeratedSequence<[ColoredCircle]>.Element] {
+        var arranged = [EnumeratedSequence<[ColoredCircle]>.Element]()
+
         arranged.append(sorted[minDiffIndex])
         arranged.append(sorted[minDiffIndex + 1])
-        
-        sorted.enumerated().forEach { index, element in
+
+        for (index, element) in sorted.enumerated() {
             if index != minDiffIndex && index != minDiffIndex + 1 {
                 arranged.append(element)
             }
         }
+
         return arranged
     }
-    
-    private func drawCircles(arranged: [EnumeratedSequence<[(value: Float, type: EmotionType)]>.Element]) {
+
+    private func drawCircles(arranged: [EnumeratedSequence<[ColoredCircle]>.Element]) {
         let maxRadius = bounds.width / 2
         let minRadius: CGFloat = 20
         
@@ -124,7 +123,7 @@ class EmotionCirclesView: UIView {
         
         for (index, element) in arranged.enumerated() {
             guard index < positions.count else { break }
-            let percent = element.element.value
+            let percent = element.element.percent
             guard percent > 0 else { continue }
             
             let position = positions[index]

@@ -102,7 +102,20 @@ extension StatisticsViewModel {
     func getStatistics(for week: String) -> WeekStatistics {
         weeksData.first { $0.weekRange == week } ?? WeekStatistics(weekRange: week, notesByDate: [])
     }
-    
+
+    func calculateColoredCircles(from notes: [Note]) -> [ColoredCircle] {
+        let countDict = notes.reduce(into: [EmotionType: Int]()) { counts, note in
+            counts[note.type, default: 0] += 1
+        }
+
+        let total = Float(notes.count)
+        guard total > 0 else { return [] }
+
+        return countDict.map { (type, count) in
+            ColoredCircle(type: type, percent: Float(count) / total * 100)
+        }
+    }
+
     func getTopEmotions(for week: WeekStatistics) -> [EmotionFrequency] {
         var frequencyDict: [EmotionKey: (count: Int, icon: String)] = [:]
         

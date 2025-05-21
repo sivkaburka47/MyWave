@@ -188,12 +188,13 @@ extension StatisticsViewController {
         let weekStatistics = viewModel.getStatistics(for: selectedWeek)
         let moodEntries = viewModel.getMoodEntries(for: weekStatistics)
         let allNotes = weekStatistics.notesByDate
+        let coloredCircles = viewModel.calculateColoredCircles(from: allNotes)
         let topEmotions = viewModel.getTopEmotions(for: weekStatistics)
         
         pages.forEach { page in
             switch page {
             case let generalView as GeneralView:
-                generalView.update(with: allNotes)
+                generalView.update(with: coloredCircles, with: allNotes.count)
             case let byDayView as ByDayView:
                 byDayView.update(with: (week: selectedWeek, notes: allNotes))
             case let frequentView as FrequentView:
