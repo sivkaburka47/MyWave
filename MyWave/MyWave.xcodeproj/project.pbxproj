@@ -471,7 +471,7 @@
 			children = (
 				E6B85ECB2D6A289400B453BA /* JournalScreen */,
 				E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */,
-				E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */,
+				E6B85ECD2D6A28AE00B453BA /* NoteDetailsScreen */,
 				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
 			);
 			path = Main;
@@ -572,14 +572,14 @@
 			path = EmotionSelectionScreen;
 			sourceTree = "<group>";
 		};
-		E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */ = {
+		E6B85ECD2D6A28AE00B453BA /* NoteDetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
 				E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */,
 				E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */,
 				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
 			);
-			path = AddNoteScreen;
+			path = NoteDetailsScreen;
 			sourceTree = "<group>";
 		};
 		E6B85ECE2D6A28DC00B453BA /* StatisticsScreen */ = {

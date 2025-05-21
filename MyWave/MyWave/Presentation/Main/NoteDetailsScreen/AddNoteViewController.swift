@@ -38,9 +38,9 @@ final class AddNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindToViewModel()
         setupUI()
         setupConstraints()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ extension AddNoteViewController {
     private func setupUI() {
         view.backgroundColor = Metrics.Colors.background
         configureScrollView()
-        configureCard()
+        updateCard()
         configureCollectionView()
         configureTextField()
         configureSaveButton()
@@ -235,6 +235,26 @@ extension AddNoteViewController {
         
         return card
     }
+
+    private func updateCard() {
+        card.removeFromSuperview()
+        card = createCardView(
+            date: viewModel.selectedDate,
+            emotion: viewModel.emotionTitle,
+            type: viewModel.selectedCardType
+        )
+        contentView.addSubview(card)
+        print(viewModel.selectedCardType)
+
+        card.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(Constants.contentInsets)
+            $0.leading.trailing.equalToSuperview().inset(Constants.contentInsets)
+            $0.height.equalTo(Constants.cardHeight)
+        }
+
+        view.layoutIfNeeded()
+    }
+
 }
 
 // MARK: - Collection View Management
@@ -453,6 +473,17 @@ extension AddNoteViewController: UITextFieldDelegate {
         let currentText = textField.text ?? ""
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
         return newText.count <= Constants.tagTextFieldMaxLength
+    }
+}
+
+// MARK: - Binding
+extension AddNoteViewController {
+    private func bindToViewModel() {
+        viewModel.onDataChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateCard()
+            }
+        }
     }
 }
 

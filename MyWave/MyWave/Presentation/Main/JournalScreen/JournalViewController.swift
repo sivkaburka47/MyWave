@@ -259,7 +259,8 @@ extension JournalViewController {
                 date: note.dateAdded,
                 emotion: note.title,
                 type: CardType(emotionType: note.type),
-                icon: note.icon
+                icon: note.icon,
+                noteId: note.id
             )
 
             dayStack?.addArrangedSubview(card)
@@ -269,11 +270,11 @@ extension JournalViewController {
     }
 
     
-    private func createCardView(date: Date, emotion: String, type: CardType, icon: String) -> UIView {
+    private func createCardView(date: Date, emotion: String, type: CardType, icon: String, noteId: String) -> UIView {
         let card = MoodCardView()
         card.type = type
         card.icon = icon
-        print(card.icon)
+        card.noteId = noteId
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
@@ -348,8 +349,11 @@ extension JournalViewController {
     }
     
     @objc private func cardTapped(_ gesture: UITapGestureRecognizer) {
-        viewModel.editNote()
+        guard let card = gesture.view as? MoodCardView,
+              let id = card.noteId else { return }
+        viewModel.editNote(with: id)
     }
+
 }
 
 // MARK: - Binding

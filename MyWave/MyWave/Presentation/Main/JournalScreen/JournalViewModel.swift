@@ -9,7 +9,7 @@ import Foundation
 
 protocol JournalViewModelProtocol {
     func startAddNoteFlow()
-    func editNote()
+    func editNote(with id: String)
 }
 
 final class JournalViewModel: JournalViewModelProtocol {
@@ -83,8 +83,8 @@ extension JournalViewModel {
         coordinator?.navigateToEmotionSelection()
     }
     
-    func editNote() {
-        coordinator?.navigateToAddNote()
+    func editNote(with id: String) {
+        coordinator?.navigateToEditNote(with: id)
     }
 }
 

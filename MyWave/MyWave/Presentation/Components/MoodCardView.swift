@@ -8,6 +8,8 @@
 import UIKit
 
 final class MoodCardView: UIView {
+    var noteId: String?
+
     var type: CardType = .blue {
         didSet {
             updateGradient()
