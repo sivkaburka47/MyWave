@@ -38,12 +38,13 @@ final class JournalViewModel: JournalViewModelProtocol {
     }
 
     private func addSampleNote() {
+        let oneWeekEarlier = Calendar.current.date(byAdding: .day, value: -8, to: Date())!
         let note = Note(
             id: UUID().uuidString,
             title: "New запись",
             type: .blue,
             icon: "blueCardImage",
-            dateAdded: Date()
+            dateAdded: oneWeekEarlier
         )
 
         let noteDetails = NoteDetails(

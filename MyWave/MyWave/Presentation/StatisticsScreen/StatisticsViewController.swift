@@ -55,6 +55,7 @@ final class StatisticsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        updatePagesForSelectedWeek()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,15 +70,10 @@ extension StatisticsViewController {
     
     private func setupUI() {
         view.backgroundColor = Metrics.Colors.background
-        configureWeeks()
         configureCollectionView()
         configureScrollView()
         configurePageControl()
         updatePagesForSelectedWeek()
-    }
-    
-    private func configureWeeks() {
-        viewModel.setupWeeks()
     }
     
     private func configureCollectionView() {
@@ -185,12 +181,11 @@ extension StatisticsViewController {
         pageControl.currentPage = 0
         
         let selectedWeek = viewModel.weeks[viewModel.selectedIndex]
-        let weekStatistics = viewModel.getStatistics(for: selectedWeek)
-        let moodEntries = viewModel.getMoodEntries(for: weekStatistics)
-        let allNotes = weekStatistics.notesByDate
+        let allNotes = viewModel.getNotes(for: viewModel.selectedIndex)
+        let moodEntries = viewModel.getMoodEntries(for: allNotes)
         let coloredCircles = viewModel.calculateColoredCircles(from: allNotes)
-        let topEmotions = viewModel.getTopEmotions(for: weekStatistics)
-        
+        let topEmotions = viewModel.getTopEmotions(for: allNotes)
+
         pages.forEach { page in
             switch page {
             case let generalView as GeneralView:

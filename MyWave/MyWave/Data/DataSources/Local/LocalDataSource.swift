@@ -109,6 +109,55 @@ extension LocalDataSource {
         }
     }
 
+    public func getLatestNoteDate() -> Date? {
+        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: true)]
+        fetchRequest.fetchLimit = 1
+
+        do {
+            if let latestNote = try context.fetch(fetchRequest).first {
+                print(latestNote.dateAdded)
+                return latestNote.dateAdded
+            }
+        } catch {
+            print("()() Failed to fetch latest note date: \(error)")
+        }
+
+        return nil
+    }
+
+    public func getWeekNotes(_ monday: Date) -> [Note] {
+        let calendar = Calendar.current
+        guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: monday) else {
+            return []
+        }
+
+        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+        fetchRequest.predicate = NSPredicate(
+            format: "dateAdded >= %@ AND dateAdded <= %@",
+            monday as NSDate,
+            endOfWeek as NSDate
+        )
+
+        do {
+            let noteObjects = try context.fetch(fetchRequest)
+
+            return noteObjects.map { noteObject in
+                Note(
+                    id: noteObject.id,
+                    title: noteObject.title,
+                    type: EmotionType(rawValue: noteObject.emotionType) ?? .green,
+                    icon: noteObject.icon,
+                    dateAdded: noteObject.dateAdded
+                )
+            }
+        } catch {
+            print("()() Failed to fetch notes for week: \(error)")
+            return []
+        }
+    }
+
+
     public func debugPrintAllNotes() {
         let notes = getAllNotes()
         print("()() Всего заметок: \(notes.count)")
@@ -142,7 +191,7 @@ extension LocalDataSource {
                     NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
                 }
             } catch {
-                print("❌ Ошибка при удалении \(entityName): \(error)")
+                print("()() Ошибка при удалении \(entityName): \(error)")
             }
         }
     }

@@ -12,13 +12,14 @@ final class StatisticsViewModel {
     // MARK: - Properties
     
     weak var coordinator: StatisticsCoordinator?
+    private let localDataSource = LocalDataSource.shared
+
+//    private var weeksData: [WeekStatistics] = []
     
-    private var weeksData: [WeekStatistics] = []
-    
-    var weeks: [String] {
-        weeksData.map { $0.weekRange }
-    }
-    
+    var weeks: [String] = []
+    var weekMondays: [Date] = []
+    var notes: [Note] = []
+
     var selectedIndex: Int = 0 {
         didSet {
             if selectedIndex < 0 { selectedIndex = 0 }
@@ -29,78 +30,67 @@ final class StatisticsViewModel {
     // MARK: - Initialization
     
     init() {
-        generateFixedData()
+        if let startDate = localDataSource.getLatestNoteDate() {
+            setupWeeks(from: startDate, to: Date())
+        }
     }
     
     // MARK: - Data Setup
     
-    func setupWeeks() {
-        weeksData = generateFixedData()
+    func setupWeeks(from startDate: Date, to endDate: Date) {
+        weeks = generateWeeks(from: startDate, to: endDate)
         selectedIndex = weeks.count - 1
-    }
-    
-    private func generateFixedData() -> [WeekStatistics] {
-        let fullNotes = [
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 6:10")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-05 10:20")!),
-            Note(id: UUID().uuidString, title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 13:10")!),
-            Note(id: UUID().uuidString, title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-07 15:00")!),
-            Note(id: UUID().uuidString, title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-07 15:00")!),
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-06 18:10")!),
-            Note(id: UUID().uuidString, title: "Усталость", type: .yellow, icon: "yellowCardImage", dateAdded: dateFromString("2025-03-08 18:30")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-09 10:00")!),
-            Note(id: UUID().uuidString, title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-10 11:30")!),
-            Note(id: UUID().uuidString, title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-11 14:45")!),
-            Note(id: UUID().uuidString, title: "Усталость", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-12 09:15")!),
-            Note(id: UUID().uuidString, title: "Депрессия", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-13 16:20")!),
-            Note(id: UUID().uuidString, title: "Благодарность", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-16 08:30")!),
-            Note(id: UUID().uuidString, title: "Грусть", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-16 14:20")!),
-            Note(id: UUID().uuidString, title: "Энергия", type: .yellow, icon: "yellowCardImage", dateAdded: dateFromString("2025-03-16 10:00")!),
-            Note(id: UUID().uuidString, title: "Выгорание", type: .blue, icon: "blueCardImageSec", dateAdded: dateFromString("2025-03-16 18:20")!),
-            Note(id: UUID().uuidString, title: "Возбуждение", type: .yellow, icon: "yellowCardImageSec", dateAdded: dateFromString("2025-03-16 19:00")!),
-            Note(id: UUID().uuidString, title: "Апатия", type: .blue, icon: "blueCardImageSec", dateAdded: dateFromString("2025-03-16 18:20")!),
-            Note(id: UUID().uuidString, title: "Счастье", type: .yellow, icon: "yellowCardImageSec", dateAdded: dateFromString("2025-03-16 19:00")!),
-            Note(id: UUID().uuidString, title: "Спокойствие", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-17 17:45")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-18 11:15")!),
-            Note(id: UUID().uuidString, title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-19 09:45")!),
-            Note(id: UUID().uuidString, title: "Вдохновение", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-20 16:30")!),
-            Note(id: UUID().uuidString, title: "Усталость", type: .yellow, icon: "yellowCardImageSec", dateAdded: dateFromString("2025-03-21 18:15")!),
-            Note(id: UUID().uuidString, title: "Радость", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-22 08:00")!),
-            Note(id: UUID().uuidString, title: "Грусть", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-23 12:45")!),
-            Note(id: UUID().uuidString, title: "Энергия", type: .yellow, icon: "yellowCardImage", dateAdded: dateFromString("2025-03-24 15:30")!),
-            Note(id: UUID().uuidString, title: "Спокойствие", type: .green, icon: "greenCardImage", dateAdded: dateFromString("2025-03-25 19:10")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-26 10:20")!),
-            Note(id: UUID().uuidString, title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-03-27 14:15")!),
-            Note(id: UUID().uuidString, title: "Радость", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-03-28 08:00")!),
-            Note(id: UUID().uuidString, title: "Спокойствие", type: .green, icon: "redCardImage", dateAdded: dateFromString("2025-03-31 19:10")!),
-            Note(id: UUID().uuidString, title: "Гнев", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-04-01 10:20")!),
-            Note(id: UUID().uuidString, title: "Любовь", type: .red, icon: "redCardImage", dateAdded: dateFromString("2025-04-01 14:15")!),
-            Note(id: UUID().uuidString, title: "Радость", type: .blue, icon: "blueCardImage", dateAdded: dateFromString("2025-04-04 08:00")!)
-        ]
-        return sortNotesByWeeks(notes: fullNotes)
     }
 }
 
 // MARK: - Public Methods
 
 extension StatisticsViewModel {
-    
+
+    func generateWeeks(from startDate: Date, to endDate: Date) -> [String] {
+        weekMondays = []
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        calendar.locale = Locale(identifier: "ru_RU")
+
+        var weeks: [String] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = calendar.locale
+
+        var currentWeekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: startDate))!
+
+        while currentWeekStart <= endDate {
+            weekMondays.append(currentWeekStart)
+            let endOfWeek = calendar.date(byAdding: .day, value: 6, to: currentWeekStart)!
+
+            let startMonth = calendar.component(.month, from: currentWeekStart)
+            let endMonth = calendar.component(.month, from: endOfWeek)
+
+            let startFormat = startMonth != endMonth ? "d MMM" : "d"
+            dateFormatter.dateFormat = startFormat
+            let startStr = dateFormatter.string(from: currentWeekStart)
+
+            dateFormatter.dateFormat = "d MMM"
+            let endStr = dateFormatter.string(from: endOfWeek)
+
+            let startComponents = startStr.split(separator: " ")
+            let endComponents = endStr.split(separator: " ")
+
+            let formattedStart = startComponents.count == 1 ? "\(startComponents[0])" : "\(startComponents[0]) \(startComponents[1].prefix(3))"
+            let formattedEnd = "\(endComponents[0]) \(endComponents[1].prefix(3))"
+
+            let weekRangeString = "\(formattedStart) - \(formattedEnd)"
+            weeks.append(weekRangeString)
+
+            currentWeekStart = calendar.date(byAdding: .weekOfYear, value: 1, to: currentWeekStart)!
+        }
+
+        return weeks
+    }
+
+
     func getAvailableWeeks() -> [String] {
         weeks
-    }
-    
-    func getStatistics(for week: String) -> WeekStatistics {
-        weeksData.first { $0.weekRange == week } ?? WeekStatistics(weekRange: week, notesByDate: [])
     }
 
     func calculateColoredCircles(from notes: [Note]) -> [ColoredCircle] {
@@ -116,10 +106,17 @@ extension StatisticsViewModel {
         }
     }
 
-    func getTopEmotions(for week: WeekStatistics) -> [EmotionFrequency] {
+    func getNotes(for weekIndex: Int) -> [Note] {
+        guard weekIndex < weekMondays.count else { return [] }
+        let monday = weekMondays[weekIndex]
+        return localDataSource.getWeekNotes(monday)
+    }
+
+
+    func getTopEmotions(for notes: [Note]) -> [EmotionFrequency] {
         var frequencyDict: [EmotionKey: (count: Int, icon: String)] = [:]
         
-        for note in week.notesByDate {
+        for note in notes {
             let key = EmotionKey(title: note.title, emotion: note.type)
             if let existing = frequencyDict[key] {
                 frequencyDict[key] = (existing.count + 1, existing.icon)
@@ -135,7 +132,7 @@ extension StatisticsViewModel {
         return Array(frequencies.sorted { $0.count > $1.count }.prefix(7))
     }
     
-    func getMoodEntries(for week: WeekStatistics) -> [MoodEntry] {
+    func getMoodEntries(for notes: [Note]) -> [MoodEntry] {
         var moodCounts: [PartOfDay: [EmotionType: Int]] = [
             .earlyMorning: [:], .morning: [:], .day: [:], .evening: [:], .lateEvening: [:]
         ]
@@ -144,7 +141,7 @@ extension StatisticsViewModel {
             moodCounts[part] = [.red: 0, .blue: 0, .yellow: 0, .green: 0]
         }
         
-        for note in week.notesByDate {
+        for note in notes {
             let part = determinePartOfDay(for: note.dateAdded)
             moodCounts[part]?[note.type]! += 1
         }
@@ -167,69 +164,6 @@ extension StatisticsViewModel {
 // MARK: - Private Helpers
 
 extension StatisticsViewModel {
-    
-    private func dateFromString(_ string: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter.date(from: string)
-    }
-    
-    private func sortNotesByWeeks(notes: [Note]) -> [WeekStatistics] {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = Locale(identifier: "ru_RU")
-        
-        var groupedNotes = [Date: [Note]]()
-        
-        for note in notes {
-            let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: note.dateAdded)
-            guard let startOfWeek = calendar.date(from: components) else { continue }
-            groupedNotes[startOfWeek, default: []].append(note)
-        }
-        
-        let sortedWeekStarts = groupedNotes.keys.sorted()
-        
-        for weekStart in sortedWeekStarts {
-            guard var notes = groupedNotes[weekStart] else { continue }
-            notes.sort { note1, note2 in
-                let order1 = calendar.component(.weekday, from: note1.dateAdded)
-                let order2 = calendar.component(.weekday, from: note2.dateAdded)
-                let adjustedOrder1 = (order1 - calendar.firstWeekday + 7) % 7
-                let adjustedOrder2 = (order2 - calendar.firstWeekday + 7) % 7
-                return adjustedOrder1 < adjustedOrder2
-            }
-            groupedNotes[weekStart] = notes
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        
-        return sortedWeekStarts.compactMap { weekStart -> WeekStatistics? in
-            guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: weekStart),
-                  let notes = groupedNotes[weekStart],
-                  !notes.isEmpty else { return nil }
-            
-            let startMonth = calendar.component(.month, from: weekStart)
-            let endMonth = calendar.component(.month, from: endOfWeek)
-            
-            let startFormat = startMonth != endMonth ? "d MMM" : "d"
-            dateFormatter.dateFormat = startFormat
-            let startStr = dateFormatter.string(from: weekStart)
-            
-            dateFormatter.dateFormat = "d MMM"
-            let endStr = dateFormatter.string(from: endOfWeek)
-            
-            let startComponents = startStr.split(separator: " ")
-            let endComponents = endStr.split(separator: " ")
-            
-            let formattedStart = startComponents.count == 1 ? "\(startComponents[0])" : "\(startComponents[0]) \(startComponents[1].prefix(3))"
-            let formattedEnd = "\(endComponents[0]) \(endComponents[1].prefix(3))"
-            
-            let weekRangeString = "\(formattedStart) - \(formattedEnd)"
-            return WeekStatistics(weekRange: weekRangeString, notesByDate: notes)
-        }
-    }
     
     private func determinePartOfDay(for date: Date) -> PartOfDay {
         let hour = Calendar.current.component(.hour, from: date)
