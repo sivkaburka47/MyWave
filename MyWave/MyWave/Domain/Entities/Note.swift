@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Note: Identifiable {
     let id: String
@@ -30,5 +31,15 @@ extension EmotionType {
         case .blue: 2
         case .red: 3
         }
+    }
+
+    var gradientColor: [UIColor] {
+        let colors: [[UIColor]] = [
+            [UIColor(named: "gradGreenStart")!, UIColor(named: "gradGreenEnd")!],
+            [UIColor(named: "gradYellowStart")!, UIColor(named: "gradYellowEnd")!],
+            [UIColor(named: "gradBlueStart")!, UIColor(named: "gradBlueEnd")!],
+            [UIColor(named: "gradRedStart")!, UIColor(named: "gradRedEnd")!]
+        ]
+        return colors[index]
     }
 }

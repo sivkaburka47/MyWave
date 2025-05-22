@@ -13,8 +13,6 @@ final class StatisticsViewModel {
     
     weak var coordinator: StatisticsCoordinator?
     private let localDataSource = LocalDataSource.shared
-
-//    private var weeksData: [WeekStatistics] = []
     
     var weeks: [String] = []
     var weekMondays: [Date] = []

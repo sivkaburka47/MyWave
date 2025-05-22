@@ -11,6 +11,7 @@
 		E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */; };
 		E633F0AE2DDE391700C7EB13 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */; };
 		E633F0B02DDE42CD00C7EB13 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0AF2DDE42C500C7EB13 /* DayOfWeek.swift */; };
+		E6429D072DDF109800505030 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D062DDF109800505030 /* GradientView.swift */; };
 		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
 		E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E65E28CC2D70A1540043E296 /* Localizable.xcstrings */; };
 		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
@@ -126,6 +127,7 @@
 		E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 		E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
 		E633F0AF2DDE42C500C7EB13 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		E6429D062DDF109800505030 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E65E28CC2D70A1540043E296 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				E65E28F62D736D720043E296 /* MoodInDayView.swift */,
+				E6429D062DDF109800505030 /* GradientView.swift */,
 			);
 			path = MoodInDaySection;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */,
+				E6429D072DDF109800505030 /* GradientView.swift in Sources */,
 				E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */,
 				E6B85ED72D6A32ED00B453BA /* OptionsCoordinator.swift in Sources */,
 				E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */,

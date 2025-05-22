@@ -9,13 +9,6 @@ import UIKit
 import SnapKit
 
 final class FrequentView: UIView {
-    private let colors: [[UIColor]] = [
-        [UIColor(named: "gradGreenStart")!, UIColor(named: "gradGreenEnd")!],
-        [UIColor(named: "gradYellowStart")!, UIColor(named: "gradYellowEnd")!],
-        [UIColor(named: "gradBlueStart")!, UIColor(named: "gradBlueEnd")!],
-        [UIColor(named: "gradRedStart")!, UIColor(named: "gradRedEnd")!]
-    ]
-    
     private let titleScreen = UILabel()
     private let stackView = UIStackView()
     
@@ -124,15 +117,8 @@ final class FrequentView: UIView {
         gradientLayer.cornerRadius = 16
         gradientLayer.startPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
-        
-        let colorIndex: Int
-        switch emotion.emotion {
-        case .green: colorIndex = 0
-        case .yellow: colorIndex = 1
-        case .blue: colorIndex = 2
-        case .red: colorIndex = 3
-        }
-        gradientLayer.colors = colors[colorIndex].map { $0.cgColor }
+
+        gradientLayer.colors = emotion.emotion.gradientColor.map { $0.cgColor }
         progressBar.layer.insertSublayer(gradientLayer, at: 0)
         
         let countLabel = UILabel()

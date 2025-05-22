@@ -9,12 +9,6 @@ import UIKit
 import SnapKit
 
 final class MoodInDayView: UIView {
-    private let colors: [[UIColor]] = [
-        [UIColor(named: "gradGreenStart")!, UIColor(named: "gradGreenEnd")!],
-        [UIColor(named: "gradYellowStart")!, UIColor(named: "gradYellowEnd")!],
-        [UIColor(named: "gradBlueStart")!, UIColor(named: "gradBlueEnd")!],
-        [UIColor(named: "gradRedStart")!, UIColor(named: "gradRedEnd")!]
-    ]
     private let titleLabel = UILabel()
     private let mainStack = UIStackView()
     
@@ -137,7 +131,7 @@ final class MoodInDayView: UIView {
                     container.layer.cornerRadius = 8
                     container.layer.masksToBounds = true
                     
-                    gradientView.colors = colors[type.index]
+                    gradientView.colors = type.gradientColor
                     percentLabel.text = String(format: "%.0f%%", proportions[index] * 100)
                     percentLabel.textColor = .black
                     percentLabel.font = UIFont(name: "VelaSans-Bold", size: 12)
@@ -162,39 +156,5 @@ final class MoodInDayView: UIView {
             
             mainStack.addArrangedSubview(partContainer)
         }
-    }
-}
-
-
-private class GradientView: UIView {
-    var colors: [UIColor] = [] {
-        didSet { updateGradient() }
-    }
-    
-    private let gradientLayer = CAGradientLayer()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    private func setup() {
-        layer.addSublayer(gradientLayer)
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = bounds
-    }
-    
-    private func updateGradient() {
-        gradientLayer.colors = colors.map { $0.cgColor }
     }
 }
