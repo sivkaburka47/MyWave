@@ -140,7 +140,7 @@ extension StatisticsViewModel {
         }
         
         for note in notes {
-            let part = determinePartOfDay(for: note.dateAdded)
+            let part = PartOfDay.from(date: note.dateAdded)
             moodCounts[part]?[note.type]! += 1
         }
         
@@ -155,22 +155,6 @@ extension StatisticsViewModel {
                 .sorted { $0.key.rawValue < $1.key.rawValue }
                 .map { (type: $0.key, count: $0.value) }
             return MoodEntry(partOfDay: part, emotions: emotions)
-        }
-    }
-}
-
-// MARK: - Private Helpers
-
-extension StatisticsViewModel {
-    
-    private func determinePartOfDay(for date: Date) -> PartOfDay {
-        let hour = Calendar.current.component(.hour, from: date)
-        switch hour {
-        case 5..<8: return .earlyMorning
-        case 8..<12: return .morning
-        case 12..<17: return .day
-        case 17..<21: return .evening
-        default: return .lateEvening
         }
     }
 }
