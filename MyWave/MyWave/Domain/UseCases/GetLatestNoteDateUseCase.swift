@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetLatestNoteDateUseCase {
-    func execute() -> Date?
+    func execute() async -> Date?
 }
 
 class GetLatestNoteDateUseCaseImpl: GetLatestNoteDateUseCase {
@@ -24,8 +24,7 @@ class GetLatestNoteDateUseCaseImpl: GetLatestNoteDateUseCase {
         return GetLatestNoteDateUseCaseImpl(repository: repository)
     }
 
-    func execute() -> Date? {
-        let latestNoteDate = repository.getLatestNoteDate()
-        return latestNoteDate
+    func execute() async -> Date? {
+        return await repository.getLatestNoteDate()
     }
 }

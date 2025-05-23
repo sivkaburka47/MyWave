@@ -37,12 +37,11 @@ final class StatisticsViewModel {
         self.getFrequentEmotionsUseCase = GetFrequentEmotionsUseCaseImpl.create()
         self.getMoodInDayUseCase = GetMoodInDayUseCaseImpl.create()
         self.getLatestNoteDateUseCase = GetLatestNoteDateUseCaseImpl.create()
-        if let startDate = self.getLatestNoteDate() {
-            setupWeeks(from: startDate, to: Date())
+
+        Task {
+            await initializeData()
         }
     }
-    
-    // MARK: - Data Setup
     
     func setupWeeks(from startDate: Date, to endDate: Date) {
         weeks = generateWeeks(from: startDate, to: endDate)
@@ -100,32 +99,28 @@ extension StatisticsViewModel {
         weeks
     }
 
-    func calculateColoredCircles(for weekIndex: Int) -> [ColoredCircle] {
+    func calculateColoredCircles(for weekIndex: Int) async -> [ColoredCircle] {
         guard weekIndex < weekMondays.count else { return [] }
         let monday = weekMondays[weekIndex]
-        let coloredCircles = getColoredCirclesUseCase.execute(monday: monday)
-        return coloredCircles
+        return await getColoredCirclesUseCase.execute(monday: monday)
     }
 
-    func getNotes(for weekIndex: Int) -> [Note] {
+    func getNotes(for weekIndex: Int) async -> [Note] {
         guard weekIndex < weekMondays.count else { return [] }
         let monday = weekMondays[weekIndex]
-        let notes = getWeekNotesUseCase.execute(monday: monday)
-        return notes
+        return await getWeekNotesUseCase.execute(monday: monday)
     }
 
-    func getTopEmotions(for weekIndex: Int) -> [EmotionFrequency] {
+    func getTopEmotions(for weekIndex: Int) async -> [EmotionFrequency] {
         guard weekIndex < weekMondays.count else { return [] }
         let monday = weekMondays[weekIndex]
-        let frequentEmotions = getFrequentEmotionsUseCase.execute(monday: monday)
-        return frequentEmotions
+        return await getFrequentEmotionsUseCase.execute(monday: monday)
     }
-    
-    func getMoodEntries(for weekIndex: Int) -> [MoodEntry] {
+
+    func getMoodEntries(for weekIndex: Int) async -> [MoodEntry] {
         guard weekIndex < weekMondays.count else { return [] }
         let monday = weekMondays[weekIndex]
-        let moodEntries = getMoodInDayUseCase.execute(monday: monday)
-        return moodEntries
+        return await getMoodInDayUseCase.execute(monday: monday)
     }
 }
 
@@ -133,8 +128,13 @@ extension StatisticsViewModel {
 
 private extension StatisticsViewModel {
 
-    private func getLatestNoteDate() -> Date? {
-        guard let date = getLatestNoteDateUseCase.execute() else { return Date() }
-        return date
+    func getLatestNoteDate() async -> Date? {
+        return await getLatestNoteDateUseCase.execute()
+    }
+
+    func initializeData() async {
+        let endDate = Date()
+        let startDate = await getLatestNoteDate() ?? endDate
+        setupWeeks(from: startDate, to: endDate)
     }
 }

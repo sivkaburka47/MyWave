@@ -23,75 +23,80 @@ class LocalDataSource {
 
 extension LocalDataSource {
 
-    public func saveNoteDetails(noteDetails: NoteDetails) {
-        let noteObject = NoteObject(context: context)
-
-        noteObject.id = noteDetails.note.id
-        noteObject.title = noteDetails.note.title
-        noteObject.emotionType = noteDetails.note.type.rawValue
-        noteObject.icon = noteDetails.note.icon
-        noteObject.dateAdded = noteDetails.note.dateAdded
-        noteObject.activities = noteDetails.activities
-        noteObject.companions = noteDetails.companions
-        noteObject.locations = noteDetails.locations
-
-        saveContext()
+    public func saveNoteDetails(noteDetails: NoteDetails) async {
+        await context.perform {
+            let noteObject = NoteObject(context: self.context)
+            noteObject.id = noteDetails.note.id
+            noteObject.title = noteDetails.note.title
+            noteObject.emotionType = noteDetails.note.type.rawValue
+            noteObject.icon = noteDetails.note.icon
+            noteObject.dateAdded = noteDetails.note.dateAdded
+            noteObject.activities = noteDetails.activities
+            noteObject.companions = noteDetails.companions
+            noteObject.locations = noteDetails.locations
+            self.saveContext()
+        }
     }
 
-    public func updateNoteDetails(noteDetails: NoteDetails) {
-        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", noteDetails.note.id)
-        fetchRequest.fetchLimit = 1
+    public func updateNoteDetails(noteDetails: NoteDetails) async {
+        await context.perform {
+            let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", noteDetails.note.id)
+            fetchRequest.fetchLimit = 1
 
-        do {
-            if let noteObject = try context.fetch(fetchRequest).first {
-                noteObject.title = noteDetails.note.title
-                noteObject.emotionType = noteDetails.note.type.rawValue
-                noteObject.icon = noteDetails.note.icon
-                noteObject.dateAdded = noteDetails.note.dateAdded
-                noteObject.activities = noteDetails.activities
-                noteObject.companions = noteDetails.companions
-                noteObject.locations = noteDetails.locations
-
-                saveContext()
-            } else {
-                print("Note with id \(noteDetails.note.id) not found.")
+            do {
+                if let noteObject = try self.context.fetch(fetchRequest).first {
+                    noteObject.title = noteDetails.note.title
+                    noteObject.emotionType = noteDetails.note.type.rawValue
+                    noteObject.icon = noteDetails.note.icon
+                    noteObject.dateAdded = noteDetails.note.dateAdded
+                    noteObject.activities = noteDetails.activities
+                    noteObject.companions = noteDetails.companions
+                    noteObject.locations = noteDetails.locations
+                    self.saveContext()
+                } else {
+                    print("Note with id \(noteDetails.note.id) not found.")
+                }
+            } catch {
+                print("Failed to update note: \(error)")
             }
-        } catch {
-            print("Failed to update note: \(error)")
         }
     }
 
-    public func getNoteDetails(id: String) -> NoteDetails? {
-        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        fetchRequest.fetchLimit = 1
+    public func getNoteDetails(id: String) async -> NoteDetails? {
+        return await context.perform {
+            let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            fetchRequest.fetchLimit = 1
 
-        guard let noteObject = try? context.fetch(fetchRequest).first else {
-            return nil
+            guard let noteObject = try? self.context.fetch(fetchRequest).first else {
+                return nil
+            }
+
+            let note = Note(
+                id: noteObject.id,
+                title: noteObject.title,
+                type: EmotionType(rawValue: noteObject.emotionType) ?? .green,
+                icon: noteObject.icon,
+                dateAdded: noteObject.dateAdded
+            )
+
+            return NoteDetails(
+                note: note,
+                activities: noteObject.activities,
+                companions: noteObject.companions,
+                locations: noteObject.locations
+            )
         }
-
-        let note = Note(
-            id: noteObject.id,
-            title: noteObject.title,
-            type: EmotionType(rawValue: noteObject.emotionType) ?? .green,
-            icon: noteObject.icon,
-            dateAdded: noteObject.dateAdded
-        )
-
-        return NoteDetails(
-            note: note,
-            activities: noteObject.activities,
-            companions: noteObject.companions,
-            locations: noteObject.locations
-        )
     }
 
-    public func getAllNotes() -> [Note] {
+    public func getAllNotes() async -> [Note] {
         let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
 
         do {
-            let noteObjects = try context.fetch(fetchRequest)
+            let noteObjects = try await context.perform {
+                try self.context.fetch(fetchRequest)
+            }
 
             return noteObjects.map { noteObject in
                 Note(
@@ -108,60 +113,51 @@ extension LocalDataSource {
         }
     }
 
-    public func getLatestNoteDate() -> Date? {
-        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: true)]
-        fetchRequest.fetchLimit = 1
 
-        do {
-            if let latestNote = try context.fetch(fetchRequest).first {
-                print(latestNote.dateAdded)
-                return latestNote.dateAdded
+    public func getLatestNoteDate() async -> Date? {
+        await context.perform {
+            let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: true)]
+            fetchRequest.fetchLimit = 1
+
+            do {
+                return try self.context.fetch(fetchRequest).first?.dateAdded
+            } catch {
+                print("()() Failed to fetch latest note date: \(error)")
+                return nil
             }
-        } catch {
-            print("()() Failed to fetch latest note date: \(error)")
-        }
-
-        return nil
-    }
-
-    public func getWeekNotes(_ monday: Date) -> [Note] {
-        let calendar = Calendar.current
-        guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: monday) else {
-            return []
-        }
-
-        let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
-        fetchRequest.predicate = NSPredicate(
-            format: "dateAdded >= %@ AND dateAdded <= %@",
-            monday as NSDate,
-            endOfWeek as NSDate
-        )
-
-        do {
-            let noteObjects = try context.fetch(fetchRequest)
-
-            return noteObjects.map { noteObject in
-                Note(
-                    id: noteObject.id,
-                    title: noteObject.title,
-                    type: EmotionType(rawValue: noteObject.emotionType) ?? .green,
-                    icon: noteObject.icon,
-                    dateAdded: noteObject.dateAdded
-                )
-            }
-        } catch {
-            print("()() Failed to fetch notes for week: \(error)")
-            return []
         }
     }
 
+    public func getWeekNotes(_ monday: Date) async -> [Note] {
+        await context.perform {
+            let calendar = Calendar.current
+            guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: monday) else {
+                return []
+            }
 
-    public func debugPrintAllNotes() {
-        let notes = getAllNotes()
-        print("()() Всего заметок: \(notes.count)")
-        notes.forEach { note in
-            print("\(note.id) | \(note.title) | \(note.type.rawValue) | \(note.dateAdded)")
+            let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
+            fetchRequest.predicate = NSPredicate(
+                format: "dateAdded >= %@ AND dateAdded <= %@",
+                monday as NSDate,
+                endOfWeek as NSDate
+            )
+
+            do {
+                let noteObjects = try self.context.fetch(fetchRequest)
+                return noteObjects.map { noteObject in
+                    Note(
+                        id: noteObject.id,
+                        title: noteObject.title,
+                        type: EmotionType(rawValue: noteObject.emotionType) ?? .green,
+                        icon: noteObject.icon,
+                        dateAdded: noteObject.dateAdded
+                    )
+                }
+            } catch {
+                print("()() Failed to fetch notes for week: \(error)")
+                return []
+            }
         }
     }
 
@@ -170,6 +166,19 @@ extension LocalDataSource {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             try? context.save()
+        }
+    }
+}
+
+// MARK: Help methods
+
+extension LocalDataSource {
+
+    public func debugPrintAllNotes() async {
+        let notes = await getAllNotes()
+        print("()() Всего заметок: \(notes.count)")
+        notes.forEach { note in
+            print("\(note.id) | \(note.title) | \(note.type.rawValue) | \(note.dateAdded)")
         }
     }
 

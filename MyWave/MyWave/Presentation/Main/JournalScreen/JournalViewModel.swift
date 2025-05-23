@@ -32,10 +32,9 @@ final class JournalViewModel: JournalViewModelProtocol {
     }
 
     func onDidLoad() {
-        allNotes = getAllNotesUseCase.execute()
-        entriesCount = allNotes.count
-        seriesDuration = calculateSeriesDuration()
-        onDidLoadAllNotes?(allNotes)
+        Task {
+            await fetchAllNotes()
+        }
     }
 }
 
@@ -73,7 +72,13 @@ extension JournalViewModel {
 // MARK: - Private Helpers
 
 extension JournalViewModel {
-    
+    private func fetchAllNotes() async {
+        allNotes = await getAllNotesUseCase.execute()
+        entriesCount = allNotes.count
+        seriesDuration = calculateSeriesDuration()
+        onDidLoadAllNotes?(allNotes)
+    }
+
     private func formatCount(_ count: Int, singular: String, few: String, many: String) -> String {
         let remainder10 = count % 10
         let remainder100 = count % 100

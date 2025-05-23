@@ -14,31 +14,27 @@ class NotesRepositoryImpl: NotesRepository {
         self.dataSource = dataSource
     }
 
-    func getWeekNotes(monday: Date) -> [Note] {
-        let notes = dataSource.getWeekNotes(monday)
-        return notes
+    func getWeekNotes(monday: Date) async -> [Note] {
+        return await dataSource.getWeekNotes(monday)
     }
 
-    func saveNoteDetails(noteDetails: NoteDetails) {
-        dataSource.saveNoteDetails(noteDetails: noteDetails)
+    func saveNoteDetails(noteDetails: NoteDetails) async {
+        await dataSource.saveNoteDetails(noteDetails: noteDetails)
     }
 
-    func updateNoteDetails(noteDetails: NoteDetails) {
-        dataSource.updateNoteDetails(noteDetails: noteDetails)
+    func updateNoteDetails(noteDetails: NoteDetails) async {
+        await dataSource.updateNoteDetails(noteDetails: noteDetails)
     }
 
-    func getNoteDetails(id: String) -> NoteDetails? {
-        let noteDetails = dataSource.getNoteDetails(id: id)
-        return noteDetails
+    func getNoteDetails(id: String) async -> NoteDetails? {
+        return await dataSource.getNoteDetails(id: id)
     }
 
-    func getAllNotes() -> [Note] {
-        let notes = dataSource.getAllNotes()
-        return notes
+    func getAllNotes() async -> [Note] {
+        return await dataSource.getAllNotes()
     }
     
-    func getLatestNoteDate() -> Date? {
-        let date = dataSource.getLatestNoteDate()
-        return date
+    func getLatestNoteDate() async -> Date? {
+        return await dataSource.getLatestNoteDate()
     }
 }

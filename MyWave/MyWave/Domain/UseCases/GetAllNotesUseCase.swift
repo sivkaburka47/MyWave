@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetAllNotesUseCase {
-    func execute() -> [Note]
+    func execute() async -> [Note]
 }
 
 class GetAllNotesUseCaseImpl: GetAllNotesUseCase {
@@ -24,8 +24,7 @@ class GetAllNotesUseCaseImpl: GetAllNotesUseCase {
         return GetAllNotesUseCaseImpl(repository: repository)
     }
 
-    func execute() -> [Note] {
-        let notes = repository.getAllNotes()
-        return notes
+    func execute() async -> [Note] {
+        return await repository.getAllNotes()
     }
 }

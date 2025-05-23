@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetWeekNotesUseCase {
-    func execute(monday: Date) -> [Note]
+    func execute(monday: Date) async -> [Note]
 }
 
 class GetWeekNotesUseCaseImpl: GetWeekNotesUseCase {
@@ -24,9 +24,7 @@ class GetWeekNotesUseCaseImpl: GetWeekNotesUseCase {
         return GetWeekNotesUseCaseImpl(repository: repository)
     }
 
-    func execute(monday: Date) -> [Note] {
-        let notes = repository.getWeekNotes(monday: monday)
-
-        return notes
+    func execute(monday: Date) async -> [Note] {
+        return await repository.getWeekNotes(monday: monday)
     }
 }

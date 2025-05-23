@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetMoodInDayUseCase {
-    func execute(monday: Date) -> [MoodEntry]
+    func execute(monday: Date) async -> [MoodEntry]
 }
 
 class GetMoodInDayUseCaseImpl: GetMoodInDayUseCase {
@@ -24,8 +24,8 @@ class GetMoodInDayUseCaseImpl: GetMoodInDayUseCase {
         return GetMoodInDayUseCaseImpl(repository: repository)
     }
 
-    func execute(monday: Date) -> [MoodEntry] {
-        let notes = repository.getWeekNotes(monday: monday)
+    func execute(monday: Date) async -> [MoodEntry] {
+        let notes = await repository.getWeekNotes(monday: monday)
 
         var moodCounts: [PartOfDay: [EmotionType: Int]] = [
             .earlyMorning: [:], .morning: [:], .day: [:], .evening: [:], .lateEvening: [:]

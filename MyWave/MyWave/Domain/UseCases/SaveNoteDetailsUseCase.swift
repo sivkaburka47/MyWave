@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SaveNoteDetailsUseCase {
-    func execute(noteDetails: NoteDetails)
+    func execute(noteDetails: NoteDetails) async
 }
 
 class SaveNoteDetailsUseCaseImpl: SaveNoteDetailsUseCase {
@@ -24,7 +24,7 @@ class SaveNoteDetailsUseCaseImpl: SaveNoteDetailsUseCase {
         return SaveNoteDetailsUseCaseImpl(repository: repository)
     }
 
-    func execute(noteDetails: NoteDetails) {
-        repository.saveNoteDetails(noteDetails: noteDetails)
+    func execute(noteDetails: NoteDetails) async {
+        await repository.saveNoteDetails(noteDetails: noteDetails)
     }
 }

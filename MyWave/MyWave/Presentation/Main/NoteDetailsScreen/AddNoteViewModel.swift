@@ -50,46 +50,18 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
         self.updateNoteDetailsUseCase = UpdateNoteDetailsUseCaseImpl.create()
         self.noteId = noteId
 
-        let defaultActivities = ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]
-        let defaultCompanions = ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]
-        let defaultLocations = ["Дом", "Работа", "Школа", "Транспорт", "Улица"]
+        self.emotionTitle = emotionTitle
+        self.emotionType = emotionType
+        self.iconName = iconName
+        self.selectedDate = date
+        self.selectedCardType = CardType(emotionType: emotionType)
 
-        if let noteId = noteId,
-           let details = getNoteDetailsUseCase.execute(id: noteId) {
+        self.sections = []
 
-            self.emotionTitle = details.note.title
-            self.emotionType = details.note.type
-            self.iconName = details.note.icon
-            self.selectedDate = details.note.dateAdded
-            self.selectedCardType = CardType(emotionType: details.note.type)
-
-            let combinedActivities = Array(Set(defaultActivities + details.activities))
-            let combinedCompanions = Array(Set(defaultCompanions + details.companions))
-            let combinedLocations = Array(Set(defaultLocations + details.locations))
-
-            self.sections = [
-                Section(title: "Чем вы занимались", items: combinedActivities),
-                Section(title: "С кем вы были?", items: combinedCompanions),
-                Section(title: "Где вы были?", items: combinedLocations)
-            ]
-
-            self.selectedTags = Set(details.activities + details.companions + details.locations)
-        } else {
-            self.emotionTitle = emotionTitle
-            self.emotionType = emotionType
-            self.iconName = iconName
-            self.selectedDate = date
-            self.selectedCardType = CardType(emotionType: emotionType)
-
-            self.sections = [
-                Section(title: "Чем вы занимались", items: defaultActivities),
-                Section(title: "С кем вы были?", items: defaultCompanions),
-                Section(title: "Где вы были?", items: defaultLocations)
-            ]
+        Task {
+            await self.load()
         }
     }
-
-
 }
 
 // MARK: - Public Methods
@@ -122,30 +94,61 @@ extension AddNoteViewModel {
     }
 
     func doneButtonTapped() {
-        completeFlow()
+        Task {
+            await completeFlow()
+            coordinator?.completeFlow()
+        }
     }
 }
 
 // MARK: - Private Methods
 extension AddNoteViewModel {
 
-    private func completeFlow() {
-        if noteId != nil {
-            updateNote()
+    private func load() async {
+        let defaultActivities = ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]
+        let defaultCompanions = ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]
+        let defaultLocations = ["Дом", "Работа", "Школа", "Транспорт", "Улица"]
+
+        if let noteId = noteId,
+           let details = await getNoteDetailsUseCase.execute(id: noteId) {
+
+            let combinedActivities = Array(Set(defaultActivities + details.activities))
+            let combinedCompanions = Array(Set(defaultCompanions + details.companions))
+            let combinedLocations = Array(Set(defaultLocations + details.locations))
+
+            self.sections = [
+                Section(title: "Чем вы занимались", items: combinedActivities),
+                Section(title: "С кем вы были?", items: combinedCompanions),
+                Section(title: "Где вы были?", items: combinedLocations)
+            ]
+
+            self.selectedTags = Set(details.activities + details.companions + details.locations)
+
         } else {
-            saveNote()
+            self.sections = [
+                Section(title: "Чем вы занимались", items: defaultActivities),
+                Section(title: "С кем вы были?", items: defaultCompanions),
+                Section(title: "Где вы были?", items: defaultLocations)
+            ]
         }
-        coordinator?.completeFlow()
     }
 
-    private func saveNote() {
-        let obj = createNoteDetails()
-        saveNoteDetailsUseCase.execute(noteDetails: obj)
+    private func completeFlow() async {
+        if noteId != nil {
+            await updateNote()
+        } else {
+            await saveNote()
+        }
     }
 
-    private func updateNote() {
+    private func saveNote() async {
         let obj = createNoteDetails()
-        updateNoteDetailsUseCase.execute(noteDetails: obj)
+        await saveNoteDetailsUseCase.execute(noteDetails: obj)
+    }
+
+    private func updateNote() async {
+        let obj = createNoteDetails()
+        await updateNoteDetailsUseCase.execute(noteDetails: obj)
     }
 
     private func createNoteDetails() -> NoteDetails {

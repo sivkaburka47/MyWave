@@ -55,7 +55,10 @@ final class StatisticsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        updatePagesForSelectedWeek()
+        Task {
+            await updatePagesForSelectedWeek()
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,7 +76,10 @@ extension StatisticsViewController {
         configureCollectionView()
         configureScrollView()
         configurePageControl()
-        updatePagesForSelectedWeek()
+        Task {
+            await updatePagesForSelectedWeek()
+        }
+
     }
     
     private func configureCollectionView() {
@@ -176,31 +182,39 @@ extension StatisticsViewController {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
     }
     
-    private func updatePagesForSelectedWeek() {
-        scrollView.setContentOffset(.zero, animated: true)
-        pageControl.currentPage = 0
-        
-        let selectedWeek = viewModel.weeks[viewModel.selectedIndex]
-        let allNotes = viewModel.getNotes(for: viewModel.selectedIndex)
-        let moodEntries = viewModel.getMoodEntries(for: viewModel.selectedIndex)
-        let coloredCircles = viewModel.calculateColoredCircles(for: viewModel.selectedIndex)
-        let topEmotions = viewModel.getTopEmotions(for: viewModel.selectedIndex)
+    private func updatePagesForSelectedWeek() async {
+        await MainActor.run {
+            scrollView.setContentOffset(.zero, animated: true)
+            pageControl.currentPage = 0
+        }
 
-        pages.forEach { page in
-            switch page {
-            case let generalView as GeneralView:
-                generalView.update(with: coloredCircles, with: allNotes.count)
-            case let byDayView as ByDayView:
-                byDayView.update(with: (week: selectedWeek, notes: allNotes))
-            case let frequentView as FrequentView:
-                frequentView.update(with: topEmotions)
-            case let moodInDayView as MoodInDayView:
-                moodInDayView.update(with: moodEntries)
-            default:
-                break
+        let selectedWeek = viewModel.weeks[viewModel.selectedIndex]
+
+        async let notes = viewModel.getNotes(for: viewModel.selectedIndex)
+        async let moodEntries = viewModel.getMoodEntries(for: viewModel.selectedIndex)
+        async let circles = viewModel.calculateColoredCircles(for: viewModel.selectedIndex)
+        async let emotions = viewModel.getTopEmotions(for: viewModel.selectedIndex)
+
+        let (allNotes, moodInDay, coloredCircles, topEmotions) = await (notes, moodEntries, circles, emotions)
+
+        await MainActor.run {
+            pages.forEach { page in
+                switch page {
+                case let generalView as GeneralView:
+                    generalView.update(with: coloredCircles, with: allNotes.count)
+                case let byDayView as ByDayView:
+                    byDayView.update(with: (week: selectedWeek, notes: allNotes))
+                case let frequentView as FrequentView:
+                    frequentView.update(with: topEmotions)
+                case let moodInDayView as MoodInDayView:
+                    moodInDayView.update(with: moodInDay)
+                default:
+                    break
+                }
             }
         }
     }
+
     
     private func offsetForPage(_ pageIndex: Int) -> CGFloat {
         (0..<pageIndex).reduce(0) { $0 + pageHeights[$1] + Constants.pageSpacing }
@@ -284,7 +298,10 @@ extension StatisticsViewController: UICollectionViewDelegate, UICollectionViewDa
         viewModel.selectedIndex = indexPath.item
         collectionView.reloadData()
         scrollToSelectedWeek(animated: true)
-        updatePagesForSelectedWeek()
+
+        Task {
+            await updatePagesForSelectedWeek()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

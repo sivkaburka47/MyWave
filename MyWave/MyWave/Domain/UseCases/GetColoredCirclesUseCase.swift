@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetColoredCirclesUseCase {
-    func execute(monday: Date) -> [ColoredCircle]
+    func execute(monday: Date) async -> [ColoredCircle]
 }
 
 class GetColoredCirclesUseCaseImpl: GetColoredCirclesUseCase {
@@ -24,8 +24,8 @@ class GetColoredCirclesUseCaseImpl: GetColoredCirclesUseCase {
         return GetColoredCirclesUseCaseImpl(repository: repository)
     }
 
-    func execute(monday: Date) -> [ColoredCircle] {
-        let notes = repository.getWeekNotes(monday: monday)
+    func execute(monday: Date) async -> [ColoredCircle] {
+        let notes = await repository.getWeekNotes(monday: monday)
 
         let countDict = notes.reduce(into: [EmotionType: Int]()) { counts, note in
             counts[note.type, default: 0] += 1

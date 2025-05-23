@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetFrequentEmotionsUseCase {
-    func execute(monday: Date) -> [EmotionFrequency]
+    func execute(monday: Date) async -> [EmotionFrequency]
 }
 
 class GetFrequentEmotionsUseCaseImpl: GetFrequentEmotionsUseCase {
@@ -24,8 +24,8 @@ class GetFrequentEmotionsUseCaseImpl: GetFrequentEmotionsUseCase {
         return GetFrequentEmotionsUseCaseImpl(repository: repository)
     }
 
-    func execute(monday: Date) -> [EmotionFrequency] {
-        let notes = repository.getWeekNotes(monday: monday)
+    func execute(monday: Date) async -> [EmotionFrequency] {
+        let notes = await repository.getWeekNotes(monday: monday)
         var frequencyDict: [EmotionKey: (count: Int, icon: String)] = [:]
 
         for note in notes {
