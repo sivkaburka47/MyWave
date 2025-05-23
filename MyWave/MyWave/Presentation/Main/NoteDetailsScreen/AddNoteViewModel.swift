@@ -17,7 +17,9 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
     // MARK: - Properties
     
     weak var coordinator: AddNoteCoordinator?
-    private let localDataSource = LocalDataSource.shared
+    private let saveNoteDetailsUseCase: SaveNoteDetailsUseCase
+    private let getNoteDetailsUseCase: GetNoteDetailsUseCase
+    private let updateNoteDetailsUseCase: UpdateNoteDetailsUseCase
 
     var sections: [Section] = []
     var selectedTags = Set<String>()
@@ -43,6 +45,9 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
         iconName: String = "",
         date: Date = Date()
     ) {
+        self.saveNoteDetailsUseCase = SaveNoteDetailsUseCaseImpl.create()
+        self.getNoteDetailsUseCase = GetNoteDetailsUseCaseImpl.create()
+        self.updateNoteDetailsUseCase = UpdateNoteDetailsUseCaseImpl.create()
         self.noteId = noteId
 
         let defaultActivities = ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]
@@ -50,7 +55,7 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
         let defaultLocations = ["Дом", "Работа", "Школа", "Транспорт", "Улица"]
 
         if let noteId = noteId,
-           let details = localDataSource.getNoteDetails(by: noteId) {
+           let details = getNoteDetailsUseCase.execute(id: noteId) {
 
             self.emotionTitle = details.note.title
             self.emotionType = details.note.type
@@ -135,12 +140,12 @@ extension AddNoteViewModel {
 
     private func saveNote() {
         let obj = createNoteDetails()
-        localDataSource.saveNoteDetails(obj)
+        saveNoteDetailsUseCase.execute(noteDetails: obj)
     }
 
     private func updateNote() {
         let obj = createNoteDetails()
-        localDataSource.updateNoteDetails(obj)
+        updateNoteDetailsUseCase.execute(noteDetails: obj)
     }
 
     private func createNoteDetails() -> NoteDetails {

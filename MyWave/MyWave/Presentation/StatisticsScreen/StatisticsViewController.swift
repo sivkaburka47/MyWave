@@ -182,9 +182,9 @@ extension StatisticsViewController {
         
         let selectedWeek = viewModel.weeks[viewModel.selectedIndex]
         let allNotes = viewModel.getNotes(for: viewModel.selectedIndex)
-        let moodEntries = viewModel.getMoodEntries(for: allNotes)
-        let coloredCircles = viewModel.calculateColoredCircles(from: allNotes)
-        let topEmotions = viewModel.getTopEmotions(for: allNotes)
+        let moodEntries = viewModel.getMoodEntries(for: viewModel.selectedIndex)
+        let coloredCircles = viewModel.calculateColoredCircles(for: viewModel.selectedIndex)
+        let topEmotions = viewModel.getTopEmotions(for: viewModel.selectedIndex)
 
         pages.forEach { page in
             switch page {

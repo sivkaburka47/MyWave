@@ -23,7 +23,7 @@ class LocalDataSource {
 
 extension LocalDataSource {
 
-    public func saveNoteDetails(_ noteDetails: NoteDetails) {
+    public func saveNoteDetails(noteDetails: NoteDetails) {
         let noteObject = NoteObject(context: context)
 
         noteObject.id = noteDetails.note.id
@@ -38,7 +38,7 @@ extension LocalDataSource {
         saveContext()
     }
 
-    public func updateNoteDetails(_ noteDetails: NoteDetails) {
+    public func updateNoteDetails(noteDetails: NoteDetails) {
         let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
         fetchRequest.predicate = NSPredicate(format: "id == %@", noteDetails.note.id)
         fetchRequest.fetchLimit = 1
@@ -62,8 +62,7 @@ extension LocalDataSource {
         }
     }
 
-
-    public func getNoteDetails(by id: String) -> NoteDetails? {
+    public func getNoteDetails(id: String) -> NoteDetails? {
         let fetchRequest = NSFetchRequest<NoteObject>(entityName: "NoteObject")
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.fetchLimit = 1
@@ -175,7 +174,6 @@ extension LocalDataSource {
     }
 
     func clearCoreData() {
-
         let context = persistentContainer.viewContext
         let entities = persistentContainer.managedObjectModel.entities
 

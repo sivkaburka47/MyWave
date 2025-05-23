@@ -17,7 +17,7 @@ final class JournalViewModel: JournalViewModelProtocol {
     // MARK: - Properties
     
     weak var coordinator: JournalCoordinator?
-    private let localDataSource = LocalDataSource.shared
+    private let getAllNotesUseCase: GetAllNotesUseCase
 
     var allNotes = [Note]()
 
@@ -28,33 +28,14 @@ final class JournalViewModel: JournalViewModelProtocol {
     var entriesCount = 0
 
     init() {
+        self.getAllNotesUseCase = GetAllNotesUseCaseImpl.create()
     }
 
     func onDidLoad() {
-        allNotes = localDataSource.getAllNotes()
+        allNotes = getAllNotesUseCase.execute()
         entriesCount = allNotes.count
         seriesDuration = calculateSeriesDuration()
         onDidLoadAllNotes?(allNotes)
-    }
-
-    private func addSampleNote() {
-        let oneWeekEarlier = Calendar.current.date(byAdding: .day, value: -8, to: Date())!
-        let note = Note(
-            id: UUID().uuidString,
-            title: "New запись",
-            type: .blue,
-            icon: "blueCardImage",
-            dateAdded: oneWeekEarlier
-        )
-
-        let noteDetails = NoteDetails(
-            note: note,
-            activities: ["Чтение", "Прогулка"],
-            companions: ["Один"],
-            locations: ["Парк"]
-        )
-
-        localDataSource.saveNoteDetails(noteDetails)
     }
 }
 
