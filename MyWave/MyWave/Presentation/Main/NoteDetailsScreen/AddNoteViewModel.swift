@@ -26,11 +26,11 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
     var isAddingTag = false
     var currentEditingSection: Int?
 
-    let emotionTitle: String
-    let selectedDate: Date
-    let emotionType: EmotionType
-    let iconName: String
-    let selectedCardType: CardType
+    var emotionTitle: String
+    var selectedDate: Date
+    var emotionType: EmotionType
+    var iconName: String
+    var selectedCardType: CardType
 
     private let noteId: String?
 
@@ -57,10 +57,6 @@ final class AddNoteViewModel: AddNoteViewModelProtocol {
         self.selectedCardType = CardType(emotionType: emotionType)
 
         self.sections = []
-
-        Task {
-            await self.load()
-        }
     }
 }
 
@@ -93,10 +89,20 @@ extension AddNoteViewModel {
         selectedTags.insert(tag)
     }
 
+    @MainActor
     func doneButtonTapped() {
         Task {
             await completeFlow()
             coordinator?.completeFlow()
+        }
+    }
+
+    func loadData() {
+        Task {
+            await load()
+            await MainActor.run {
+                onDataChanged?()
+            }
         }
     }
 }
@@ -111,6 +117,12 @@ extension AddNoteViewModel {
 
         if let noteId = noteId,
            let details = await getNoteDetailsUseCase.execute(id: noteId) {
+
+            self.emotionTitle = details.note.title
+            self.emotionType = details.note.type
+            self.iconName = details.note.icon
+            self.selectedDate = details.note.dateAdded
+            self.selectedCardType = CardType(emotionType: details.note.type)
 
             let combinedActivities = Array(Set(defaultActivities + details.activities))
             let combinedCompanions = Array(Set(defaultCompanions + details.companions))

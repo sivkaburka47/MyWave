@@ -259,6 +259,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E633F0902DDC6B9300C7EB13 /* CoreData */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreData; sourceTree = "<group>"; };
 		E633F09E2DDC765E00C7EB13 /* DataSources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataSources; sourceTree = "<group>"; };
+		E6D9D8EC2DE0B949006DBC7D /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +468,7 @@
 		E6B85E2D2D68575800B453BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E6D9D8EC2DE0B949006DBC7D /* Services */,
 				E633F09E2DDC765E00C7EB13 /* DataSources */,
 				E633F0902DDC6B9300C7EB13 /* CoreData */,
 				E6B85E432D685E9200B453BA /* Repositories */,
@@ -712,6 +714,7 @@
 			fileSystemSynchronizedGroups = (
 				E633F0902DDC6B9300C7EB13 /* CoreData */,
 				E633F09E2DDC765E00C7EB13 /* DataSources */,
+				E6D9D8EC2DE0B949006DBC7D /* Services */,
 			);
 			name = MyWave;
 			packageProductDependencies = (
@@ -1078,6 +1081,7 @@
 				DEVELOPMENT_TEAM = T77L9FD3JY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWave/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Мы используем Face ID для быстрого и безопасного входа в приложение.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1105,6 +1109,7 @@
 				DEVELOPMENT_TEAM = T77L9FD3JY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWave/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Мы используем Face ID для быстрого и безопасного входа в приложение.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
