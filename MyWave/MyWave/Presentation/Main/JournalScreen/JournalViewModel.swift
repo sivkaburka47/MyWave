@@ -92,7 +92,7 @@ extension JournalViewModel {
         }
     }
 
-    private func calculateSeriesDuration() -> Int {
+    func calculateSeriesDuration() -> Int {
         let calendar = Calendar.current
 
         let uniqueDates = Set(allNotes.map { calendar.startOfDay(for: $0.dateAdded) })
