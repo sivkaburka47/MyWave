@@ -25,6 +25,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()
+
+        NotificationService.shared.requestAuthorization { granted in
+            if granted {
+                print("Разрешение получено")
+            } else {
+                print("Разрешение не получено")
+            }
+        }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

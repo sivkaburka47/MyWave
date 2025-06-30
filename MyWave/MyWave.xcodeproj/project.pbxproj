@@ -3,10 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E633F09D2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */; };
+		E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */; };
+		E633F0AE2DDE391700C7EB13 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */; };
+		E633F0B02DDE42CD00C7EB13 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = E633F0AF2DDE42C500C7EB13 /* DayOfWeek.swift */; };
+		E6429D072DDF109800505030 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D062DDF109800505030 /* GradientView.swift */; };
+		E6429D092DDF11DB00505030 /* PartOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D082DDF11D600505030 /* PartOfDay.swift */; };
+		E6429D0B2DDF144000505030 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D0A2DDF144000505030 /* CardType.swift */; };
+		E6429D0D2DDF4B2600505030 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D0C2DDF4B2600505030 /* NotesRepository.swift */; };
+		E6429D0F2DDF4CA500505030 /* GetColoredCirclesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D0E2DDF4CA500505030 /* GetColoredCirclesUseCase.swift */; };
+		E6429D112DDF4CC800505030 /* GetLatestNoteDateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D102DDF4CC800505030 /* GetLatestNoteDateUseCase.swift */; };
+		E6429D152DDF4D4200505030 /* GetFrequentEmotionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D142DDF4D4200505030 /* GetFrequentEmotionsUseCase.swift */; };
+		E6429D172DDF4D5B00505030 /* GetMoodInDayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D162DDF4D5B00505030 /* GetMoodInDayUseCase.swift */; };
+		E6429D192DDF4DBF00505030 /* GetWeekNotesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D182DDF4DBF00505030 /* GetWeekNotesUseCase.swift */; };
+		E6429D1B2DDFC30500505030 /* NotesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6429D1A2DDFC30500505030 /* NotesRepositoryImpl.swift */; };
 		E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */; };
 		E65E28CD2D70A1540043E296 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E65E28CC2D70A1540043E296 /* Localizable.xcstrings */; };
 		E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65E28CE2D70A3850043E296 /* LocalizedString.swift */; };
@@ -96,6 +110,10 @@
 		E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3D2D6E28D700B453BA /* TagCell.swift */; };
 		E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F3F2D6E290900B453BA /* AddTagCell.swift */; };
 		E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */; };
+		E6D9D8E52DE063FB006DBC7D /* SaveNoteDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D9D8E42DE063FB006DBC7D /* SaveNoteDetailsUseCase.swift */; };
+		E6D9D8E72DE06407006DBC7D /* UpdateNoteDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D9D8E62DE06407006DBC7D /* UpdateNoteDetailsUseCase.swift */; };
+		E6D9D8E92DE0641F006DBC7D /* GetAllNotesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D9D8E82DE0641F006DBC7D /* GetAllNotesUseCase.swift */; };
+		E6D9D8EB2DE06633006DBC7D /* GetNoteDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D9D8EA2DE06633006DBC7D /* GetNoteDetailsUseCase.swift */; };
 		E6EC26F52D74A2FD00D9900F /* WeekStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */; };
 		E6EC26F72D74A32300D9900F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F62D74A32300D9900F /* Note.swift */; };
 		E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */; };
@@ -108,6 +126,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E68B144C2DE10229002F20D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6B85E042D68518D00B453BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6B85E0B2D68518E00B453BA;
+			remoteInfo = MyWave;
+		};
 		E6EC27572D77A07B00D9900F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6B85E042D68518D00B453BA /* Project object */;
@@ -118,6 +143,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
+		E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
+		E633F0AF2DDE42C500C7EB13 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		E6429D062DDF109800505030 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		E6429D082DDF11D600505030 /* PartOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartOfDay.swift; sourceTree = "<group>"; };
+		E6429D0A2DDF144000505030 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		E6429D0C2DDF4B2600505030 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
+		E6429D0E2DDF4CA500505030 /* GetColoredCirclesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetColoredCirclesUseCase.swift; sourceTree = "<group>"; };
+		E6429D102DDF4CC800505030 /* GetLatestNoteDateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestNoteDateUseCase.swift; sourceTree = "<group>"; };
+		E6429D142DDF4D4200505030 /* GetFrequentEmotionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFrequentEmotionsUseCase.swift; sourceTree = "<group>"; };
+		E6429D162DDF4D5B00505030 /* GetMoodInDayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoodInDayUseCase.swift; sourceTree = "<group>"; };
+		E6429D182DDF4DBF00505030 /* GetWeekNotesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeekNotesUseCase.swift; sourceTree = "<group>"; };
+		E6429D1A2DDFC30500505030 /* NotesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepositoryImpl.swift; sourceTree = "<group>"; };
 		E65E28CA2D705B3E0043E296 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E65E28CC2D70A1540043E296 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E65E28CE2D70A3850043E296 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -129,6 +168,7 @@
 		E65E28F22D736D420043E296 /* ByDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDayView.swift; sourceTree = "<group>"; };
 		E65E28F42D736D610043E296 /* FrequentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentView.swift; sourceTree = "<group>"; };
 		E65E28F62D736D720043E296 /* MoodInDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInDayView.swift; sourceTree = "<group>"; };
+		E68B14482DE10229002F20D3 /* MyWaveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWaveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B7A0F82D78155B00575CB3 /* VelaSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-Bold.otf"; sourceTree = "<group>"; };
 		E6B7A0F92D78155B00575CB3 /* VelaSans-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraBold.otf"; sourceTree = "<group>"; };
 		E6B7A0FA2D78155B00575CB3 /* VelaSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VelaSans-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -208,6 +248,10 @@
 		E6B85F3D2D6E28D700B453BA /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		E6B85F3F2D6E290900B453BA /* AddTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagCell.swift; sourceTree = "<group>"; };
 		E6B85F412D6E390200B453BA /* LeftAlignedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedFlowLayout.swift; sourceTree = "<group>"; };
+		E6D9D8E42DE063FB006DBC7D /* SaveNoteDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNoteDetailsUseCase.swift; sourceTree = "<group>"; };
+		E6D9D8E62DE06407006DBC7D /* UpdateNoteDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNoteDetailsUseCase.swift; sourceTree = "<group>"; };
+		E6D9D8E82DE0641F006DBC7D /* GetAllNotesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllNotesUseCase.swift; sourceTree = "<group>"; };
+		E6D9D8EA2DE06633006DBC7D /* GetNoteDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoteDetailsUseCase.swift; sourceTree = "<group>"; };
 		E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStatistics.swift; sourceTree = "<group>"; };
 		E6EC26F62D74A32300D9900F /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E6EC26F92D74A77900D9900F /* EmotionCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCirclesView.swift; sourceTree = "<group>"; };
@@ -220,7 +264,21 @@
 		E6EC275C2D77A0A400D9900F /* WelcomeScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E633F0902DDC6B9300C7EB13 /* CoreData */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreData; sourceTree = "<group>"; };
+		E633F09E2DDC765E00C7EB13 /* DataSources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataSources; sourceTree = "<group>"; };
+		E68B14492DE10229002F20D3 /* MyWaveTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MyWaveTests; sourceTree = "<group>"; };
+		E6D9D8EC2DE0B949006DBC7D /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		E68B14452DE10229002F20D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6B85E092D68518E00B453BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +427,7 @@
 			children = (
 				E6B85E0E2D68518E00B453BA /* MyWave */,
 				E6EC27522D77A07B00D9900F /* MyWaveUITests */,
+				E68B14492DE10229002F20D3 /* MyWaveTests */,
 				E6B85E0D2D68518E00B453BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -378,6 +437,7 @@
 			children = (
 				E6B85E0C2D68518E00B453BA /* MyWave.app */,
 				E6EC27512D77A07B00D9900F /* MyWaveUITests.xctest */,
+				E68B14482DE10229002F20D3 /* MyWaveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -426,10 +486,11 @@
 		E6B85E2D2D68575800B453BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E6D9D8EC2DE0B949006DBC7D /* Services */,
+				E633F09E2DDC765E00C7EB13 /* DataSources */,
+				E633F0902DDC6B9300C7EB13 /* CoreData */,
 				E6B85E432D685E9200B453BA /* Repositories */,
 				E6B85E422D685E8E00B453BA /* Models */,
-				E6B85E412D685E8600B453BA /* Network */,
-				E6B85E402D685E7A00B453BA /* Endpoints */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -463,7 +524,8 @@
 				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
 				E6B85ECB2D6A289400B453BA /* JournalScreen */,
 				E6B85ECC2D6A289F00B453BA /* EmotionSelectionScreen */,
-				E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */,
+				E6B85ECD2D6A28AE00B453BA /* NoteDetailsScreen */,
+				E6B85ED02D6A327400B453BA /* MainCoordinator.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -505,11 +567,16 @@
 		E6B85E3D2D685E5200B453BA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				E6429D082DDF11D600505030 /* PartOfDay.swift */,
+				E633F0AF2DDE42C500C7EB13 /* DayOfWeek.swift */,
+				E633F0A52DDC95AF00C7EB13 /* NoteDetails.swift */,
 				E6EC26F42D74A2FD00D9900F /* WeekStatistics.swift */,
 				E6EC26F62D74A32300D9900F /* Note.swift */,
 				E6EC26FE2D74BCF500D9900F /* EmotionFrequency.swift */,
 				E6EC27002D757E4500D9900F /* MoodEntry.swift */,
 				E6EC27182D770FC100D9900F /* Section.swift */,
+				E633F0AD2DDE391700C7EB13 /* ColoredCircle.swift */,
+				E6429D0A2DDF144000505030 /* CardType.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -517,6 +584,15 @@
 		E6B85E3E2D685E5700B453BA /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				E6429D102DDF4CC800505030 /* GetLatestNoteDateUseCase.swift */,
+				E6429D0E2DDF4CA500505030 /* GetColoredCirclesUseCase.swift */,
+				E6429D182DDF4DBF00505030 /* GetWeekNotesUseCase.swift */,
+				E6429D142DDF4D4200505030 /* GetFrequentEmotionsUseCase.swift */,
+				E6429D162DDF4D5B00505030 /* GetMoodInDayUseCase.swift */,
+				E6D9D8E42DE063FB006DBC7D /* SaveNoteDetailsUseCase.swift */,
+				E6D9D8E62DE06407006DBC7D /* UpdateNoteDetailsUseCase.swift */,
+				E6D9D8E82DE0641F006DBC7D /* GetAllNotesUseCase.swift */,
+				E6D9D8EA2DE06633006DBC7D /* GetNoteDetailsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -524,27 +600,15 @@
 		E6B85E3F2D685E5C00B453BA /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				E6429D0C2DDF4B2600505030 /* NotesRepository.swift */,
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		E6B85E402D685E7A00B453BA /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		E6B85E412D685E8600B453BA /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		E6B85E422D685E8E00B453BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E633F09B2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -552,6 +616,7 @@
 		E6B85E432D685E9200B453BA /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				E6429D1A2DDFC30500505030 /* NotesRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -562,6 +627,7 @@
 				E6B85E322D68586700B453BA /* JournalCoordinator.swift */,
 				E6B85E382D6858E800B453BA /* JournalViewController.swift */,
 				E6B85E3A2D6858F300B453BA /* JournalViewModel.swift */,
+				E6B85E322D68586700B453BA /* JournalCoordinator.swift */,
 			);
 			path = JournalScreen;
 			sourceTree = "<group>";
@@ -572,18 +638,20 @@
 				E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */,
 				E6B85EE42D6A337B00B453BA /* EmotionSelectionViewController.swift */,
 				E6B85EE62D6A338000B453BA /* EmotionSelectionViewModel.swift */,
+				E6B85EE82D6B21D100B453BA /* EmotionSelectionCoordinator.swift */,
 			);
 			path = EmotionSelectionScreen;
 			sourceTree = "<group>";
 		};
-		E6B85ECD2D6A28AE00B453BA /* AddNoteScreen */ = {
+		E6B85ECD2D6A28AE00B453BA /* NoteDetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
 				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
 				E6B85EE02D6A336000B453BA /* AddNoteViewController.swift */,
 				E6B85EE22D6A336B00B453BA /* AddNoteViewModel.swift */,
+				E6B85ED22D6A32C000B453BA /* AddNoteCoordinator.swift */,
 			);
-			path = AddNoteScreen;
+			path = NoteDetailsScreen;
 			sourceTree = "<group>";
 		};
 		E6B85ECE2D6A28DC00B453BA /* StatisticsScreen */ = {
@@ -592,6 +660,7 @@
 				E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */,
 				E6B85EDC2D6A332C00B453BA /* StatisticsViewController.swift */,
 				E6B85EDE2D6A333200B453BA /* StatisticsViewModel.swift */,
+				E6B85ED42D6A32DB00B453BA /* StatisticsCoordinator.swift */,
 				E65E28D52D718F2D0043E296 /* Sections */,
 			);
 			path = StatisticsScreen;
@@ -603,6 +672,7 @@
 				E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */,
 				E6B85ED82D6A330F00B453BA /* OptionsViewController.swift */,
 				E6B85EDA2D6A331800B453BA /* OptionsViewModel.swift */,
+				E6B85ED62D6A32ED00B453BA /* OptionsCoordinator.swift */,
 			);
 			path = OptionsScreen;
 			sourceTree = "<group>";
@@ -635,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				E65E28F62D736D720043E296 /* MoodInDayView.swift */,
+				E6429D062DDF109800505030 /* GradientView.swift */,
 			);
 			path = MoodInDaySection;
 			sourceTree = "<group>";
@@ -652,6 +723,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E68B14472DE10229002F20D3 /* MyWaveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E68B14502DE10229002F20D3 /* Build configuration list for PBXNativeTarget "MyWaveTests" */;
+			buildPhases = (
+				E68B14442DE10229002F20D3 /* Sources */,
+				E68B14452DE10229002F20D3 /* Frameworks */,
+				E68B14462DE10229002F20D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E68B144D2DE10229002F20D3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E68B14492DE10229002F20D3 /* MyWaveTests */,
+			);
+			name = MyWaveTests;
+			packageProductDependencies = (
+			);
+			productName = MyWaveTests;
+			productReference = E68B14482DE10229002F20D3 /* MyWaveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E6B85E0B2D68518E00B453BA /* MyWave */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6B85E202D68518F00B453BA /* Build configuration list for PBXNativeTarget "MyWave" */;
@@ -663,6 +757,11 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E633F0902DDC6B9300C7EB13 /* CoreData */,
+				E633F09E2DDC765E00C7EB13 /* DataSources */,
+				E6D9D8EC2DE0B949006DBC7D /* Services */,
 			);
 			name = MyWave;
 			packageProductDependencies = (
@@ -697,9 +796,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					E68B14472DE10229002F20D3 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = E6B85E0B2D68518E00B453BA;
+					};
 					E6B85E0B2D68518E00B453BA = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -727,11 +830,19 @@
 			targets = (
 				E6B85E0B2D68518E00B453BA /* MyWave */,
 				E6EC27502D77A07B00D9900F /* MyWaveUITests */,
+				E68B14472DE10229002F20D3 /* MyWaveTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E68B14462DE10229002F20D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6B85E0A2D68518E00B453BA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -795,11 +906,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E68B14442DE10229002F20D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6B85E082D68518E00B453BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6429D152DDF4D4200505030 /* GetFrequentEmotionsUseCase.swift in Sources */,
+				E6429D192DDF4DBF00505030 /* GetWeekNotesUseCase.swift in Sources */,
 				E6B85F3E2D6E28D700B453BA /* TagCell.swift in Sources */,
+				E6429D072DDF109800505030 /* GradientView.swift in Sources */,
 				E6B85E2A2D6855FA00B453BA /* AppCoordinator.swift in Sources */,
 				E6B85ED72D6A32ED00B453BA /* OptionsCoordinator.swift in Sources */,
 				E6B85ECA2D6A044A00B453BA /* MoodCardView.swift in Sources */,
@@ -809,7 +930,9 @@
 				E6EC26F72D74A32300D9900F /* Note.swift in Sources */,
 				E6B85E842D68985C00B453BA /* LoginAppleIdButton.swift in Sources */,
 				E6B85EDD2D6A332C00B453BA /* StatisticsViewController.swift in Sources */,
+				E6429D1B2DDFC30500505030 /* NotesRepositoryImpl.swift in Sources */,
 				E6B85E282D6855E100B453BA /* BaseCoordinator.swift in Sources */,
+				E633F0AE2DDE391700C7EB13 /* ColoredCircle.swift in Sources */,
 				E6B85ED52D6A32DB00B453BA /* StatisticsCoordinator.swift in Sources */,
 				E6B85F422D6E390200B453BA /* LeftAlignedFlowLayout.swift in Sources */,
 				E6EC26FA2D74A77900D9900F /* EmotionCirclesView.swift in Sources */,
@@ -817,6 +940,7 @@
 				E6B85E102D68518E00B453BA /* AppDelegate.swift in Sources */,
 				E65E28F32D736D420043E296 /* ByDayView.swift in Sources */,
 				E65E28D42D70B4100043E296 /* ReminderView.swift in Sources */,
+				E6D9D8E72DE06407006DBC7D /* UpdateNoteDetailsUseCase.swift in Sources */,
 				E6EC26FF2D74BCF500D9900F /* EmotionFrequency.swift in Sources */,
 				E6B85E3B2D6858F300B453BA /* JournalViewModel.swift in Sources */,
 				E6EC26F52D74A2FD00D9900F /* WeekStatistics.swift in Sources */,
@@ -825,16 +949,22 @@
 				E65E28F12D736D250043E296 /* GeneralView.swift in Sources */,
 				E65E28CF2D70A3850043E296 /* LocalizedString.swift in Sources */,
 				E6B85F402D6E290900B453BA /* AddTagCell.swift in Sources */,
+				E6429D172DDF4D5B00505030 /* GetMoodInDayUseCase.swift in Sources */,
 				E6B85EE32D6A336B00B453BA /* AddNoteViewModel.swift in Sources */,
+				E6429D0F2DDF4CA500505030 /* GetColoredCirclesUseCase.swift in Sources */,
 				E6B85F3A2D6D944300B453BA /* CustomLargeButton.swift in Sources */,
+				E6D9D8E52DE063FB006DBC7D /* SaveNoteDetailsUseCase.swift in Sources */,
 				E6B85E122D68518E00B453BA /* SceneDelegate.swift in Sources */,
 				E6B85ED92D6A330F00B453BA /* OptionsViewController.swift in Sources */,
 				E6B85E392D6858E800B453BA /* JournalViewController.swift in Sources */,
 				E65E28F72D736D720043E296 /* MoodInDayView.swift in Sources */,
 				E65E28CB2D705B3E0043E296 /* SectionHeaderView.swift in Sources */,
+				E633F0A62DDC95B700C7EB13 /* NoteDetails.swift in Sources */,
 				E6B85EE72D6A338000B453BA /* EmotionSelectionViewModel.swift in Sources */,
 				E65E28ED2D71C6970043E296 /* WeekCell.swift in Sources */,
 				E6B85EDF2D6A333200B453BA /* StatisticsViewModel.swift in Sources */,
+				E6D9D8EB2DE06633006DBC7D /* GetNoteDetailsUseCase.swift in Sources */,
+				E633F09D2DDC6E7800C7EB13 /* NoteObject+CoreDataProperties.swift in Sources */,
 				E6B85EE12D6A336000B453BA /* AddNoteViewController.swift in Sources */,
 				E65E28EF2D71C9250043E296 /* VerticalPageControl.swift in Sources */,
 				E65E28F52D736D610043E296 /* FrequentView.swift in Sources */,
@@ -842,11 +972,17 @@
 				E6B85EE92D6B21D100B453BA /* EmotionSelectionCoordinator.swift in Sources */,
 				E6B85E452D685F6E00B453BA /* AnimatedGradientView.swift in Sources */,
 				E6B85EC82D68FA1A00B453BA /* CircularProgressView.swift in Sources */,
+				E6429D0D2DDF4B2600505030 /* NotesRepository.swift in Sources */,
 				E6EC27012D757E4500D9900F /* MoodEntry.swift in Sources */,
 				E6B85EDB2D6A331800B453BA /* OptionsViewModel.swift in Sources */,
 				E6EC27192D770FC100D9900F /* Section.swift in Sources */,
+				E6429D092DDF11DB00505030 /* PartOfDay.swift in Sources */,
+				E633F0B02DDE42CD00C7EB13 /* DayOfWeek.swift in Sources */,
 				E6B85ED12D6A327400B453BA /* MainCoordinator.swift in Sources */,
+				E6D9D8E92DE0641F006DBC7D /* GetAllNotesUseCase.swift in Sources */,
 				E6B85E352D6858D100B453BA /* WelcomeViewController.swift in Sources */,
+				E6429D0B2DDF144000505030 /* CardType.swift in Sources */,
+				E6429D112DDF4CC800505030 /* GetLatestNoteDateUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,6 +999,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E68B144D2DE10229002F20D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6B85E0B2D68518E00B453BA /* MyWave */;
+			targetProxy = E68B144C2DE10229002F20D3 /* PBXContainerItemProxy */;
+		};
 		E6EC27582D77A07B00D9900F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6B85E0B2D68518E00B453BA /* MyWave */;
@@ -882,6 +1023,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E68B144E2DE10229002F20D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T77L9FD3JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.icodelessons.MyWaveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyWave.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyWave";
+			};
+			name = Debug;
+		};
+		E68B144F2DE10229002F20D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T77L9FD3JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.icodelessons.MyWaveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyWave.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyWave";
+			};
+			name = Release;
+		};
 		E6B85E1E2D68518F00B453BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1011,6 +1190,7 @@
 				DEVELOPMENT_TEAM = T77L9FD3JY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWave/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Мы используем Face ID для быстрого и безопасного входа в приложение.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1038,6 +1218,7 @@
 				DEVELOPMENT_TEAM = T77L9FD3JY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWave/Resources/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Мы используем Face ID для быстрого и безопасного входа в приложение.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1092,6 +1273,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E68B14502DE10229002F20D3 /* Build configuration list for PBXNativeTarget "MyWaveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68B144E2DE10229002F20D3 /* Debug */,
+				E68B144F2DE10229002F20D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E6B85E072D68518D00B453BA /* Build configuration list for PBXProject "MyWave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

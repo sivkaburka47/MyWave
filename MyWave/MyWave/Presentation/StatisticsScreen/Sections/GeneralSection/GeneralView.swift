@@ -61,19 +61,9 @@ final class GeneralView: UIView {
     }
     
     
-    func update(with notes: [Note]) {
-        numberEntries.text = "\(notes.count) записей"
-        let percentages = calculatePercentages(notes: notes)
-        emotionCirclesView.percentages = percentages
+    func update(with coloredCircles: [ColoredCircle], with notesCount: Int) {
+        numberEntries.text = "\(notesCount) записей"
+        emotionCirclesView.coloredCircles = coloredCircles
         emotionCirclesView.setNeedsLayout()
-    }
-    
-    private func calculatePercentages(notes: [Note]) -> [(Float, EmotionType)] {
-        let countDict = notes.reduce(into: [:]) { counts, note in
-            counts[note.type, default: 0] += 1
-        }
-        
-        let total = Float(notes.count)
-        return countDict.map { (Float($0.value) / total * 100, $0.key) }
     }
 }

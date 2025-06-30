@@ -196,6 +196,7 @@ extension EmotionSelectionViewController {
         
         if let label = circle.subviews.first(where: { $0 is UILabel }) as? UILabel,
            let color = circle.backgroundColor {
+            viewModel.updateSelection(emotionTitle: label.text ?? "", color: color)
             emotionView.configure(
                 state: .active,
                 emotion: label.text,

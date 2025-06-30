@@ -8,9 +8,16 @@
 import UIKit
 
 final class MoodCardView: UIView {
+    var noteId: String?
+
     var type: CardType = .blue {
         didSet {
             updateGradient()
+        }
+    }
+
+    var icon: String = "" {
+        didSet {
             updateImage()
         }
     }
@@ -60,79 +67,6 @@ final class MoodCardView: UIView {
     }
 
     private func updateImage() {
-        imageView.image = UIImage(named: type.imageName)
+        imageView.image = UIImage(named: icon)
     }
-}
-
-// MARK: - CardType
-enum CardType {
-    case blue
-    case green
-    case yellow
-    case red
-
-    var gradientColors: [UIColor] {
-        switch self {
-        case .blue:
-            return [
-                UIColor(named: "cardBlue")!.withAlphaComponent(0.3),
-                UIColor(named: "cardBlue")!.withAlphaComponent(0.0)
-            ]
-        case .green:
-            return [
-                UIColor(named: "cardGreen")!.withAlphaComponent(0.3),
-                UIColor(named: "cardGreen")!.withAlphaComponent(0.0)
-            ]
-        case .yellow:
-            return [
-                UIColor(named: "cardYellow")!.withAlphaComponent(0.3),
-                UIColor(named: "cardYellow")!.withAlphaComponent(0.0)
-            ]
-        case .red:
-            return [
-                UIColor(named: "cardRed")!.withAlphaComponent(0.3),
-                UIColor(named: "cardRed")!.withAlphaComponent(0.0)
-            ]
-        }
-    }
-
-    var imageName: String {
-        switch self {
-        case .blue:
-            return "blueCardImage"
-        case .green:
-            return "greenCardImage"
-        case .yellow:
-            return "yellowCardImage"
-        case .red:
-            return "redCardImage"
-        }
-    }
-    
-    var emotionTextColor: UIColor {
-        switch self {
-        case .blue:
-            return UIColor(named: "cusBlue") ?? .systemBlue
-        case .green:
-            return UIColor(named: "cusGreen") ?? .systemGreen
-        case .yellow:
-            return UIColor(named: "cusYellow") ?? .systemYellow
-        case .red:
-            return UIColor(named: "cusRed") ?? .systemRed
-        }
-    }
-    
-    var strokeGradient: [UIColor] {
-        switch self {
-        case .blue:
-            return [UIColor(named: "gradBlueStart")!, UIColor(named: "gradBlueEnd")!]
-        case .green:
-            return [UIColor(named: "gradGreenStart")!, UIColor(named: "gradGreenEnd")!]
-        case .yellow:
-            return [UIColor(named: "gradYellowStart")!, UIColor(named: "gradYellowEnd")!]
-        case .red:
-            return [UIColor(named: "gradRedStart")!, UIColor(named: "gradRedEnd")!]
-        }
-    }
-    
 }

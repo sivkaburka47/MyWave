@@ -42,6 +42,7 @@ final class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.accessibilityIdentifier = "JournalScreen"
+        bindToViewModel()
         setupUI()
         setupConstraints()
     }
@@ -49,7 +50,13 @@ final class JournalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+
+        mainVerticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        statsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        viewModel.onDidLoad()
     }
+
 }
 
 // MARK: - UI Setup
@@ -66,7 +73,6 @@ extension JournalViewController {
         configureMainVerticalStack()
         addStatItems()
         addEntries()
-        addDemoCards()
     }
     
     private func setupScrollView() {
@@ -185,7 +191,13 @@ extension JournalViewController {
         ]
         statsItems.forEach { addStatItem($0) }
     }
-    
+
+    private func updateStatItems() {
+        statsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        addStatItems()
+    }
+
+
     private func addStatItem(_ item: StatItem) {
         let itemView = UIView()
         itemView.backgroundColor = Metrics.Colors.statItemBackground
@@ -221,23 +233,20 @@ extension JournalViewController {
 
 extension JournalViewController {
     
-    private func addDemoCards() {
-        let demoEntries = viewModel.demoEntries
+    private func addCards(from notes: [Note]) {
         let verticalStack = UIStackView()
         verticalStack.axis = .vertical
         verticalStack.spacing = Constants.smallSpacing
-        
+
+        let sortedNotes = notes.sorted { $0.dateAdded > $1.dateAdded }
+
         var currentDay: Date?
         var dayStack: UIStackView?
-        
-        demoEntries.forEach { entry in
-            guard let date = entry["date"] as? Date,
-                  let emotion = entry["emotion"] as? String,
-                  let type = entry["type"] as? CardType else { return }
-            
+
+        for note in sortedNotes {
             let calendar = Calendar.current
-            let day = calendar.startOfDay(for: date)
-            
+            let day = calendar.startOfDay(for: note.dateAdded)
+
             if day != currentDay {
                 dayStack = UIStackView()
                 dayStack?.axis = .vertical
@@ -245,18 +254,28 @@ extension JournalViewController {
                 verticalStack.addArrangedSubview(dayStack!)
                 currentDay = day
             }
-            
-            let card = createCardView(date: date, emotion: emotion, type: type)
+
+            let card = createCardView(
+                date: note.dateAdded,
+                emotion: note.title,
+                type: CardType(emotionType: note.type),
+                icon: note.icon,
+                noteId: note.id
+            )
+
             dayStack?.addArrangedSubview(card)
         }
-        
+
         mainVerticalStack.addArrangedSubview(verticalStack)
     }
+
     
-    private func createCardView(date: Date, emotion: String, type: CardType) -> UIView {
+    private func createCardView(date: Date, emotion: String, type: CardType, icon: String, noteId: String) -> UIView {
         let card = MoodCardView()
         card.type = type
-        
+        card.icon = icon
+        card.noteId = noteId
+
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateStyle = .medium
@@ -315,6 +334,10 @@ extension JournalViewController {
         
         return card
     }
+
+    private func clearCards() {
+        mainVerticalStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
 }
 
 // MARK: - Actions
@@ -326,8 +349,26 @@ extension JournalViewController {
     }
     
     @objc private func cardTapped(_ gesture: UITapGestureRecognizer) {
-        viewModel.editNote()
+        guard let card = gesture.view as? MoodCardView,
+              let id = card.noteId else { return }
+        viewModel.editNote(with: id)
     }
+
+}
+
+// MARK: - Binding
+extension JournalViewController {
+    private func bindToViewModel() {
+        viewModel.onDidLoadAllNotes = { [weak self] allNotes in
+            DispatchQueue.main.async {
+                self?.clearCards()
+                self?.addCards(from: allNotes)
+                self?.addEntries()
+                self?.updateStatItems()
+            }
+        }
+    }
+
 }
 
 // MARK: - Constants & Metrics

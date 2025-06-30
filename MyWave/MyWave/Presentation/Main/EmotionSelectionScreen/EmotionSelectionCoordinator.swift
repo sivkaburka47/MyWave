@@ -73,8 +73,13 @@ final class EmotionSelectionCoordinator: Coordinator {
         vc.navigationController?.navigationBar.isHidden = false
     }
     
-    func navigateToAddNote() {
-        let coordinator = AddNoteCoordinator(navigationController: navigationController)
+    func navigateToAddNote(emotionType: EmotionType, iconName: String, emotionTitle: String) {
+        let coordinator = AddNoteCoordinator(
+            navigationController: navigationController,
+            selectedEmotionType: emotionType,
+            selectedEmotionIcon: iconName,
+            selectedEmotionTitle: emotionTitle
+        )
         coordinator.parentCoordinator = self
         coordinator.mainCoordinator = mainCoordinator
         childCoordinators.append(coordinator)

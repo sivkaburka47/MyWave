@@ -16,6 +16,7 @@ final class AddNoteViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    private let cardContainer = UIView()
     private var card = UIView()
     private var collectionView: UICollectionView!
     private let newTagTextField = UITextField()
@@ -38,9 +39,11 @@ final class AddNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindToViewModel()
+        updateCard()
         setupUI()
         setupConstraints()
-        
+        viewModel.loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +63,6 @@ extension AddNoteViewController {
     private func setupUI() {
         view.backgroundColor = Metrics.Colors.background
         configureScrollView()
-        configureCard()
         configureCollectionView()
         configureTextField()
         configureSaveButton()
@@ -71,16 +73,7 @@ extension AddNoteViewController {
     private func configureScrollView() {
         scrollView.addSubview(contentView)
         view.addSubview(scrollView)
-    }
-    
-    private func configureCard() {
-        card.removeFromSuperview()
-        card = createCardView(
-            date: viewModel.selectedDate,
-            emotion: viewModel.selectedEmotion,
-            type: viewModel.selectedCardType
-        )
-        contentView.addSubview(card)
+        contentView.addSubview(cardContainer)
     }
     
     private func configureCollectionView() {
@@ -141,15 +134,15 @@ extension AddNoteViewController {
             $0.width.equalTo(view.safeAreaLayoutGuide)
             $0.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide).priority(.required)
         }
-        
-        card.snp.makeConstraints {
+
+        cardContainer.snp.makeConstraints {
             $0.top.equalToSuperview().offset(Constants.contentInsets)
             $0.leading.trailing.equalToSuperview().inset(Constants.contentInsets)
             $0.height.equalTo(Constants.cardHeight)
         }
-        
+
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(card.snp.bottom).offset(Constants.contentInsets)
+            $0.top.equalTo(cardContainer.snp.bottom).offset(Constants.contentInsets)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-Constants.contentInsets).priority(.high)
             collectionViewHeightConstraint = $0.height.equalTo(0).priority(.medium).constraint
@@ -235,6 +228,23 @@ extension AddNoteViewController {
         
         return card
     }
+
+    private func updateCard() {
+        cardContainer.subviews.forEach { $0.removeFromSuperview() }
+
+        card = createCardView(
+            date: viewModel.selectedDate,
+            emotion: viewModel.emotionTitle,
+            type: viewModel.selectedCardType
+        )
+        cardContainer.addSubview(card)
+
+        card.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+
+
 }
 
 // MARK: - Collection View Management
@@ -334,7 +344,7 @@ extension AddNoteViewController {
 extension AddNoteViewController {
     
     @objc private func doneTapped() {
-        viewModel.completeFlow()
+        viewModel.doneButtonTapped()
     }
 }
 
@@ -453,6 +463,19 @@ extension AddNoteViewController: UITextFieldDelegate {
         let currentText = textField.text ?? ""
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
         return newText.count <= Constants.tagTextFieldMaxLength
+    }
+}
+
+// MARK: - Binding
+extension AddNoteViewController {
+    private func bindToViewModel() {
+        viewModel.onDataChanged = { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateCard()
+                self?.collectionView.reloadData()
+                self?.updateCollectionViewHeight()
+            }
+        }
     }
 }
 

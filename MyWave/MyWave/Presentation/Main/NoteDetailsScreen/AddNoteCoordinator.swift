@@ -16,24 +16,60 @@ final class AddNoteCoordinator: Coordinator {
     var navigationController: UINavigationController
     weak var parentCoordinator: Coordinator?
     weak var mainCoordinator: MainCoordinator?
-    
-    init(navigationController: UINavigationController) {
+
+    let selectedEmotionType: EmotionType
+    let selectedEmotionIcon: String
+    let selectedEmotionTitle: String
+    var editingNoteId: String?
+
+    init(
+        navigationController: UINavigationController,
+        selectedEmotionType: EmotionType,
+        selectedEmotionIcon: String,
+        selectedEmotionTitle: String
+    ) {
         self.navigationController = navigationController
+        self.selectedEmotionType = selectedEmotionType
+        self.selectedEmotionIcon = selectedEmotionIcon
+        self.selectedEmotionTitle = selectedEmotionTitle
         trackDeinit()
     }
-    
+
+    init(
+        navigationController: UINavigationController,
+        editingNoteId: String)
+    {
+        self.navigationController = navigationController
+        self.editingNoteId = editingNoteId
+        self.selectedEmotionType = .green
+        self.selectedEmotionIcon = ""
+        self.selectedEmotionTitle = ""
+        trackDeinit()
+    }
+
     deinit {
         NotificationCenter.default.post(name: .deinitTracker, object: nil)
     }
     
     func start() {
-        let viewModel = AddNoteViewModel()
+        let viewModel: AddNoteViewModel
+
+        if let noteId = editingNoteId {
+            viewModel = AddNoteViewModel(noteId: noteId)
+        } else {
+            viewModel = AddNoteViewModel(
+                emotionTitle: selectedEmotionTitle,
+                emotionType: selectedEmotionType,
+                iconName: selectedEmotionIcon
+            )
+        }
+
         viewModel.coordinator = self
         let vc = AddNoteViewController(viewModel: viewModel)
         configureScreen(vc, title: "Запись", showBackButton: true)
         navigationController.pushViewController(vc, animated: true)
     }
-    
+
     private func configureScreen(_ vc: UIViewController, title: String, showBackButton: Bool) {
         
         vc.navigationController?.navigationBar.prefersLargeTitles = true

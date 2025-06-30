@@ -35,6 +35,7 @@ final class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
+        viewModel.authenticateIfNeeded()
     }
 }
 

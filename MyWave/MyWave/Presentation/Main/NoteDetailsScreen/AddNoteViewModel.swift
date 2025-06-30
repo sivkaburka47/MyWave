@@ -1,0 +1,187 @@
+//
+//  AddNoteViewModel.swift
+//  MyWave
+//
+//  Created by Станислав Дейнекин on 22.02.2025.
+//
+
+import Foundation
+
+protocol AddNoteViewModelProtocol {
+    func doneButtonTapped()
+    var onDataChanged: (() -> Void)? { get set }
+}
+
+final class AddNoteViewModel: AddNoteViewModelProtocol {
+    
+    // MARK: - Properties
+    
+    weak var coordinator: AddNoteCoordinator?
+    private let saveNoteDetailsUseCase: SaveNoteDetailsUseCase
+    private let getNoteDetailsUseCase: GetNoteDetailsUseCase
+    private let updateNoteDetailsUseCase: UpdateNoteDetailsUseCase
+
+    var sections: [Section] = []
+    var selectedTags = Set<String>()
+    var isAddingTag = false
+    var currentEditingSection: Int?
+
+    var emotionTitle: String
+    var selectedDate: Date
+    var emotionType: EmotionType
+    var iconName: String
+    var selectedCardType: CardType
+
+    private let noteId: String?
+
+    var onDataChanged: (() -> Void)?
+
+    // MARK: - Initialization
+    
+    init(
+        noteId: String? = nil,
+        emotionTitle: String = "",
+        emotionType: EmotionType = .green,
+        iconName: String = "",
+        date: Date = Date()
+    ) {
+        self.saveNoteDetailsUseCase = SaveNoteDetailsUseCaseImpl.create()
+        self.getNoteDetailsUseCase = GetNoteDetailsUseCaseImpl.create()
+        self.updateNoteDetailsUseCase = UpdateNoteDetailsUseCaseImpl.create()
+        self.noteId = noteId
+
+        self.emotionTitle = emotionTitle
+        self.emotionType = emotionType
+        self.iconName = iconName
+        self.selectedDate = date
+        self.selectedCardType = CardType(emotionType: emotionType)
+
+        self.sections = []
+    }
+}
+
+// MARK: - Public Methods
+
+extension AddNoteViewModel {
+    
+    func setEditingSection(_ section: Int?) {
+        currentEditingSection = section
+    }
+    
+    func toggleAddingTag() {
+        isAddingTag.toggle()
+    }
+    
+    func setAddingTag(_ value: Bool) {
+        isAddingTag = value
+    }
+    
+    func toggleTagSelection(_ tag: String) {
+        if selectedTags.contains(tag) {
+            selectedTags.remove(tag)
+        } else {
+            selectedTags.insert(tag)
+        }
+    }
+    
+    func addTag(_ tag: String, to section: Int) {
+        sections[section].items.append(tag)
+        selectedTags.insert(tag)
+    }
+
+    @MainActor
+    func doneButtonTapped() {
+        Task {
+            await completeFlow()
+            coordinator?.completeFlow()
+        }
+    }
+
+    func loadData() {
+        Task {
+            await load()
+            await MainActor.run {
+                onDataChanged?()
+            }
+        }
+    }
+}
+
+// MARK: - Private Methods
+extension AddNoteViewModel {
+
+    private func load() async {
+        let defaultActivities = ["Прием пищи", "Встреча с друзьями", "Тренировка", "Хобби", "Отдых", "Поездка"]
+        let defaultCompanions = ["Один", "Друзья", "Семья", "Коллеги", "Партнер", "Питомцы"]
+        let defaultLocations = ["Дом", "Работа", "Школа", "Транспорт", "Улица"]
+
+        if let noteId = noteId,
+           let details = await getNoteDetailsUseCase.execute(id: noteId) {
+
+            self.emotionTitle = details.note.title
+            self.emotionType = details.note.type
+            self.iconName = details.note.icon
+            self.selectedDate = details.note.dateAdded
+            self.selectedCardType = CardType(emotionType: details.note.type)
+
+            let combinedActivities = Array(Set(defaultActivities + details.activities))
+            let combinedCompanions = Array(Set(defaultCompanions + details.companions))
+            let combinedLocations = Array(Set(defaultLocations + details.locations))
+
+            self.sections = [
+                Section(title: "Чем вы занимались", items: combinedActivities),
+                Section(title: "С кем вы были?", items: combinedCompanions),
+                Section(title: "Где вы были?", items: combinedLocations)
+            ]
+
+            self.selectedTags = Set(details.activities + details.companions + details.locations)
+
+        } else {
+            self.sections = [
+                Section(title: "Чем вы занимались", items: defaultActivities),
+                Section(title: "С кем вы были?", items: defaultCompanions),
+                Section(title: "Где вы были?", items: defaultLocations)
+            ]
+        }
+    }
+
+    private func completeFlow() async {
+        if noteId != nil {
+            await updateNote()
+        } else {
+            await saveNote()
+        }
+    }
+
+    private func saveNote() async {
+        let obj = createNoteDetails()
+        await saveNoteDetailsUseCase.execute(noteDetails: obj)
+    }
+
+    private func updateNote() async {
+        let obj = createNoteDetails()
+        await updateNoteDetailsUseCase.execute(noteDetails: obj)
+    }
+
+    private func createNoteDetails() -> NoteDetails {
+        let note = Note(
+            id: noteId ?? UUID().uuidString,
+            title: emotionTitle,
+            type: emotionType,
+            icon: iconName,
+            dateAdded: selectedDate
+        )
+
+        let activities = sections[0].items.filter { selectedTags.contains($0) }
+        let companions = sections[1].items.filter { selectedTags.contains($0) }
+        let locations = sections[2].items.filter { selectedTags.contains($0) }
+
+        let noteDetails = NoteDetails(
+            note: note,
+            activities: activities,
+            companions: companions,
+            locations: locations
+        )
+        return noteDetails
+    }
+}
